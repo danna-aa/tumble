@@ -1,8 +1,0 @@
-  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tumblog_development"[0m
-  ↳ bin/rails:9
-  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tumblog_test"[0m
-  ↳ bin/rails:9
-  [1m[35m (95.9ms)[0m  [1m[35mCREATE DATABASE "tumblog_development" ENCODING = 'unicode'[0m
-  ↳ bin/rails:9
-  [1m[35m (119.0ms)[0m  [1m[35mCREATE DATABASE "tumblog_test" ENCODING = 'unicode'[0m
-  ↳ bin/rails:9
