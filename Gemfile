@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
-gem 'annotate'
+gem 'annotate', '2.7.5'
 gem 'bcrypt'
 gem 'jquery-rails'
 
