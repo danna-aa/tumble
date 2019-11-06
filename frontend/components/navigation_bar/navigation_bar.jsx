@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Greeting from '../greeting/greeting';
+import NavButtons from '../nav_buttons/nav-buttons';
+import SearchBar from '../seach_bar/search_bar';
+import Devlinks from '../devlinks/devlinks';
 
 class NavigationBar extends React.Component {
     constructor(props) {
@@ -13,12 +15,13 @@ class NavigationBar extends React.Component {
 
 
         return (
-            <div>
-                <Link to='/' className='tumblog-logo'>t</Link>
+            <div className="navigation-bar">
+                <Link to='/' className='tumblog-logo'><i className="fab fa-tumblr"></i></Link>
                 <SearchBar currentUser={ currentUser }/>
+                <Devlinks />
                 {/* search bar */}
                 {/* about */}
-                <Greeting currentUser={ currentUser } logout={ logout }/>
+                <NavButtons currentUser={ currentUser } logout={ logout }/>
                 {/* {navBarRender} */}
             </div>
         )
