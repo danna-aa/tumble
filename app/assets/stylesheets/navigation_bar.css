@@ -1,3 +1,174 @@
+/* ---------------------------------------------------- */
+/* start: all */
+/* ---------------------------------------------------- */
+
+body {
+    background-color: #001935;
+    font-family: Helvetica, sans-serif, Arial;
+}
+
+/* ---------------------------------------------------- */
+/* end: all */
+/* ---------------------------------------------------- */
+
+
+
+
+
+
+
+/* ---------------------------------------------------- */
+/* start: top left 't' logo */
+/* ---------------------------------------------------- */
+
+.tumblr-icon {
+    font-size: 34px;
+    color: whitesmoke;
+    /* transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+    text-decoration: none; */
+}
+
+.tumblr-icon:hover {
+    -webkit-animation: zomg 1.0s infinite;
+    animation: zomg 1.0s infinite;
+}
+
+@-webkit-keyframes zomg {
+    0%, 100% { color: #7ccdea; }
+    16%      { color: #0074d9; }
+    32%      { color: #2ecc40; }
+    48%      { color: #ffdc00; }
+    64%      { color: #b10dc9; }
+    80%      { color: #ff4136; }
+}
+
+@keyframes zomg {
+    0%, 100% { color: #7ccdea; }
+    16%      { color: #0074d9; }
+    32%      { color: #2ecc40; }
+    48%      { color: #ffdc00; }
+    64%      { color: #b10dc9; }
+    80%      { color: #ff4136; }
+}
+
+/* ---------------------------------------------------- */
+/* end: top left 't' logo */
+/* ---------------------------------------------------- */
+
+
+
+
+
+
+
+
+.navigation-bar {
+    z-index: 100;
+    display: block;
+    position: fixed;
+    min-width: 500px;
+    height: 54px;
+    width: 100%;
+    /* change later vv */
+    border-bottom: 1px solid #2232449f;
+    background-color: #001935;
+}
+
+.navigation-bar-flexbox {
+    margin: 0 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+}
+
+.navigation-bar-flexbox li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.search-bar {
+    display: inline-block;
+    /* padding-right: 100px; */
+}
+
+.search-bar input[type='text'] {
+    display: inline-block;
+    background-image: url('search-icon.svg');
+    background-size: 20px;
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255, 0.25);
+    border: 0px;
+    height: 34px;
+    width: 480px;
+    border-radius: 3px;
+    padding-left: 40px;
+    opacity: 0.7;
+    
+}
+
+.search-bar input[type='text']::placeholder {
+    color: white;
+}
+
+.devlinks {
+    /* padding-right: 100px; */
+}
+
+.icon {
+    /* height: 24px; */
+    color: white;
+    font-size: 24px;
+    opacity: 0.65;
+    padding: 0px 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
 .app {
     width: 100%;
     color: whitesmoke;
@@ -11,18 +182,10 @@
     height: 54px;
     width: 100%;
     justify-content: space-evenly;
-    border-bottom: 1px solid darkslategray;
+
     font-family: Helvetica;
+    background: transparent;
 }
-
-.tumblog-logo {
-    position: absolute;
-    top: 11px;
-    left: 21px;
-    font-size: 34px;
-    color: whitesmoke
-}
-
 .button-word {
     padding: 0px 10px;
     letter-spacing: 2px;
@@ -34,17 +197,10 @@
     padding: 0px 15px;
 }
 
-/* .nav-bar-login-signup-button {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-} */
 button {
      display: inline-block;
     background-color: slategray;
     height: 30px;
-    /* margin: 10px; */
-    /* padding: 5px 7px; */
     border-radius: 3px;
     text-align: center;
     font-size: 16px;
@@ -56,12 +212,6 @@ button {
     border: 0px;
 }
 
-/* input {
-    background-color: slategrey;
-    border: 0px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-} */
 input[type=text], input[type=password] {
     background-color: slategrey;
     border: 0px;
@@ -76,20 +226,16 @@ input[type=text], input[type=password] {
 }
 
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder { 
   color: whitesmoke;
-  opacity: 1; /* Firefox */
+  opacity: 1; 
   letter-spacing: 0px;
 }
-
-
 
 .button {
     display: inline-block;
     background-color: slategray;
     height: 30px;
-    /* margin: 10px; */
-    /* padding: 5px 7px; */
     border-radius: 3px;
     text-align: center;
     font-size: 16px;
@@ -98,26 +244,17 @@ input[type=text], input[type=password] {
     font-style: none;
     color: white;
     text-decoration: none;
-    /* padding: 5px; */
-    /* margin: 5px; */
 }
 
 .search-input {
     height: 34px;
     width: 480px;
 }
-/* .logged-in-nav-bar-group {
-    align-self: right;
-} */
 
 .nav-bar-icon-buttons Link {
     font-size: 24px;
     color: lightgrey;
 }
-
-/* .links, .button {
-    cursor: pointer;
-} */
 
 .navigation-bar li {
     display: inline-block;
@@ -161,13 +298,11 @@ input[type=text], input[type=password] {
 .session-submit {
     width: 320px;
     border-radius: 2px;
-    /* text-align: center; */
 }
 
 .login-form {
     text-align: center;
     font-family: "Bookman Old Style Bold"
-    /* font-size: 100px; */
 }
 
 .login-form h1 {
@@ -177,4 +312,4 @@ input[type=text], input[type=password] {
 
 .render-errors {
     font-family: Helvetica, sans-serif;
-}
+} */

@@ -7,7 +7,7 @@ const NavButtons = ({ currentUser, logout }) => {
             <ul>
                 <li>
 
-            <Link to="/signup" className="button">
+            <Link to="/" className="button">
                 <span className="button-word">
                     Sign up 
                 </span>
@@ -26,7 +26,7 @@ const NavButtons = ({ currentUser, logout }) => {
     );
 
     const loggedInButtons = () => (
-        <hgroup className="logged-in-nav-bar-group">
+        <div className="logged-in-nav-bar-group">
             {/* <h2 className="header-name">Hi, {currentUser.username}!</h2> */}
 
             {/* 6 nav bar links when logged in, MODIFY edit links later */}
@@ -38,30 +38,23 @@ const NavButtons = ({ currentUser, logout }) => {
                 <li><Link to='/' className="icon"><i className="fas fa-bolt"></i></Link></li>
                 <li><Link to='/' className="icon"><i className="fas fa-user"></i></Link></li>
 
+                {/* nav bar post button */}
                 <li>
-                    <div>
-                        <span className="button-word">
-                            <button className="nav-bar-post"><i className="fas fa-pen-square"></i></button>
-                        </span> 
-                        
-                    </div>
+                    <button className="nav-bar-post">
+                        <i className="fas fa-pen-square"></i>
+                    </button>
+        
                 </li>
 
+                {/* nav bar logout button  */}
                 <li>
-                    <div>
-                        <button className="nav-bar-logout-button" onClick={logout}>
-                            <span className="button-word">
-                                Log out
-                            </span> 
-                        </button>
-                    </div>
+                    <button className="nav-bar-logout-button" onClick={logout}>
+                        <i className="fas fa-times-circle"></i>
+                    </button>
                 </li>
             </ul>
 
-            {/* post button */}
-
-
-        </hgroup>
+        </div>
     );
 
     return currentUser ? loggedInButtons() : sessionLinks();

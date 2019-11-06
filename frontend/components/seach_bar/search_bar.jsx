@@ -5,8 +5,7 @@ class SearchBar extends React.Component {
         return (
             <div className="search-bar">
                 <form>
-                    <span className="search-icon icon"><i className="fa fa-search"></i></span>
-                    <input className="search-input" type="text" placeholder="Search Tumblog"/>
+                    <input className="search-input" type="text" placeholder="Search Tumblr"/>
                 </form>
             </div>
         )

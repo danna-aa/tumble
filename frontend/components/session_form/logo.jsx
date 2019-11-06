@@ -1,5 +1,5 @@
 import React from 'react';
-let logo = ['./tumblr-logo.svg'];
+let logo = ['./new-new-tumblr-logo.svg', './tumblr-logo.svg'];
 
 class Logo extends React.Component {
     constructor(props) {
@@ -11,8 +11,8 @@ class Logo extends React.Component {
 
     render() {
         return (
-            <div>
-                <img width="300px" src={this.state.logo} alt="tumblr"/> 
+            <div className="tumblr-logo">
+                <img width="232px" height="50px" src={this.state.logo} alt="tumblr"/> 
             </div>
         )
     }
