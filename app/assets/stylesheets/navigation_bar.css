@@ -56,13 +56,6 @@ body {
 /* end: top left 't' logo */
 /* ---------------------------------------------------- */
 
-
-
-
-
-
-
-
 .navigation-bar {
     z-index: 100;
     display: block;
@@ -70,7 +63,6 @@ body {
     min-width: 500px;
     height: 54px;
     width: 100%;
-    /* change later vv */
     border-bottom: 1px solid #2232449f;
     background-color: #001935;
 }
@@ -110,22 +102,65 @@ body {
     
 }
 
+.search-bar input[type=text]:focus {
+    opacity: 1;
+
+}
+
 .search-bar input[type='text']::placeholder {
     color: white;
 }
 
-.devlinks {
-    /* padding-right: 100px; */
-}
 
 .icon {
-    /* height: 24px; */
     color: white;
     font-size: 24px;
     opacity: 0.65;
     padding: 0px 8px;
 }
 
+.icon:hover {
+    opacity: 1;
+    transition: 300ms ease;
+}
+
+.nav-bar-login-signup-button li {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 34px;
+    margin: 0px 5px;
+    border-radius: 3px;
+    padding: 9px 11px;
+    background-color: white;
+    opacity: 1;
+}
+
+.nav-bar-login-signup-button li div {
+    display: flex;
+    text-decoration: none;
+    color: #001935;
+    font-weight: 600;
+}
+
+.signup-button:hover, .login-button:hover {
+    cursor: pointer;
+    transition: 300ms ease;
+    opacity: 0.5;
+}
+
+.nav-bar-post, .nav-bar-logout-button {
+    background-color: rgb(255, 255, 255, 0);
+    border: 0px;
+    height: 34px;
+    width: 34px;
+    font-size: 24px;
+    color: white;
+}
+
+.nav-bar-post:hover, .nav-bar-logout-button:hover {
+    opacity: 0.5;
+    transition: 300ms ease;
+}
 
 
 
@@ -136,6 +171,21 @@ body {
 
 
 
+/* ---------------------------------------------------- */
+/* start: dashboard */
+/* ---------------------------------------------------- */
+
+.dashboard {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width;: 100%;
+    z-index: 99;
+    line-height: 100px;
+    color: white;
+    padding-top: 34px;
+}
 
 
 
@@ -143,6 +193,11 @@ body {
 
 
 
+
+
+/* ---------------------------------------------------- */
+/* end: dashboard */
+/* ---------------------------------------------------- */
 
 
 

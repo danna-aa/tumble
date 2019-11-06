@@ -6,10 +6,314 @@ class Dashboard extends React.Component {
         super(props);
     }
 
+    
+
     render() {
         return (
-            <div>
+            <div className="dashboard">
                 Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                Dashboard
+                <br />
+                Dashboard
+                <br/>
+                Dashboard
+                <br />
+                
             </div>
         )
     }

@@ -5,21 +5,19 @@ const NavButtons = ({ currentUser, logout }) => {
     const sessionLinks = () => (
         <nav className="nav-bar-login-signup-button">
             <ul>
-                <li>
-
-            <Link to="/" className="button">
-                <span className="button-word">
-                    Sign up 
-                </span>
-                </Link>
+                <li className="signup-button">
+                    <Link to="/" className="button" style={{ textDecoration: 'none' }}>
+                        <div>
+                            Sign up
+                        </div>
+                    </Link>
                 </li>
-                <li>
-            <Link to="/login" className="button">
-                <span className="button-word">
-                    Log in
-                </span>
-            </Link>
-
+                <li className="login-button">
+                    <Link to="/login" className="button" style={{ textDecoration: 'none' }}>
+                        <div>
+                            Log in
+                        </div>
+                    </Link>
                 </li>
             </ul>
         </nav>
