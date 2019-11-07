@@ -39,7 +39,7 @@ const NavButtons = ({ currentUser, logout }) => {
                 {/* nav bar post button */}
                 <li>
                     <button className="nav-bar-post">
-                        <i class="fas fa-pen"></i>
+                        <i className="fas fa-pen"></i>
                     </button>
         
                 </li>

@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.randombg = this.randombg.bind(this);
         this.backgroundImage = this.randombg();
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
     }
 
     update(field) {
@@ -111,6 +112,10 @@ class SessionForm extends React.Component {
         return ({ backgroundImage: backgroundsArray[rand] })
     }
 
+    handleDemoLogin(e) {
+        return 'demologin'
+    }
+
     render() {
         // when signing up, render email input, tagline, and get started button
         let emailForm = <div />
@@ -190,6 +195,11 @@ class SessionForm extends React.Component {
                                 {/* submit button  */}
                                 <input className="session-submit" type="submit" value={this.props.formType} />
                                 
+                                {/* demo user */}
+                                {/* onClick={this.handleDemoLogin()} */}
+                                <div className="demoUser">
+                                    <i className="fas fa-user-circle"></i> <div>Explore demo login</div>
+                                </div>
                             </div>
                         </form>
                     </div>

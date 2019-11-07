@@ -35,6 +35,11 @@
     visibility: visible;
 }
 
+.tumblr-logo:hover {
+    opacity: 0.8;
+    transition: 300ms ease;
+}
+
 .login-form-tagline {
     margin: 16px 0px 20px 0px;
 }
@@ -100,6 +105,33 @@
     margin: 10px;
     line-height: 1.5em;
     border-radius: 3px 3px 3px 3px;
+}
+
+.demoUser {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: 300ms ease;
+}
+
+.demoUser:hover {
+    opacity: 1;
+    transition: 300ms ease;
+    cursor: pointer;
+}
+
+.demoUser:active {
+    opacity: 0.3;
+    transition: 300ms ease;
+}
+
+.fa-user-circle {
+    margin-right: 11px;
+    font-size: 22px;
 }
 
 /* load page animation below */
