@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Added got development
+# Added for  development
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
