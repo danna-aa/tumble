@@ -60,9 +60,14 @@ body {
     z-index: 100;
     display: block;
     position: fixed;
-    min-width: 500px;
-    height: 54px;
+    min-width: 1000px;
+    height: 56px;
     width: 100%;
+    border-bottom: 0px;
+    background-color: rgb(255, 255, 255, 0);
+}
+
+.logged-in {
     border-bottom: 1px solid #2232449f;
     background-color: #001935;
 }
@@ -82,8 +87,9 @@ body {
 }
 
 .search-bar {
+    margin-left: 20px;
     display: inline-block;
-    /* padding-right: 100px; */
+    flex: 1;
 }
 
 .search-bar input[type='text'] {
@@ -95,22 +101,43 @@ body {
     background-color: rgb(255, 255, 255, 0.25);
     border: 0px;
     height: 34px;
-    width: 480px;
+    max-width: 480px;
+    width: 100%;
     border-radius: 3px;
     padding-left: 40px;
     opacity: 0.7;
-    
+
+
+    resize: horizontal;
 }
 
 .search-bar input[type=text]:focus {
+    transition: 500ms ease;
+    background-color: rgb(255, 255, 255, 0.8);
     opacity: 1;
+    background-image: url('search-solid.svg');
+    background-size: 20px;
+}
 
+.search-bar input[type=text]:focus::placeholder {
+    transition: 500ms ease;
+    color: black
 }
 
 .search-bar input[type='text']::placeholder {
+    transition: 500ms ease;
     color: white;
 }
 
+.devlinks {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.logged-in-nav-bar-group {
+    display: inline-block;
+    box-sizing: border-box;
+}
 
 .icon {
     color: white;
@@ -132,7 +159,7 @@ body {
     border-radius: 3px;
     padding: 9px 11px;
     background-color: white;
-    opacity: 1;
+    opacity: 0.7;
 }
 
 .nav-bar-login-signup-button li div {
@@ -145,21 +172,38 @@ body {
 .signup-button:hover, .login-button:hover {
     cursor: pointer;
     transition: 300ms ease;
-    opacity: 0.5;
+    opacity: 0.95;
 }
 
-.nav-bar-post, .nav-bar-logout-button {
-    background-color: rgb(255, 255, 255, 0);
+.signup-button:active, .login-button:active {
+    background-color: transparent;
+}
+
+.navigation-bar .navigation-bar-flexbox .icon:active {
+    color: transparent;
+}
+
+.nav-bar-post {
     border: 0px;
+    background-color: #00b8ff;
     height: 34px;
-    width: 34px;
+    width: 55px;
     font-size: 24px;
-    color: white;
+    color: #001935;
+    border-radius: 5px;
+}
+
+.nav-bar-logout-button {
+    background-color: transparent;
 }
 
 .nav-bar-post:hover, .nav-bar-logout-button:hover {
     opacity: 0.5;
     transition: 300ms ease;
+}
+
+.nav-bar-post:active {
+    opacity: 0.3;
 }
 
 
@@ -184,7 +228,7 @@ body {
     z-index: 99;
     line-height: 100px;
     color: white;
-    padding-top: 34px;
+    padding-top: 56px;
 }
 
 

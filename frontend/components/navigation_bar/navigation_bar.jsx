@@ -13,7 +13,7 @@ class NavigationBar extends React.Component {
         const { currentUser, logout } = this.props;
 
         return (
-            <div className="navigation-bar">
+            <div className={ "navigation-bar " + ((currentUser) ? "logged-in" : "") }>
                 <div className="navigation-bar-flexbox">
                     <Link to='/' className='tumblr-icon'><i className="fab fa-tumblr"></i></Link>
                     <SearchBar currentUser={ currentUser }/>
@@ -25,5 +25,6 @@ class NavigationBar extends React.Component {
     }
 
 }
+
 
 export default NavigationBar;

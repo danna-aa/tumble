@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.randombg = this.randombg.bind(this);
+        this.backgroundImage = this.randombg();
     }
 
     update(field) {
@@ -102,10 +103,12 @@ class SessionForm extends React.Component {
             "url('/background_images/048.gif')",
             "url('/background_images/049.jpg')",
             "url('/background_images/050.png')",
-            "url('/background_images/051.jpg')"
+            "url('/background_images/051.jpg')",
+            "url('/background_images/052.gif')",
+            "url('/background_images/053.gif')",
         ];
         const rand = Math.floor(Math.random() * backgroundsArray.length);    
-        return { backgroundImage: backgroundsArray[rand] }
+        return ({ backgroundImage: backgroundsArray[rand] })
     }
 
     render() {
@@ -139,8 +142,8 @@ class SessionForm extends React.Component {
         return (
             // sign up / login form
             <div className="session-form">
-                <div id="random" className="login-form-background-container" style={this.randombg()}>
-
+                <div id="random" className="login-form-background-container" style={this.backgroundImage}>
+               
                     
                     <div className="login-form-container">
                         <form onSubmit={this.handleSubmit} className="login-form-box">
