@@ -1,5 +1,7 @@
 import React from 'react';
 import Logo from './logo';
+import { Link, Redirect } from 'react-router-dom';
+import Typing from 'react-typing-animation';
 
 
 class SessionForm extends React.Component {
@@ -14,6 +16,10 @@ class SessionForm extends React.Component {
         this.randombg = this.randombg.bind(this);
         this.backgroundImage = this.randombg();
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    }
+
+    componentDidMount() {
+
     }
 
     update(field) {
@@ -113,16 +119,71 @@ class SessionForm extends React.Component {
     }
 
     handleDemoLogin(e) {
-        return 'demologin'
+        if (this.props.formType === "Sign up") {
+            $(".email").addClass("invisible")
+            $(".blue-button").addClass("invisible")
+            setTimeout(() => {
+                this.loginDemoUser()
+            }, 500);
+        } else {
+            this.loginDemoUser()
+        }
+    }
+
+    loginDemoUser() {
+        this.inputUsername("Demo");
+        setTimeout(() => {
+            this.inputPassword("password")
+        }, 800);
+    }
+
+    inputUsername(username) {
+        if (username.length <= 0) return;
+        setTimeout(() => {
+            let usernameArray = username.split("");
+            let currentUsername = this.state.username;
+            currentUsername += usernameArray.shift();
+            this.setState({username: currentUsername});
+            let newUsername = usernameArray.join("");
+            this.inputUsername(newUsername);
+        }, 100);
+    }
+
+    inputPassword(password) {
+        if (password.length <= 0) {
+            return this.submitLogin()
+        };
+        setTimeout(() => {
+            let passwordArray = password.split("");
+            let currentPassword = this.state.password;
+            currentPassword += passwordArray.shift();
+            this.setState({ password: currentPassword });
+            let newPassword = passwordArray.join("");
+            this.inputPassword(newPassword);
+        }, 100);
+    }
+
+    submitLogin() {
+        const user = Object.assign({}, this.state);
+        this.props.loginUser(user);
+    }
+
+    changeRoutePath(e, link) {
+        e.preventDefault();
+        this.props.history.push(link);
     }
 
     render() {
         // when signing up, render email input, tagline, and get started button
+        let getStartedButton = <div />
         let emailForm = <div />
         let tagline = (<div className="login-form-tagline"/>)
-        let getStartedButton = <div />
+        let loginLink = <div />
 
         if (this.props.formType === 'Sign up') {
+            getStartedButton = (
+                <button className="blue-button">Get Started</button>
+            )
             emailForm = (
                 <div>
                     <input type="text"
@@ -139,17 +200,20 @@ class SessionForm extends React.Component {
                     <h3>Stay for what you discover.</h3>
                 </div>
             )
-            getStartedButton = (
-                <button className="session-submit">Get Started</button>
+            loginLink = (
+                <input
+                    className="login-button"
+                    type="button"
+                    value="Log in"
+                    onClick={(e) => this.changeRoutePath(e, '/login')}
+                />
             )
         }
 
         return (
             // sign up / login form
             <div className="session-form">
-                <div id="random" className="login-form-background-container" style={this.backgroundImage}>
-               
-                    
+                <div id="random" className="login-form-background-container" style={this.backgroundImage}>                    
                     <div className="login-form-container">
                         <form onSubmit={this.handleSubmit} className="login-form-box">
                             <div className="login-form">
@@ -162,6 +226,7 @@ class SessionForm extends React.Component {
                                 {getStartedButton}
 
                                 <div className="login-form-text-boxes-group">
+
                                     {/* username field */}
                                     <div>
                                         <input type="text"
@@ -193,11 +258,15 @@ class SessionForm extends React.Component {
                                 </div>
 
                                 {/* submit button  */}
-                                <input className="session-submit" type="submit" value={this.props.formType} />
+                                <input className="session-submit blue-button" type="submit" value={this.props.formType} />
                                 
+                                <br/>
+
+                                {/* link to login instead */}
+                                { loginLink }
+
                                 {/* demo user */}
-                                {/* onClick={this.handleDemoLogin()} */}
-                                <div className="demoUser">
+                                <div className="demoUser" onClick={this.handleDemoLogin}>
                                     <i className="fas fa-user-circle"></i> <div>Explore demo login</div>
                                 </div>
                             </div>

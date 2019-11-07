@@ -46,7 +46,7 @@ const NavButtons = ({ currentUser, logout }) => {
 
                 {/* nav bar logout button  */}
                 <li className="nav-bar-logout-button" onClick={logout} title="Log out">
-                    <i className="fas fa-times-circle icon" onClick={logout}></i>
+                    <i className="fas fa-times-circle icon"></i>
                 </li>
             </ul>
 
