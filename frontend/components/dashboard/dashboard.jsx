@@ -10,310 +10,67 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="dashboard">
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                Dashboard
-                <br />
-                Dashboard
-                <br/>
-                Dashboard
-                <br />
-                
+ 
+
+            <div className="dash">
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard alt">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard alt">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard alt">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard alt">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+                <div className="dashboard">
+                    Dashboard
+                </div>
+                <br />
+
+
             </div>
         )
     }

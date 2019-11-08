@@ -41,7 +41,7 @@
 }
 
 .login-form-tagline {
-    margin: 16px 0px 20px 0px;
+    margin: 16px 0px 2px 0px;
 }
 
 .login-form-container input {
@@ -75,22 +75,23 @@
 
 .login-form-container .password {
     border-radius: 0px 0px 3px 3px;
+    margin-bottom: 10px;
 }
 
-.login-form-container .login-form-box .blue-button {
+.form-box .blue-button {
     box-sizing: border-box; 
     width: 300px;
     height: 44px;
     border: 0px;
     font-size: 16px;
     background-color: #00b8ff;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     border-radius: 3px 3px 3px 3px;
     font-weight: 600;
     color: white;
 }
 
-.login-form-container .login-form-box .blue-button:hover {
+.form-box .blue-button:hover {
     background-color: #47cbff;
     transition: 300ms ease;
 }
@@ -99,7 +100,7 @@
     border-radius: 3px;
     background-color: #fff;
     color: #444;
-    margin-top: 12px;
+    /* margin-top: 12px; */
     font-weight: bold;
 }
 
@@ -112,6 +113,10 @@
     margin: 10px;
     line-height: 1.5em;
     border-radius: 3px 3px 3px 3px;
+}
+
+.session-submit {
+    margin-bottom: 12px;
 }
 
 .demoUser {
@@ -145,6 +150,25 @@
     opacity: 0.5;
     transition: 500ms ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* load page animation below */
 
@@ -194,3 +218,17 @@
     100% {background-color:red; left:0px; top:0px;}
 }
 */
+
+
+
+
+
+
+
+
+
+
+/* get started animation below */
+.initially-hidden {
+    display: none;
+}

@@ -8,18 +8,27 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
-            email: ''
+            username: "",
+            password: "",
+            email: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.randombg = this.randombg.bind(this);
         this.backgroundImage = this.randombg();
         this.handleDemoLogin = this.handleDemoLogin.bind(this);
+        this.handleGetStarted = this. handleGetStarted.bind(this);
     }
 
-    componentDidMount() {
-
+    handleGetStarted(e) {
+        const initiallyHidden = document.getElementsByClassName("initially-hidden");
+        console.log('====================================');
+        console.log(initiallyHidden);
+        console.log('====================================');
+        while (initiallyHidden.length) {
+            initiallyHidden[0].classList.remove("initially-hidden");
+        }
+        console.log(initiallyHidden);
+        e.currentTarget.classList.add("initially-hidden");
     }
 
     update(field) {
@@ -113,6 +122,14 @@ class SessionForm extends React.Component {
             "url('/background_images/051.jpg')",
             "url('/background_images/052.gif')",
             "url('/background_images/053.gif')",
+            "url('/background_images/054.gif')",
+            "url('/background_images/055.gif')",
+            "url('/background_images/056.gif')",
+            "url('/background_images/057.gif')",
+            "url('/background_images/058.gif')",
+            "url('/background_images/059.gif')",
+            "url('/background_images/060.gif')",
+            "url('/background_images/061.gif')"
         ];
         const rand = Math.floor(Math.random() * backgroundsArray.length);    
         return ({ backgroundImage: backgroundsArray[rand] })
@@ -120,20 +137,22 @@ class SessionForm extends React.Component {
 
     handleDemoLogin(e) {
         if (this.props.formType === "Sign up") {
-            $(".email").addClass("invisible")
-            $(".blue-button").addClass("invisible")
+            $(".email").addClass("invisible");
+            $(".blue-button").addClass("invisible");
             setTimeout(() => {
-                this.loginDemoUser()
+                this.loginDemoUser();
             }, 500);
         } else {
-            this.loginDemoUser()
+            this.loginDemoUser();
         }
     }
 
     loginDemoUser() {
+        this.setState({ username: "" });
         this.inputUsername("Demo");
         setTimeout(() => {
-            this.inputPassword("password")
+            this.setState({ password: "" });
+            this.inputPassword("password");
         }, 800);
     }
 
@@ -151,7 +170,7 @@ class SessionForm extends React.Component {
 
     inputPassword(password) {
         if (password.length <= 0) {
-            return this.submitLogin()
+            return this.submitLogin();
         };
         setTimeout(() => {
             let passwordArray = password.split("");
@@ -182,14 +201,14 @@ class SessionForm extends React.Component {
 
         if (this.props.formType === 'Sign up') {
             getStartedButton = (
-                <button className="blue-button">Get Started</button>
+                <button className="blue-button" onClick={this.handleGetStarted}>Get Started</button>
             )
             emailForm = (
                 <div>
                     <input type="text"
                         value={this.state.email}
                         onChange={this.update('email')}
-                        className="login-input email"
+                        className={"login-input email" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
                         placeholder="Email"
                     />
                 </div>
@@ -215,62 +234,72 @@ class SessionForm extends React.Component {
             <div className="session-form">
                 <div id="random" className="login-form-background-container" style={this.backgroundImage}>                    
                     <div className="login-form-container">
-                        <form onSubmit={this.handleSubmit} className="login-form-box">
-                            <div className="login-form">
+                        {/* 'tumblr logo' */}
+                        <div className="form-box">
+                            
+                            <Logo />
 
-                                {/* 'tumblr logo' */}
-                                <Logo />
+                            {/* renders if signing up (versus logging in) */}
+                            {tagline}
+                            <br/>
+                            {getStartedButton}
 
-                                {/* renders if signing up (versus logging in) */}
-                                {tagline}
-                                {getStartedButton}
+                            <form onSubmit={this.handleSubmit} className="login-form-box">
+                                <div className="login-form">
 
-                                <div className="login-form-text-boxes-group">
-
-                                    {/* username field */}
-                                    <div>
-                                        <input type="text"
-                                            value={this.state.username}
-                                            onChange={this.update('username')}
-                                            className="login-input username"
-                                            placeholder="Username"
-                                        />
-                                    </div>
-
-                                    {/* renders if signing up (versus logging in) */}
-                                    {emailForm}
-
-                                    {/* password field */}
-                                    <div>
-                                        <input type="password"
-                                            value={this.state.password}
-                                            onChange={this.update('password')}
-                                            className="login-input password"
-                                            placeholder="Password"
-                                        />
-                                    </div>
-
-                                    {/* render errors */}
-                                    <div className="render-errors">
-                                        {this.renderErrors()}
-                                    </div>
-
-                                </div>
-
-                                {/* submit button  */}
-                                <input className="session-submit blue-button" type="submit" value={this.props.formType} />
                                 
-                                <br/>
 
-                                {/* link to login instead */}
-                                { loginLink }
+                                    <div className="login-form-text-boxes-group">
 
-                                {/* demo user */}
-                                <div className="demoUser" onClick={this.handleDemoLogin}>
-                                    <i className="fas fa-user-circle"></i> <div>Explore demo login</div>
+                                        {/* username field */}
+                                        <div>
+                                            <input type="text"
+                                                value={this.state.username}
+                                                onChange={this.update('username')}
+                                                className={"login-input username" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
+                                                placeholder="Username"
+                                            />
+                                        </div>
+
+                                        {/* renders if signing up (versus logging in) */}
+                                        {emailForm}
+
+                                        {/* password field */}
+                                        <div>
+                                            <input type="password"
+                                                value={this.state.password}
+                                                onChange={this.update('password')}
+                                                className={"login-input password" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
+                                                placeholder="Password"
+                                            />
+                                        </div>
+
+                                        {/* render errors */}
+                                        <div className="render-errors">
+                                            {this.renderErrors()}
+                                        </div>
+
+                                    </div>
+
+                                    {/* submit button  */}
+                                    <input 
+                                        className={"session-submit blue-button" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
+                                    type="submit" 
+                                        value={this.props.formType} />
+                                    
+                                    <br/>
+
+                                    {/* link to login instead */}
+                                    { loginLink }
+
+                                    {/* demo user */}
+                                    <div className="demoUser" onClick={(e) => { this.handleGetStarted(e); this.handleDemoLogin(e) }}>
+                                        <i className="fas fa-user-circle"></i> <div>Explore demo login</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,8 @@ class User < ActiveRecord::Migration[5.2]
       t.string :email, null:false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-
+      t.string :title
+      t.text :description
       t.timestamps
     end
     add_index :users, :username, unique: true
