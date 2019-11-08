@@ -51,7 +51,7 @@
     padding-left: 11px;
     border: 0px;
     font-size: 16px;
-    color: #222
+    color: #222;
 }
 
 .login-form-container input:hover {
@@ -147,10 +147,19 @@
 }
 
 .invisible {
-    opacity: 0.5;
-    transition: 500ms ease;
+    /* opacity: 0.5;
+    transition: 500ms ease; */
+    display: none;
 }
 
+.fade-out {
+    opacity: 0;
+    transition: 100ms ease; */
+}
+
+.initially-hidden {
+    display: none;
+}
 
 
 
@@ -229,6 +238,28 @@
 
 
 /* get started animation below */
-.initially-hidden {
-    display: none;
+/* 
+.animate-username {
+animation-duration: 0.6s;
+    animation-name: fadeInUp;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+ */

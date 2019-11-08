@@ -21,14 +21,15 @@ class SessionForm extends React.Component {
 
     handleGetStarted(e) {
         const initiallyHidden = document.getElementsByClassName("initially-hidden");
-        console.log('====================================');
-        console.log(initiallyHidden);
-        console.log('====================================');
         while (initiallyHidden.length) {
             initiallyHidden[0].classList.remove("initially-hidden");
         }
-        console.log(initiallyHidden);
-        e.currentTarget.classList.add("initially-hidden");
+        e.currentTarget.classList.add("invisible");
+        // if (e.currentTarget.hasClass("demouser")) {
+        //     e.currentTarget.classList.add("fade-out");
+        // } else {
+        //     e.currentTarget.classList.add("invisible");
+        // }
     }
 
     update(field) {
@@ -255,7 +256,7 @@ class SessionForm extends React.Component {
                                         <div>
                                             <input type="text"
                                                 value={this.state.username}
-                                                onChange={this.update('username')}
+                                                onChange={this.update('username animate-username')}
                                                 className={"login-input username" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
                                                 placeholder="Username"
                                             />
@@ -283,9 +284,10 @@ class SessionForm extends React.Component {
 
                                     {/* submit button  */}
                                     <input 
+                                        type="submit" 
                                         className={"session-submit blue-button" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
-                                    type="submit" 
-                                        value={this.props.formType} />
+                                        value={this.props.formType}
+                                    />
                                     
                                     <br/>
 
