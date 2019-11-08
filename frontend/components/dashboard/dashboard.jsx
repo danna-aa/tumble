@@ -296,6 +296,17 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
                 <br />
+                <div className="dashboard">
+                    <div className="avatar">
+                        <img className="avatar-image" src="https://66.media.tumblr.com/ee9b9564d7e54380837579452cde04f6/tumblr_o51oavbMDx1ugpbmuo5_540.png" alt="" />
+                    </div>
+                    <div className="dashboard-background">
+                        <div>
+                            <img className="test-image" src="https://media.giphy.com/media/100QWMdxQJzQC4/giphy.gif" alt="test-image" />
+                        </div>
+                    </div>
+                </div>
+                <br />
 
 
 

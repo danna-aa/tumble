@@ -154,7 +154,7 @@
 
 .fade-out {
     opacity: 0;
-    transition: 100ms ease; */
+    transition: 100ms ease;
 }
 
 .initially-hidden {
