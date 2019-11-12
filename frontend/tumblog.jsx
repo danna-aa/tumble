@@ -6,6 +6,7 @@ import Root from './components/root';
 
 // test
 import {login, signup, logout} from './actions/session_actions';
+import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts } from './actions/post_actions';
 // test end
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,10 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(<Root store={store}/>, root);
 
     // for development tests
-    window.signup = signup;
-    window.login = login;
-    window.logout = logout;
+
+    // window.signup = signup;
+    // window.login = login;
+    // window.logout = logout;
+
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+
+    window.fetchPosts = fetchPosts;
+    window.fetchPost = fetchPost;
+    window.createPost = createPost;
+    window.updatePost = updatePost;
+    window.deletePost = deletePost;
+    window.fetchOwnPosts = fetchOwnPosts;
+
     // test end
 });

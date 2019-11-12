@@ -2,27 +2,21 @@
 #
 # Table name: posts
 #
-#  id             :bigint           not null, primary key
-#  title          :string
-#  body           :text
-#  source         :string
-#  url            :string
-#  user_id        :integer          not null
-#  html           :text
-#  root_post_id   :integer
-#  parent_post_id :integer
-#  post_type      :string           default("text"), not null
-#  private        :boolean          default(FALSE), not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id         :bigint           not null, primary key
+#  title      :string
+#  body       :text
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Post < ApplicationRecord
-    validates :user_id, :post_type, presence: true
-    validates :private, inclusion: { in: [ true, false ] }
+    validates :user_id, presence: true
+    # validates :private, inclusion: { in: [ true, false ] }
 
     belongs_to :user
 
+    # implement later for reblogs 
     # belongs_to :root_post,
     #     foreign_key: :root_post_id,
     #     class_name: :Post

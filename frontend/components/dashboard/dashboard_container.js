@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-// import { logout } from '../../actions/session_actions';
+import { fetchPosts } from '../../actions/post_actions';
 import Dashboard from './dashboard';
 
-const mapStateToProps = state => {
-    return {};
-};
+const mapStateToProps = state => ({
+    state
+});
 
 const mapDispatchToProps = dispatch => ({
-    // logout: () => dispatch(logout())
+    fetchPosts: () => dispatch(fetchPosts())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

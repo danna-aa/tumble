@@ -85,6 +85,7 @@ class User < ApplicationRecord
             # :parent_post,
             # :child_posts,
             # :direct_child_post,
+
             :likes,
             :likers, 
             :notes, 
@@ -96,12 +97,13 @@ class User < ApplicationRecord
             # :parent_post,
             # :child_posts,
             # :direct_child_post,
+
             :likes,
             :likers, 
             :notes, 
             :tags
         )
-        dash_posts = ((own_posts + followed_posts).sort_by {|post| post.updated_at }).reverse!
+        dash_posts = (own_posts + followed_posts).sort_by {|post| post.updated_at }
     end
 
 end

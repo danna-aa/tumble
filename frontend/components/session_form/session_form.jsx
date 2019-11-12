@@ -20,7 +20,6 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount() {
-        console.log('cpm')
         this.props.refreshErrors();
     }
 

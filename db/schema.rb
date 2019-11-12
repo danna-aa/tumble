@@ -50,24 +50,11 @@ ActiveRecord::Schema.define(version: 2019_11_11_181354) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "source"
-    t.string "url"
-    t.integer "user_id", null: false
-    t.text "html"
-    t.integer "root_post_id"
-    t.integer "parent_post_id"
-    t.string "post_type", default: "text", null: false
-    t.boolean "private", default: false, null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["body"], name: "index_posts_on_body"
-    t.index ["parent_post_id"], name: "index_posts_on_parent_post_id"
-    t.index ["post_type"], name: "index_posts_on_post_type"
-    t.index ["private"], name: "index_posts_on_private"
-    t.index ["root_post_id"], name: "index_posts_on_root_post_id"
-    t.index ["source"], name: "index_posts_on_source"
     t.index ["title"], name: "index_posts_on_title"
-    t.index ["url"], name: "index_posts_on_url"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
