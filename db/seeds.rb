@@ -10,9 +10,9 @@
 
 demo_user = User.create(username: 'Demo', password: 'password', email: 'whatsupeople@gmail.com')
 
-user1 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu', private: false)
-user2 = User.create(username: 'boba', password: 'password', email: 'boba@aa.io', private: false)
-user3 = User.create(username: 'mochi', password: 'password', email: 'mochi@aa.io', private: false)
+user1 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu')
+user2 = User.create(username: 'boba', password: 'password', email: 'boba@aa.io')
+user3 = User.create(username: 'mochi', password: 'password', email: 'mochi@aa.io')
 
 post_2_1 = Post.create(title: 'Hello World', body: 'this is the first post', user_id: 1, post_type: 'text', private: false)
 post_2_2 = Post.create(title: 'Second Post', body: 'this is the second post', user_id: 1, post_type: 'text', private: false)
