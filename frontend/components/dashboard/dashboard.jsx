@@ -310,7 +310,7 @@ class Dashboard extends React.Component {
 
 
 
-                <div className="back-to-top icon" onClick={this.handleBackToTop}><i class="fas fa-angle-double-up"></i></div>
+                <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
 
 
 

@@ -6,6 +6,7 @@ class User < ActiveRecord::Migration[5.2]
       t.string :password_digest, null: false
       t.string :session_token, null: false
       t.string :title
+      t.boolean :private, null: false, default: false
       t.text :description
       t.timestamps
     end

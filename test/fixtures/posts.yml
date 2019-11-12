@@ -1,0 +1,44 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id             :bigint           not null, primary key
+#  title          :string
+#  body           :text
+#  source         :string
+#  url            :string
+#  user_id        :integer          not null
+#  html           :text
+#  root_post_id   :integer
+#  parent_post_id :integer
+#  post_type      :string           default("text"), not null
+#  private        :boolean          default(FALSE), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyText
+  source: MyString
+  url: MyString
+  user_id: 1
+  html: MyText
+  root_post_id: 1
+  parent_post_id: 1
+  type: 
+  private: false
+
+two:
+  title: MyString
+  body: MyText
+  source: MyString
+  url: MyString
+  user_id: 1
+  html: MyText
+  root_post_id: 1
+  parent_post_id: 1
+  type: 
+  private: false

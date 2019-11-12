@@ -19,6 +19,11 @@ class SessionForm extends React.Component {
         this.handleGetStarted = this. handleGetStarted.bind(this);
     }
 
+    componentDidMount() {
+        console.log('cpm')
+        this.props.refreshErrors();
+    }
+
     handleGetStarted(e) {
         const initiallyHidden = document.getElementsByClassName("initially-hidden");
         while (initiallyHidden.length) {
@@ -256,7 +261,7 @@ class SessionForm extends React.Component {
                                         <div>
                                             <input type="text"
                                                 value={this.state.username}
-                                                onChange={this.update('username animate-username')}
+                                                onChange={this.update('username')}
                                                 className={"login-input username" + ((this.props.formType === 'Sign up') ? " initially-hidden" : "") }
                                                 placeholder="Username"
                                             />

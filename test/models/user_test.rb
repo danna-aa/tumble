@@ -7,6 +7,9 @@
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
+#  title           :string
+#  private         :boolean          default(FALSE), not null
+#  description     :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
