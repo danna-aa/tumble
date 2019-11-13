@@ -1,0 +1,52 @@
+.explore {
+    -webkit-columns: 18% 5;
+    -moz-columns: 300px 5; 
+    columns: 300px 5;
+    padding: 0px 3%;
+    padding-top: 70px;
+}
+
+.explore-item {
+    width: 300px;
+    display: inline-block;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    margin: 10px;
+}
+
+.explore-background {
+    background-color: white;
+    border-radius: 3px;
+}
+
+.explore-content-box {
+    padding-bottom: 48px;
+}
+
+.explore-link-div {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+}
+
+.explore-link-div a {
+    text-decoration: none;
+    margin: 14px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.explore-content-item {
+    padding: 0px 10px;
+}
+
+h1.explore-content-item {
+    font-size: 36px;
+    padding-bottom: 12px;
+}
+
+p.explore-content-item {
+    font-size: 14px;
+}

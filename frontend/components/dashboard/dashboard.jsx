@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Post from './post';
+import PostFormButtons from './post_form_buttons';
+import Sidebar from '../sidebar/sidebar';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -10,6 +12,7 @@ class Dashboard extends React.Component {
     
     componentDidMount() {
         this.props.fetchPosts();
+        window.scrollTo(0, 0);
     }
     
     handleBackToTop(e) {
@@ -34,18 +37,22 @@ class Dashboard extends React.Component {
         return (
 
             <div className="dash">
-                {/* <PostForm />
-                <Sidebar/> */}
-                {dashList}
+                
+                <div className="main">
+                    <PostFormButtons />
+                    {dashList}
 
-                <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
+                    <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
 
-                <div className="dashboard-item last">
-                    <div className="avatar">
-                        <img className="avatar-image"></img>
+                    <div className="dashboard-item last">
+                        <div className="avatar">
+                            <img className="avatar-image"></img>
+                        </div>
+                        <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more content...</h2></div></div>
                     </div>
-                    <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more content...</h2></div></div>
                 </div>
+
+                <Sidebar pass={this.props} />
 
             </div>
         )

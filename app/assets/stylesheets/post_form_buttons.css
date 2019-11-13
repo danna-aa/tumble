@@ -1,0 +1,88 @@
+.dashboard-top-item {
+    display: flex;
+    width: 626px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.dashboard-background-buttons {
+    width: 540px;
+    height: 100px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 3px;
+}
+
+.post-form-buttons {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 36px;
+    
+}
+
+.post-form-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: 200ms ease;
+}
+
+.post-form-button:hover {
+    -moz-transform: translate(0px, -3px);
+    -ms-transform: translate(0px, -3px);
+    -o-transform: translate(0px, -3px);
+    -webkit-transform: translate(0px, -3px);
+    transform: translate(0px, -3px);
+    transition: 300ms ease;
+}
+
+.post-form-button-label {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Helvetica Neue, HelveticaNeue, Helvetica, Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.65);
+    margin-top: 8px;
+}
+
+.post-form-button.text {
+    color: black;
+}
+.post-form-button.photo {
+    color: rgb(243, 88, 88);
+}
+.post-form-button.quote {
+    color: rgb(255, 177, 51);
+}
+.post-form-button.link {
+    color: rgb(116, 221, 89);
+}
+.post-form-button.chat {
+    color: rgb(52, 197, 255);
+}
+.post-form-button.audio {
+    color: rgb(168, 75, 255);
+}
+.post-form-button.video {
+    color: rgb(255, 126, 176);
+}
+
+
+
+
+
+
+
+
+
+
+

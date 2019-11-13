@@ -1,13 +1,16 @@
 .dash {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-top: 70px;
     justify-content: center;
 }
 
+.main {
+    width: fit-content;
+}
+
 .dashboard-item {
     display: flex;
-    right: -21%;
     width: 626px;
     position: relative;
     margin-top: 20px;
@@ -78,7 +81,7 @@
     border-radius: 3px;
     position: -webkit-sticky;
     position: sticky;
-    top: 70px;
+    top: 72px;
 }
 
 .back-to-top {

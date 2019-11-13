@@ -20,6 +20,7 @@ class SessionForm extends React.Component {
 
     componentDidMount() {
         this.props.refreshErrors();
+        window.scrollTo(0, 0);
     }
 
     handleGetStarted(e) {
