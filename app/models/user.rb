@@ -55,7 +55,9 @@ class User < ApplicationRecord
     end
 
     # associations
-    has_many :posts
+    has_many :posts,
+        foreign_key: :user_id,
+        class_name: :Post
     has_many :likes
 
     has_many :liked_posts,
@@ -79,7 +81,7 @@ class User < ApplicationRecord
     has_many :followed_posts, through: :follows
 
     def dashboard
-        own_posts = self.posts.includes(
+        own_posts_list = self.posts.includes(
             :user, 
             # :root_post,
             # :parent_post,
@@ -91,7 +93,9 @@ class User < ApplicationRecord
             :notes, 
             :tags
         )
-        followed_posts = self.followed_posts.includes(
+        # own_posts_list = []
+        # followed_posts_list = []
+        followed_posts_list = self.followed_posts.includes(
             :user, 
             # :root_post,
             # :parent_post,
@@ -103,7 +107,7 @@ class User < ApplicationRecord
             :notes, 
             :tags
         )
-        dash_posts = (own_posts + followed_posts).sort_by {|post| post.updated_at }
+        dash_posts = (own_posts_list + followed_posts_list).sort_by {|post| post.updated_at }
     end
 
 end

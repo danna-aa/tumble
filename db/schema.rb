@@ -48,14 +48,36 @@ ActiveRecord::Schema.define(version: 2019_11_11_181354) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "username", null: false
     t.string "title"
     t.text "body"
-    t.integer "user_id"
+    t.string "source"
+    t.string "link"
+    t.string "link_alias"
+    t.string "image_url"
+    t.string "video_url"
+    t.text "html"
+    t.integer "root_post_id"
+    t.integer "parent_post_id"
+    t.string "post_type", default: "text", null: false
+    t.boolean "private", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["body"], name: "index_posts_on_body"
+    t.index ["html"], name: "index_posts_on_html"
+    t.index ["image_url"], name: "index_posts_on_image_url"
+    t.index ["link"], name: "index_posts_on_link"
+    t.index ["link_alias"], name: "index_posts_on_link_alias"
+    t.index ["parent_post_id"], name: "index_posts_on_parent_post_id"
+    t.index ["post_type"], name: "index_posts_on_post_type"
+    t.index ["private"], name: "index_posts_on_private"
+    t.index ["root_post_id"], name: "index_posts_on_root_post_id"
+    t.index ["source"], name: "index_posts_on_source"
     t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["username"], name: "index_posts_on_username"
+    t.index ["video_url"], name: "index_posts_on_video_url"
   end
 
   create_table "tags", force: :cascade do |t|

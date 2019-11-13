@@ -13,7 +13,7 @@ class Logo extends React.Component {
     render() {
         return (
             <div className="tumblr-logo">
-                <Link to="/"><img width="232px" height="50px" src={this.state.logo} alt="tumblr"/> </Link>
+                <Link to="/"><img width="232px" height="50px" src={this.state.logo} alt="tumblr"/></Link>
             </div>
         )
     }

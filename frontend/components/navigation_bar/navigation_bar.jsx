@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavButtons from '../nav_buttons/nav-buttons';
-import SearchBar from '../seach_bar/search_bar';
-import Devlinks from '../devlinks/devlinks';
+import NavButtons from './nav_buttons/nav-buttons';
+import SearchBar from './seach_bar/search_bar';
+import Devlinks from './devlinks/devlinks';
 
 class NavigationBar extends React.Component {
     constructor(props) {

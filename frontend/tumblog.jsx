@@ -6,7 +6,7 @@ import Root from './components/root';
 
 // test
 import {login, signup, logout} from './actions/session_actions';
-import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts } from './actions/post_actions';
+import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts, fetchAllPosts } from './actions/post_actions';
 // test end
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.updatePost = updatePost;
     window.deletePost = deletePost;
     window.fetchOwnPosts = fetchOwnPosts;
+    window.fetchAllPosts = fetchAllPosts;
 
     // test end
 });

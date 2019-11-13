@@ -3,10 +3,14 @@ class Api::PostsController < ApplicationController
 
     def index
         @posts = current_user.dashboard
+        @all_posts = Post.all
     end
 
     def show
         @post = Post.find_by(id: params[:id])
+        if @post.private == true && current_user.id != @post.user_id
+            render json: ['This post is private'], status: 400
+        end
     end
 
     def create
@@ -20,7 +24,7 @@ class Api::PostsController < ApplicationController
     end
 
     def update
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id])
         if @post && @post.update(post_params)
             # if params[:contents]
             #     new_contents = params[:contents].select { |content| content != "[object Object]" }
@@ -35,7 +39,7 @@ class Api::PostsController < ApplicationController
     end
 
     def destroy
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id])
         if @post
             @post.destroy
             render :show
@@ -46,7 +50,23 @@ class Api::PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:title, :body, :user_id)
+        params.require(:post).permit(
+            :user_id, 
+            :username,
+            :title, 
+            :body, 
+            :source,
+            :link,
+            :image_url,
+            :video_url,
+            :html,
+            :root_post_id,
+            :parent_post_id,
+            :post_type,
+            :private,
+            :created_at,
+            :updated_at
+        )
     end
 
 end

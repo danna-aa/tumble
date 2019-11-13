@@ -2,12 +2,21 @@
 #
 # Table name: posts
 #
-#  id         :bigint           not null, primary key
-#  title      :string
-#  body       :text
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :bigint           not null, primary key
+#  user_id        :integer          not null
+#  title          :string
+#  body           :text
+#  source         :string
+#  link           :string
+#  image_url      :string
+#  video_url      :string
+#  html           :text
+#  root_post_id   :integer
+#  parent_post_id :integer
+#  post_type      :string           default("text"), not null
+#  private        :boolean          default(FALSE), not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 require 'test_helper'

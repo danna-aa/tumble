@@ -7,5 +7,3 @@ json.posts do
 end
 
 
-
-

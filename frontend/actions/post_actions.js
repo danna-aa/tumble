@@ -1,14 +1,15 @@
 import * as PostAPIUtil from '../util/post_api_util';
 
-export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
+export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 // export const RECEIVE_LIKED_POSTS = "RECEIVE_LIKED_POSTS";
 export const RECEIVE_OWN_POSTS = "RECEIVE_OWN_POSTS";
+export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 
 // actions
-export const receiveAllPosts = posts => ({
-    type: RECEIVE_ALL_POSTS,
+export const receivePosts = posts => ({
+    type: RECEIVE_POSTS,
     posts
 });
 
@@ -32,10 +33,15 @@ export const receiveOwnPosts = posts => ({
     posts
 });
 
+export const receiveAllPosts = posts => ({
+    type: RECEIVE_ALL_POSTS,
+    posts
+});
+
 // thunk actions
 export const fetchPosts = () => dispatch => (
     PostAPIUtil.fetchPosts()
-        .then(posts => dispatch(receiveAllPosts(posts)))
+        .then(posts => dispatch(receivePosts(posts)))
 );
 
 export const fetchPost = postId => dispatch => (
@@ -61,4 +67,9 @@ export const deletePost = postId => dispatch => (
 export const fetchOwnPosts = userId => dispatch => (
     PostAPIUtil.fetchOwnPosts(userId)
         .then(posts => dispatch(receiveOwnPosts(posts)))
+);
+
+export const fetchAllPosts = () => dispatch => (
+    PostAPIUtil.fetchAllPosts()
+        .then(posts => dispatch(receiveAllPosts(posts)))
 );

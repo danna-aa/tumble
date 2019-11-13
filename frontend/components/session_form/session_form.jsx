@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from './logo';
 import { Link, Redirect } from 'react-router-dom';
-import Typing from 'react-typing-animation';
 
 
 class SessionForm extends React.Component {
@@ -29,11 +28,6 @@ class SessionForm extends React.Component {
             initiallyHidden[0].classList.remove("initially-hidden");
         }
         e.currentTarget.classList.add("invisible");
-        // if (e.currentTarget.hasClass("demouser")) {
-        //     e.currentTarget.classList.add("fade-out");
-        // } else {
-        //     e.currentTarget.classList.add("invisible");
-        // }
     }
 
     update(field) {
@@ -45,7 +39,8 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user)
+            // .then(() => this.props.history.push('/dashboard'));
     }
 
     renderErrors() {

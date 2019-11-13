@@ -1,13 +1,23 @@
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts } from '../../actions/post_actions';
 import Dashboard from './dashboard';
 
 const mapStateToProps = state => ({
-    state
+    posts: state.entities.posts,
+    users: state.entities.users,
+    errors: state.errors,
+    session: state.session,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchPosts: () => dispatch(fetchPosts())
+    fetchPosts: () => dispatch(fetchPosts()),
+
+    // not used yet
+    fetchPost: postId => dispatch(fetchPost(postId)),
+    createPost: postId => dispatch(createPost(postId)),
+    updatePost: postId => dispatch(updatePost(postId)),
+    deletePost: postId => dispatch(deletePost(postId)),
+    fetchOwnPosts: postId => dispatch(fetchOwnPosts(postId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

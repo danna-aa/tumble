@@ -8,7 +8,7 @@ const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
         formType: 'Sign up',
-        navLink: <Link to="/login">Log in</Link>,
+        navLink: <Link to="/login">Log in</Link>
     };
 };
 
@@ -21,3 +21,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+ 

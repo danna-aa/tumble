@@ -5,6 +5,7 @@ import Post from './post';
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = this.props.posts;
     }
     
     componentDidMount() {
@@ -20,13 +21,14 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        // let posts = Object.values(this.props.state.entities.posts).sort((a, b) => ( a.updated_at > b.updated_at ) ? 1 : -1 );
-        let posts = Object.values(this.props.state.entities.posts).sort((a, b) => ( a.id > b.id ) ? -1 : 1 );
+        let {posts, users, session} = this.props;
 
-        let dashList = (posts.map(post => {
-            return (
-                <Post post={post} key={post.id}/>
-            )
+        // dashboard sorted in order of newest at the top
+        let postsList = Object.values(posts).sort((a, b) => ( a.updated_at > b.updated_at ) ? -1 : 1 );
+
+        // map list of dashboard items 
+        let dashList = (postsList.map(post => {
+            return <Post key={post.id} post={post} users={users}/>
         }));
 
         return (
@@ -36,25 +38,14 @@ class Dashboard extends React.Component {
                 <Sidebar/> */}
                 {dashList}
 
-
                 <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
 
-
-
-                <div className="dashboard-item">
+                <div className="dashboard-item last">
                     <div className="avatar">
-                        <img className="avatar-image transparent" src="https://66.media.tumblr.com/2060fe62b7ed3b46e5789356942a305e/tumblr_o51oavbMDx1ugpbmuo2_540.png" alt="" />
+                        <img className="avatar-image"></img>
                     </div>
-                    <div className="dashboard-background out-of-content">
-                        <div>
-                            <h2 className="out-of-content-message">No more content...</h2>
-                        </div>
-                    </div>
+                    <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more content...</h2></div></div>
                 </div>
-
-
-
-
 
             </div>
         )
