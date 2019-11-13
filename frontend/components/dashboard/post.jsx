@@ -40,7 +40,21 @@ class Post extends React.Component {
                         {picList}
 
                     </div>
+
+                    <div className="post-footer">
+                        <div className="number-notes">
+                            <h4>{`${Math.floor(Math.random()*2000)} notes`}</h4>
+                        </div>
+                        <div className="post-interaction-icons">
+                            <div className="post-interaction-icon share"><i className="fab fa-telegram-plane"></i></div>
+                            <div className="post-interaction-icon comment"><i className="far fa-comment"></i></div>
+                            <div className="post-interaction-icon reblog"><i className="fas fa-retweet"></i></div>
+                            <div className="post-interaction-icon heart"><i className="far fa-heart"></i></div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         )
     }
