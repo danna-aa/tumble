@@ -58,7 +58,9 @@ class Post extends React.Component {
         // attached photos
         let attachedPhotos = <div className="attached-photos-box"></div>
         if (post.attachedPhotos) {
-
+            attachedPhotos = post.attachedPhotos.map(photoUrl => {
+                
+            })
         }
 
         // attached video
@@ -86,7 +88,7 @@ class Post extends React.Component {
                         {video}
                         {html}
                         {sourceLink}
-                    ≠
+                    
                         
                     </div>
 

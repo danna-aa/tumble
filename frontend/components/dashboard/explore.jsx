@@ -48,9 +48,9 @@ class Explore extends React.Component {
 
 
         // map list of dashboard items 
-        let dashList = (postsList.map(post => {
-            return <ExplorePost key={post.id} post={post} users={users} />
-        }));
+        let dashList = (postsList.map(post => (
+            <ExplorePost key={post.id} post={post} users={users} />
+        )));
 
         return (
             <div className="explore-wrapper">

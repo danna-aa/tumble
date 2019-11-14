@@ -50,19 +50,3 @@ export const deletePost = postId => (
 //         error: err => console.log(err)
 //     })
 // );
-
-export const fetchOwnPosts = userId => (
-    $.ajax({
-        method: 'get',
-        url: `/api/users/${userId}`,
-        error: err => console.log(err),
-    })
-);
-
-export const fetchAllPosts = (filter) => (
-    $.ajax({
-        method: 'get',
-        url: `/api/users`,
-        data: { filter }
-    })
-);
