@@ -6,4 +6,8 @@ json.posts do
   json.array! user.posts.collect{ |post| post }
 end
 
+json.avatar url_for(user.avatar)
+
+
+
 

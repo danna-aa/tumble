@@ -2,8 +2,19 @@ class Api::PostsController < ApplicationController
     before_action :require_login
 
     def index
-        @posts = current_user.dashboard
-        @all_posts = Post.all
+        dashboard_posts = current_user.dashboard
+        all_posts = Post.all
+        user_posts = current_user.posts
+
+        case params[:filter]
+        when 'dashboard'
+            @posts = dashboard_posts
+        when 'profile'
+            @posts = user_posts
+        else
+            @posts = all_posts
+        end
+
     end
 
     def show
@@ -56,7 +67,9 @@ class Api::PostsController < ApplicationController
             :title, 
             :body, 
             :source,
+            :source_alias,
             :link,
+            :link_alias,
             :image_url,
             :video_url,
             :html,

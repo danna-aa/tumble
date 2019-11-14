@@ -39,8 +39,8 @@ export const receiveAllPosts = posts => ({
 });
 
 // thunk actions
-export const fetchPosts = () => dispatch => (
-    PostAPIUtil.fetchPosts()
+export const fetchPosts = ( filter ) => dispatch => (
+    PostAPIUtil.fetchPosts( filter )
         .then(posts => dispatch(receivePosts(posts)))
 );
 

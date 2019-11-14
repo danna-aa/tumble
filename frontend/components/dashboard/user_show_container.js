@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchPosts: () => dispatch(fetchPosts()),
+    fetchPosts: (filter) => dispatch(fetchPosts(filter)),
 
     // not used yet
     fetchPost: postId => dispatch(fetchPost(postId)),

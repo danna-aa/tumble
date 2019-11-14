@@ -1,8 +1,11 @@
-export const fetchPosts = () => (
+
+
+export const fetchPosts = ( filter ) => (
     $.ajax({
         method: 'get',
         url: `/api/posts`,
         error: err => console.log(err),
+        data: { filter }
     })
 );
 
@@ -56,9 +59,10 @@ export const fetchOwnPosts = userId => (
     })
 );
 
-export const fetchAllPosts = () => (
+export const fetchAllPosts = (filter) => (
     $.ajax({
         method: 'get',
-        url: `/api/users`
+        url: `/api/users`,
+        data: { filter }
     })
 );

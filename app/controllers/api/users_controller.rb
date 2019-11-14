@@ -1,8 +1,8 @@
 class Api::UsersController < ApplicationController
 
-  def index
-    @all_posts = Post.all
-  end
+  # def index
+  #   @all_posts = Post.all
+  # end
 
   def create
     @user = User.new(user_params)

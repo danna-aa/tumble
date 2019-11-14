@@ -1,9 +1,19 @@
+.explore-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
 .explore {
     -webkit-columns: 18% 5;
     -moz-columns: 300px 5; 
     columns: 300px 5;
     padding: 0px 3%;
     padding-top: 70px;
+    max-width: 1575px;
 }
 
 .explore-item {

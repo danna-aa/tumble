@@ -4,7 +4,7 @@ import Post from './post';
 import PostFormButtons from './post_form_buttons';
 import Sidebar from '../sidebar/sidebar';
 
-class Dashboard extends React.Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props);
         // this.props.history.push(`/users/${this.props.match.params.userId}`);
@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchOwnPosts(this.props.match.params.userId);
+        this.props.fetchPosts('profile');
         window.scrollTo(0, 0);
     }
 
@@ -70,4 +70,4 @@ class Dashboard extends React.Component {
 
 }
 
-export default Dashboard;
+export default Profile;

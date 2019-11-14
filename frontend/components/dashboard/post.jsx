@@ -22,6 +22,47 @@ class Post extends React.Component {
                 <img key={i} className="post-content-item" src={image} alt={`image ${i}`} />
             ));
         }
+
+        // video
+        let video = <div />
+        if (post.video) {
+            video = <video src={post.video} className="video"></video>
+        }
+
+        // source
+        let sourceLink = <div />
+        if (post.source) {
+            if (post.source_alias) {
+                sourceLink = <a href={post.source} className="source-link">{post.source_alias}</a>
+            } else {
+                sourceLink = <a href={post.source} className="source-link">{post.source}</a>
+            }
+        }
+
+        // link
+        let linkLink = <div />
+        if (post.link) {
+            if (post.link_alias) {
+                linkLink = <a href={post.link} className="link-link">{post.link_alias}</a>
+            } else {
+                linkLink = <a href={post.link} className="link-link">{post.link}</a>
+            }
+        }
+
+        // html
+        let html = <div />
+        if (post.html) {
+            html = post.html
+        }
+
+        // attached photos
+        let attachedPhotos = <div className="attached-photos-box"></div>
+        if (post.attachedPhotos) {
+
+        }
+
+        // attached video
+
      
         
         return (
@@ -34,11 +75,34 @@ class Post extends React.Component {
                 <div className="dashboard-background">
 
                     <div className="post-content-box">
+
                         <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
+                        
                         <h1 className="post-content-item">{post.title}</h1>
+                        {linkLink}
                         <p className="post-content-item">{post.body}</p>
+
                         {picList}
+                        {video}
+                        {html}
+                        {sourceLink}
+                    ≠
+                        
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <div className="post-footer">
                         <div className="number-notes">

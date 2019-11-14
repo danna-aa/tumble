@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
     }
     
     componentDidMount() {
-        this.props.fetchPosts();
+        this.props.fetchPosts('dashboard');
         window.scrollTo(0, 0);
     }
     

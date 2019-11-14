@@ -11,7 +11,7 @@ class Explore extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAllPosts();
+        this.props.fetchPosts();
         window.scrollTo(0, 0);
     }
 
@@ -53,12 +53,11 @@ class Explore extends React.Component {
         }));
 
         return (
-
-            <div className="explore">
-                {dashList}
-
-                <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
-
+            <div className="explore-wrapper">
+                <div className="explore">
+                    {dashList}
+                    <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
+                </div>
             </div>
         )
     }

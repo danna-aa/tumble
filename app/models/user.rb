@@ -131,7 +131,8 @@ class User < ApplicationRecord
             :comments, 
             :tags
         )
-        dash_posts = (own_posts_list + followed_posts_list).sort_by {|post| post.updated_at }
+        dash_posts = (own_posts_list + followed_posts_list)
+        # .sort_by {|post| post.updated_at }
     end
 
     # notifications 
