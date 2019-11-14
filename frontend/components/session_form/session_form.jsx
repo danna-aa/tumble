@@ -249,8 +249,6 @@ class SessionForm extends React.Component {
                             <form onSubmit={this.handleSubmit} className="login-form-box">
                                 <div className="login-form">
 
-                                
-
                                     <div className="login-form-text-boxes-group">
 
                                         {/* username field */}

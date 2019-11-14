@@ -28,15 +28,15 @@ export const removePost = postId => ({
 //     payload
 // });
 
-export const receiveOwnPosts = posts => ({
-    type: RECEIVE_OWN_POSTS,
-    posts
-});
+// export const receiveOwnPosts = posts => ({
+//     type: RECEIVE_OWN_POSTS,
+//     posts
+// });
 
-export const receiveAllPosts = posts => ({
-    type: RECEIVE_ALL_POSTS,
-    posts
-});
+// export const receiveAllPosts = posts => ({
+//     type: RECEIVE_ALL_POSTS,
+//     posts
+// });
 
 // thunk actions
 export const fetchPosts = ( filter ) => dispatch => (
@@ -64,12 +64,12 @@ export const deletePost = postId => dispatch => (
         .then(() => dispatch(removePost(postId)))
 );
 
-export const fetchOwnPosts = userId => dispatch => (
-    PostAPIUtil.fetchOwnPosts(userId)
-        .then(posts => dispatch(receiveOwnPosts(posts)))
-);
+// export const fetchOwnPosts = userId => dispatch => (
+//     PostAPIUtil.fetchOwnPosts(userId)
+//         .then(posts => dispatch(receiveOwnPosts(posts)))
+// );
 
-export const fetchAllPosts = () => dispatch => (
-    PostAPIUtil.fetchAllPosts()
-        .then(posts => dispatch(receiveAllPosts(posts)))
-);
+// export const fetchAllPosts = () => dispatch => (
+//     PostAPIUtil.fetchAllPosts()
+//         .then(posts => dispatch(receiveAllPosts(posts)))
+// );

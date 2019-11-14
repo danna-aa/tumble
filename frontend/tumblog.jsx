@@ -5,7 +5,7 @@ import configureStore from "./store/store";
 import Root from './components/root';
 
 // test
-import {login, signup, logout} from './actions/session_actions';
+import { login, signup, logout, fetchUsers } from './actions/session_actions';
 import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts, fetchAllPosts } from './actions/post_actions';
 // test end
 
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.deletePost = deletePost;
     window.fetchOwnPosts = fetchOwnPosts;
     window.fetchAllPosts = fetchAllPosts;
+    window.fetchUsers = fetchUsers;
 
     // test end
 });

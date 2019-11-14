@@ -11,8 +11,9 @@ class Dashboard extends React.Component {
     }
     
     componentDidMount() {
-        this.props.fetchPosts('dashboard');
         window.scrollTo(0, 0);
+        this.props.fetchPosts('dashboard');
+        this.props.fetchUsers();
     }
     
     handleBackToTop(e) {
@@ -30,9 +31,9 @@ class Dashboard extends React.Component {
         let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
 
         // map list of dashboard items 
-        let dashList = (postsList.map(post => {
-            return <Post key={post.id} post={post} users={users}/>
-        }));
+        let dashList = (postsList.map(post => (
+            <Post key={post.id} post={post} users={users}/>
+        )));
 
         return (
 
@@ -52,7 +53,7 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
 
-                <Sidebar pass={this.props} />
+                <Sidebar users={users} />
 
             </div>
         )

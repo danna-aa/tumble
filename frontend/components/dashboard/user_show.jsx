@@ -2,18 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Post from './post';
 import PostFormButtons from './post_form_buttons';
-import Sidebar from '../sidebar/sidebar';
+import UserSidebar from '../user_sidebar/user_sidebar';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         // this.props.history.push(`/users/${this.props.match.params.userId}`);
-        this.state = { userId: null }
+        this.state = { userId: null };
     }
 
     componentDidMount() {
-        this.props.fetchPosts('profile');
         window.scrollTo(0, 0);
+        this.props.fetchPosts('profile');
+        // this.props.fetchUser(this.props.session.id);
     }
 
     handleBackToTop(e) {
@@ -24,16 +25,15 @@ class Profile extends React.Component {
         });
     }
 
-    componentDidUpdate(prevProps) {
-        if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
-            this.props.fetchOwnPosts(this.props.match.params.userId)
-                .then(() => this.setState({userId: this.props.match.params.userId}));
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
+    //         this.props.fetchOwnPosts(this.props.match.params.userId)
+    //             .then(() => this.setState({userId: this.props.match.params.userId}));
+    //     }
+    // }
 
     render() {
-        let { posts, users } = this.props;
-        console.log(this.props)
+        let { posts, users, session } = this.props;
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
@@ -57,12 +57,12 @@ class Profile extends React.Component {
                         <div className="avatar">
                             <img className="avatar-image"></img>
                         </div>
-                        <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more content...</h2></div></div>
+                        <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more posts...</h2></div></div>
                     </div>
 
                 </div>
 
-                <Sidebar/>
+                <UserSidebar users={users} />
             </div>
         )
     }

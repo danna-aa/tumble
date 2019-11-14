@@ -153,5 +153,10 @@ class User < ApplicationRecord
         foreign_key: :recipient_id,
         class_name: :Message
 
+    # all users 
+    def all_users
+        User.all
+    end
+
 
 end

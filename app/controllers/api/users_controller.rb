@@ -1,8 +1,11 @@
 class Api::UsersController < ApplicationController
 
-  # def index
-  #   @all_posts = Post.all
-  # end
+  def index
+    # @users = User.all
+    users = User.all
+    # this will pick 6 random users for recommended blogs sidebar
+    @users = users.sample(6)
+  end
 
   def create
     @user = User.new(user_params)

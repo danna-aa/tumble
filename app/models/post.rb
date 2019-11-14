@@ -68,4 +68,8 @@ class Post < ApplicationRecord
     has_one_attached :video
     has_one_attached :audio
 
+    def all_users 
+        User.all
+    end
+
 end

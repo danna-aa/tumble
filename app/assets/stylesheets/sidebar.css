@@ -19,6 +19,7 @@
 
 .sidebar-avatar-image {
     max-width: 36px;
+    border-radius: 3px;
 }
 
 .sidebar-item {
