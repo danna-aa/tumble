@@ -4,10 +4,13 @@
 #
 #  id             :bigint           not null, primary key
 #  user_id        :integer          not null
+#  username       :string           not null
 #  title          :string
 #  body           :text
 #  source         :string
+#  source_alias   :string
 #  link           :string
+#  link_alias     :string
 #  image_url      :string
 #  video_url      :string
 #  html           :text
@@ -25,23 +28,6 @@ class Post < ApplicationRecord
 
     belongs_to :user
 
-    # implement later for reblogs 
-    # belongs_to :root_post,
-    #     foreign_key: :root_post_id,
-    #     class_name: :Post
-
-    # belongs_to :parent_post,
-    #     foreign_key: :parent_post_id,
-    #     class_name: :Post
-
-    # has_many :child_posts,
-    #     foreign_key: :root_post_id,
-    #     class_name: :Post
-    
-    # has_one :direct_child_post,
-    #     foreign_key: :parent_post_id,
-    #     class_name: :Post
-
     has_many :likes, 
         inverse_of: :post, 
         dependent: :destroy, 
@@ -51,7 +37,35 @@ class Post < ApplicationRecord
         through: :likes,
         source: :user
 
-    has_many :notes
+    has_many :comments
+
     has_many :tags
+
+    # reblogs query
+    def reblogs
+        if self.root_post_id
+            r_id = self.root_post_id
+        else
+            r_id = self.id
+        end
+        return Post.where(root_post_id: r_id)
+    end
+
+    # notes: comments, likes, reblogs
+    def notes
+        notes_comments = self.comments
+        notes_likes = self.likes
+        notes_reblogs = self.reblogs
+        notes_comments + notes_likes  + notes_reblogs
+    end
+
+    def num_notes
+        notes.length
+    end
+
+    # aws
+    has_many_attached :photos
+    has_one_attached :video
+    has_one_attached :audio
 
 end

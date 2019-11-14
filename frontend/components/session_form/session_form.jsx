@@ -130,7 +130,8 @@ class SessionForm extends React.Component {
             "url('/background_images/058.gif')",
             "url('/background_images/059.gif')",
             "url('/background_images/060.gif')",
-            "url('/background_images/061.gif')"
+            "url('/background_images/061.gif')",
+            "url('/background_images/062.gif')",
         ];
         const rand = Math.floor(Math.random() * backgroundsArray.length);    
         return ({ backgroundImage: backgroundsArray[rand] })

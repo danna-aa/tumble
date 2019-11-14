@@ -8,9 +8,9 @@ class Api::PostsController < ApplicationController
 
     def show
         @post = Post.find_by(id: params[:id])
-        if @post.private == true && current_user.id != @post.user_id
-            render json: ['This post is private'], status: 400
-        end
+        # if @post.private == true && current_user.id != @post.user_id
+        #     render json: ['This post is private'], status: 400
+        # end
     end
 
     def create

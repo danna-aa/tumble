@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
         let {posts, users, session} = this.props;
 
         // dashboard sorted in order of newest at the top
-        let postsList = Object.values(posts).sort((a, b) => ( a.updated_at > b.updated_at ) ? -1 : 1 );
+        let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
 
         // map list of dashboard items 
         let dashList = (postsList.map(post => {

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id           :bigint           not null, primary key
+#  body         :text
+#  sender_id    :integer
+#  recipient_id :integer
+#  anonymous    :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  sender_id: 1
+  recipient_id: 1
+  anonymous: false
+
+two:
+  body: MyText
+  sender_id: 1
+  recipient_id: 1
+  anonymous: false

@@ -4,10 +4,13 @@
 #
 #  id             :bigint           not null, primary key
 #  user_id        :integer          not null
+#  username       :string           not null
 #  title          :string
 #  body           :text
 #  source         :string
+#  source_alias   :string
 #  link           :string
+#  link_alias     :string
 #  image_url      :string
 #  video_url      :string
 #  html           :text

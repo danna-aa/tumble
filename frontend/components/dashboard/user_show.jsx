@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
         this.state = { userId: null }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchOwnPosts(this.props.match.params.userId);
         window.scrollTo(0, 0);
     }
@@ -31,14 +31,12 @@ class Dashboard extends React.Component {
         }
     }
 
-    // componentWillUnmount()
-
     render() {
         let { posts, users } = this.props;
         console.log(this.props)
 
         // dashboard sorted in order of newest at the top
-        let postsList = Object.values(posts).sort((a, b) => (a.updated_at > b.updated_at) ? -1 : 1);
+        let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
 
         // map list of dashboard items 
         let dashList = (postsList.map(post => {

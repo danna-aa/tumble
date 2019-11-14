@@ -12,7 +12,7 @@ class Post extends React.Component {
     // }
 
     render() {
-        let {post, users} = this.props;
+        let { post, users } = this.props;
 
         // images 
         let imageListString = post.image_url;
@@ -22,12 +22,13 @@ class Post extends React.Component {
                 <img key={i} className="post-content-item" src={image} alt={`image ${i}`} />
             ));
         }
+     
         
         return (
             <div className="dashboard-item">
 
                 <div className="avatar">
-                    <img className="avatar-image" src="https://66.media.tumblr.com/2060fe62b7ed3b46e5789356942a305e/tumblr_o51oavbMDx1ugpbmuo2_540.png" alt="" />
+                    <img className="avatar-image" src={post.avatar} alt="" />
                 </div>
 
                 <div className="dashboard-background">
@@ -36,9 +37,7 @@ class Post extends React.Component {
                         <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
                         <h1 className="post-content-item">{post.title}</h1>
                         <p className="post-content-item">{post.body}</p>
-
                         {picList}
-
                     </div>
 
                     <div className="post-footer">
