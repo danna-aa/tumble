@@ -8,7 +8,7 @@
 
 require 'faker'
 demo_user = User.create(username: 'Demo', password: 'password', email: 'whatsupeople@gmail.com', title: "this website sucks", description: "i am the demo user")
-demo_user.avatar.attach(io: File.open("/Users/dannaxu/Desktop/Youngjun_Na.jpg"), filename: "avatar")
+demo_user.avatar.attach(io: File.open("/Users/dannaxu/Desktop/yj.jpg"), filename: "avatar")
 
 user2 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu', title: "plz hire me", description: "i don't want to be homeless")
 user2.avatar.attach(io: File.open("/Users/dannaxu/Desktop/jacket.jpg"), filename: "avatar")
