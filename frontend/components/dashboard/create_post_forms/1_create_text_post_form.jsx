@@ -98,6 +98,14 @@ class CreateTextPostForm extends React.Component {
                             placeholder="Your text here"
                         />
                     </div>
+                    <div>
+                        <textarea
+                            value={this.state.html}
+                            onChange={this.update('html')}
+                            className="post-form-input body"
+                            placeholder="Input some html if you want..."
+                        />
+                    </div>
 
                     <div>
                         <input type="tags"

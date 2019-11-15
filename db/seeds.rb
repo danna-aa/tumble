@@ -8,27 +8,34 @@
 
 require 'faker'
 demo_user = User.create(username: 'Demo', password: 'password', email: 'whatsupeople@gmail.com', title: "this website sucks", description: "i am the demo user")
-
- 
+demo_user.avatar.attach(io: File.open("/Users/dannaxu/Desktop/Youngjun_Na.jpg"), filename: "avatar")
 
 user2 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu', title: "plz hire me", description: "i don't want to be homeless")
+user2.avatar.attach(io: File.open("/Users/dannaxu/Desktop/jacket.jpg"), filename: "avatar")
 
 user3 = User.create(username: 'boba', password: 'password', email: 'boba@aa.io', title: "is a good boy", description: "boba does not sit")
+user3.avatar.attach(io: File.open("/Users/dannaxu/Desktop/boba.jpg"), filename: "avatar")
 
 user4 = User.create(username: 'mochi', password: 'password', email: 'mochi@aa.io', title: "dog genius", description: "best girl")
+user4.avatar.attach(io: File.open("/Users/dannaxu/Desktop/mochi.jpg"), filename: "avatar")
 
 user5 = User.create(username: 'mashu', password: 'password', email: 'mashu@aa.io', title: "round boy", description: "daruma fan")
+user5.avatar.attach(io: File.open("/Users/dannaxu/Desktop/potato.jpg"), filename: "avatar")
 
 user6 = User.create(username: 'char', password: 'password', email: 'char@aa.io', title: "commander", description: "red comet")
+user6.avatar.attach(io: File.open("/Users/dannaxu/Desktop/ca.jpg"), filename: "avatar")
 
 user7 = User.create(username: 'bill wurtz', password: 'password', email: 'bill@aa.io', title: "composer", description: "normal guy")
+user7.avatar.attach(io: File.open("/Users/dannaxu/Desktop/bw.jpeg"), filename: "avatar")
 
 user8 = User.create(username: 'harry potter', password: 'password', email: 'harry@aa.io', title: "boy who lived", description: "not that great")
+user8.avatar.attach(io: File.open("/Users/dannaxu/Desktop/hp.jpg"), filename: "avatar")
 
 user9 = User.create(username: 'artist', password: 'password', email: 'artist@aa.io', title: "broke", description: "person who arts")
+user9.avatar.attach(io: File.open("/Users/dannaxu/Desktop/bunny.jpg"), filename: "avatar")
 
 user10 = User.create(username: 'mimi', password: 'password', email: 'mimi@aa.io', title: "meme lord", description: "I stole these from reddit")
-
+user10.avatar.attach(io: File.open("/Users/dannaxu/Desktop/mimi.jpg"), filename: "avatar")
  
 
  

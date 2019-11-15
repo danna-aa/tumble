@@ -8,11 +8,17 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.post;
+        this.handleLike = this.handleLike.bind(this);
     }
 
     // componentDidMount() {
     //     this.props.fetchPost(this.props.match.params(id));
     // }
+
+    handleLike(e) {
+        console.log("heart");
+        e.currentTarget.classList.toggle("liked");
+    }
 
     render() {
         let { post, users, session } = this.props;
@@ -41,7 +47,6 @@ class Post extends React.Component {
                 return str
             }
         }
-
 
 
 
@@ -132,7 +137,7 @@ class Post extends React.Component {
         }
 
         // edit or like button
-        let footerIconRight = <div className="post-interaction-icon heart"><i className="far fa-heart"></i></div>
+        let footerIconRight = <div className="post-interaction-icon heart" onClick={this.handleLike}><i className="fas fa-heart"></i></div>
         if (post.user_id === session.id) {
             footerIconRight = <div className="post-interaction-icon edit"><i className="fas fa-cog"></i></div>
         }
@@ -155,7 +160,6 @@ class Post extends React.Component {
                         <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
                         
                         <h1 className="post-content-item">{post.title}</h1>
-                        <p className="post-content-item">{post.body}</p>
                         {linkLink}
                         {picList}
                         {attachedPhotos}
@@ -163,6 +167,7 @@ class Post extends React.Component {
                         {attachedVideo}
                         {attachedAudio}
                         {htmlDiv}
+                        <p className="post-content-item">{post.body}</p>
                         {sourceLink}
                         
                     </div>
