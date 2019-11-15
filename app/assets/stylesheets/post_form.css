@@ -68,6 +68,83 @@
   font-size: 14px;
 }
 
+.image-post-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-style: dotted;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.post-form-input.image_url {
+  background-image: url('camera-retro-solid.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2;
+  width: 540px;
+  min-height: 200px;
+  text-align: center;
+  color: transparent;
+}
+
+.post-form-input.caption {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.post-form-input.quote {
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  width: 540px;
+  font-size: 48px;
+}
+
+.post-form-input.post-link {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  font-size: 22px;
+}
+
+.post-form-input.link_alias {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  font-size: 13px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.post-form-input.post-source {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  font-size: 22px;
+}
+
+.post-form-input.source_alias {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  font-size: 13px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.post-form-input.video_url {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  font-size: 30px;
+  opacity: 0.8;
+  text-align: center;
+}
+
 .post-form-input.tags {
   border: none;
   width: 540px;
@@ -121,7 +198,29 @@
   transition: 200ms ease;
 }
 
+audio {
+  text-align: center;
+  width: 300px;
+}
 
+.video_url {
+  text-align: center;
+  width: 300px;
+}
+
+.fa-music {
+  border 1px solid red;
+}
+
+
+
+
+
+
+
+.liked {
+  color: red;
+}
 
 
 

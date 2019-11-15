@@ -82,11 +82,11 @@ class CreateTextPostForm extends React.Component {
                     </div>
 
                     <div>
-                        <input type="title"
+                        <input type="Title"
                             value={this.state.title}
                             onChange={this.update('title')}
-                            className="post-form-input title"
-                            placeholder="Title"
+                            className="post-form-input quote"
+                            placeholder='"Quote"'
                         />
                     </div>
 
@@ -95,7 +95,7 @@ class CreateTextPostForm extends React.Component {
                             value={this.state.body}
                             onChange={this.update('body')}
                             className="post-form-input body"
-                            placeholder="Your text here"
+                            placeholder="- Source"
                         />
                     </div>
 

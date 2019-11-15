@@ -79,23 +79,33 @@ class CreateTextPostForm extends React.Component {
                             placeholder={this.state.username}
                             type="hidden"
                         />
+    
+                    </div>
+
+                    <div image-post-form>
+                        <input type="image_url"
+                            value={this.state.image_url}
+                            onChange={this.update('image_url')}
+                            className="post-form-input image_url"
+                        />
+                        <div className="caption">Add photo</div>
                     </div>
 
                     <div>
-                        <input type="title"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                            className="post-form-input title"
-                            placeholder="Title"
+                        <input type="source"
+                            value={this.state.source}
+                            onChange={this.update('source')}
+                            className="post-form-input post-source"
+                            placeholder="Source"
                         />
                     </div>
 
                     <div>
-                        <textarea
-                            value={this.state.body}
-                            onChange={this.update('body')}
-                            className="post-form-input body"
-                            placeholder="Your text here"
+                        <input type="source_alias"
+                            value={this.state.source_alias}
+                            onChange={this.update('source_alias')}
+                            className="post-form-input source_alias"
+                            placeholder="Source alias"
                         />
                     </div>
 

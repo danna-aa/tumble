@@ -82,11 +82,20 @@ class CreateTextPostForm extends React.Component {
                     </div>
 
                     <div>
-                        <input type="title"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                            className="post-form-input title"
-                            placeholder="Title"
+                        <input type="link"
+                            value={this.state.link}
+                            onChange={this.update('link')}
+                            className="post-form-input post-link"
+                            placeholder="Type or paste a url"
+                        />
+                    </div>
+
+                    <div>
+                        <input type="link_alias"
+                            value={this.state.link_alias}
+                            onChange={this.update('link_alias')}
+                            className="post-form-input link_alias"
+                            placeholder="Link alias"
                         />
                     </div>
 
@@ -95,7 +104,7 @@ class CreateTextPostForm extends React.Component {
                             value={this.state.body}
                             onChange={this.update('body')}
                             className="post-form-input body"
-                            placeholder="Your text here"
+                            placeholder="Add a description, if you like"
                         />
                     </div>
 

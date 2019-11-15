@@ -82,12 +82,13 @@ class CreateTextPostForm extends React.Component {
                     </div>
 
                     <div>
-                        <input type="title"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                            className="post-form-input title"
-                            placeholder="Title"
+                        <input type="video_url"
+                            value={this.state.video_url}
+                            onChange={this.update('video_url')}
+                            className="post-form-input video_url"
+                            placeholder="Add a video"
                         />
+                        <i class="fab fa-youtube"></i>
                     </div>
 
                     <div>
@@ -95,7 +96,25 @@ class CreateTextPostForm extends React.Component {
                             value={this.state.body}
                             onChange={this.update('body')}
                             className="post-form-input body"
-                            placeholder="Your text here"
+                            placeholder="Add a caption, if your like"
+                        />
+                    </div>
+
+                    <div>
+                        <input type="source"
+                            value={this.state.source}
+                            onChange={this.update('source')}
+                            className="post-form-input post-source"
+                            placeholder="Source"
+                        />
+                    </div>
+
+                    <div>
+                        <input type="source_alias"
+                            value={this.state.source_alias}
+                            onChange={this.update('source_alias')}
+                            className="post-form-input source_alias"
+                            placeholder="Source alias"
                         />
                     </div>
 
