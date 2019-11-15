@@ -8,7 +8,6 @@
     background-color: #001935f3;
 }
 .post-form {
-  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,7 +65,6 @@
   border: none;
   width: 540px;
   height: 80px;
-  /* vertical-align: top; */
   font-size: 14px;
 }
 
