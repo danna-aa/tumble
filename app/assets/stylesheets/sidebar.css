@@ -15,6 +15,7 @@
     font-size: 17px;
     font-weight: 600;
     padding: 0px 10px 8px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .sidebar-avatar-image {
@@ -26,7 +27,6 @@
     border-top: 1px solid #2232449f;
     padding: 10px;
     transition: 250ms ease;
-
 }
 
 .sidebar-item:hover {
@@ -39,6 +39,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    /* min-height: 56px; */
 }
 
 .sidebar-link-inner-box {
@@ -75,6 +76,98 @@
 }
 
 .sidebar-box a {
-    color: inherit;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: inherit;
 }
+
+
+
+
+
+
+
+/* user sidebar  */
+.sidebar-title {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0px 10px 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-tl {
+    font-size: 14px;
+    padding: 0px 10px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-description {
+    font-size: 13px;
+    font-weight: 300;
+    padding: 0px 10px 8px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.user-sidebar-item {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2232449f;
+    transition: 250ms ease;
+    height: 54px;
+    padding: 0px 10px;
+}
+
+.user-sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 250ms ease;
+}
+
+.sidebar-link-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* min-height: 56px; */
+}
+
+.sidebar-link-inner-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.sidebar-item-text {
+    margin-left: 10px;
+}
+
+.sidebar-username {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar-tagline {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebar-follow-button {
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.4);
+    transition: 200ms ease;
+}
+
+.sidebar-follow-button:hover {
+    color: #00b8ff;
+    opacity: 1;
+    transition: 200ms ease;
+}
+
+.sidebar-box a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: inherit;
+}
+
+
+

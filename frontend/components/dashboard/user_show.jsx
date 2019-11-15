@@ -9,6 +9,7 @@ class Profile extends React.Component {
         super(props);
         // this.props.fetchPosts(this.props.match.params.userId);
         this.state = { userId: null };
+
     }
 
     componentDidMount() {
@@ -16,6 +17,7 @@ class Profile extends React.Component {
         this.props.fetchPosts(this.props.match.params.userId);
         // this.setState({ userId: this.props.match.params.userId })
         // this.props.fetchUser(this.props.session.id);
+        console.log(this.state)
     }
 
     handleBackToTop(e) {
@@ -39,11 +41,14 @@ class Profile extends React.Component {
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
+        let numPosts = postsList.length;
 
         // map list of dashboard items 
         let dashList = (postsList.map(post => {
             return <Post key={post.id} post={post} users={users} session={session} />
         }));
+
+        let currentUser = users[session.id];
 
         return (
             <div className="dash">
@@ -64,7 +69,7 @@ class Profile extends React.Component {
 
                 </div>
 
-                <UserSidebar users={users} />
+                <UserSidebar currentUser={currentUser} numPosts={numPosts}/>
             </div>
         )
     }
