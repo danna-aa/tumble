@@ -4,18 +4,25 @@ class Api::PostsController < ApplicationController
     def index
         dashboard_posts = current_user.dashboard
         all_posts = Post.all
-        user_posts = current_user.posts
+        
+        def is_string_number?(string)
+            true if Float(string) rescue false
+        end
 
-        case params[:filter]
-        when 'dashboard'
+        case 
+        when params[:filter] =='dashboard'
             @posts = dashboard_posts
-        when 'profile'
+        when is_string_number?(params[:filter])
+            user_id = params[:filter].to_i
+            profile_user = User.find(user_id)
+            user_posts = profile_user.posts
             @posts = user_posts
         else
             @posts = all_posts
         end
 
     end
+
 
     def show
         @post = Post.find_by(id: params[:id])

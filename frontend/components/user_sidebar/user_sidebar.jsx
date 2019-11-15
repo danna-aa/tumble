@@ -8,12 +8,6 @@ class Sidebar extends React.Component {
     }
 
     render() {
-
-
-        console.log('====================================');
-        console.log(this.props);
-        console.log('====================================');
-
         // const sidebarList = Object.values(users).map(user => (
         //     <UserSidebarItem key={user.id} user={user} />
         // ));

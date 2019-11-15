@@ -7,13 +7,14 @@ import UserSidebar from '../user_sidebar/user_sidebar';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        // this.props.history.push(`/users/${this.props.match.params.userId}`);
+        // this.props.fetchPosts(this.props.match.params.userId);
         this.state = { userId: null };
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props.fetchPosts('profile');
+        this.props.fetchPosts(this.props.match.params.userId);
+        // this.setState({ userId: this.props.match.params.userId })
         // this.props.fetchUser(this.props.session.id);
     }
 
@@ -25,12 +26,13 @@ class Profile extends React.Component {
         });
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
-    //         this.props.fetchOwnPosts(this.props.match.params.userId)
-    //             .then(() => this.setState({userId: this.props.match.params.userId}));
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        // debugger;
+        if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
+            this.props.fetchPosts(this.props.match.params.userId);
+                // .then(() => this.setState({userId: this.props.match.params.userId}));
+        }
+    }
 
     render() {
         let { posts, users, session } = this.props;
@@ -40,7 +42,7 @@ class Profile extends React.Component {
 
         // map list of dashboard items 
         let dashList = (postsList.map(post => {
-            return <Post key={post.id} post={post} users={users} />
+            return <Post key={post.id} post={post} users={users} session={session} />
         }));
 
         return (
@@ -48,7 +50,7 @@ class Profile extends React.Component {
                 {/* <PostForm /> */}
                 <div className="main">
 
-                    <PostFormButtons />
+                    <PostFormButtons users={users} session={session} />
                     {dashList}
 
                     <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>

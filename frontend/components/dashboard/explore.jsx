@@ -29,8 +29,6 @@ class Explore extends React.Component {
         // dashboard sorted in order of newest at the top
         // let postsList = Object.values(posts).sort((a, b) => (a.updated_at > b.updated_at) ? -1 : 1);
 
-        
-        
         function shuffle(arr) {
             let ctr = arr.length, temp, index;
             while (ctr > 0) {

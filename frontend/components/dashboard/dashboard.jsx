@@ -31,16 +31,16 @@ class Dashboard extends React.Component {
         let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
 
         // map list of dashboard items 
-        let dashList = (postsList.map(post => (
-            <Post key={post.id} post={post} users={users}/>
-        )));
+        let dashList = postsList.map(post => (
+            <Post key={post.id} post={post} users={users} session={session}/>
+        ));
 
         return (
 
             <div className="dash">
                 
                 <div className="main">
-                    <PostFormButtons />
+                    <PostFormButtons users={users} session={session}/>
                     {dashList}
 
                     <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>

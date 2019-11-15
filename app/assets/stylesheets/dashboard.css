@@ -33,6 +33,7 @@
 .post-content-item {
     box-sizing: border-box;
     width: 100%;
+    max-width: 540px;
     margin: 0px 0px 5px 0px;
 }
 
@@ -74,6 +75,85 @@
     transition: 200ms ease;
 }
 
+.dashboard-item a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.avatar-link {
+    height: fit-content;
+    width: fit-content;
+}
+
+
+.dashboard-item .link-link-container {
+    padding: 0px 20px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-item a.link-link {
+    padding: 0px 1px;
+    height: 100%;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.55);
+    font-weight: bold;
+    line-height: 1.5em;
+    transition: 200ms ease;
+}
+
+.dashboard-item .link-link-container .link_url:hover {
+    color: rgba(0, 0, 0, 0.75);
+    transition: 200ms ease;
+}
+
+.dashboard-item a.link-link:hover {
+    color: rgba(0, 0, 0, 0.75);
+    transition: 200ms ease;
+}
+
+.link-url {
+    font-size: 13px;
+    line-height: 1.5em;
+}
+
+.link-alias {
+    margin-top: 6px;
+    font-size: 24px;
+    line-height: 1em;
+}
+
+
+
+
+.dashboard-item .source-link-container {
+    padding: 0px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    max-width: 540px;
+}
+
+.dashboard-item a.source-link {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    transition: 200ms ease;
+}
+
+.dashboard-item a.source-link:hover {
+    text-decoration: underline;
+    transition: 200ms ease;
+}
+
+
+
+
+
+
+
 .avatar {
     box-sizing: border-box;
     position: relative; 
@@ -88,6 +168,29 @@
     position: -webkit-sticky;
     position: sticky;
     top: 72px;
+    transition: 600ms ease;
+
+    /* animations */
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.avatar-image:hover {
+    opacity: 90%;
+    transition: 600ms ease;
+
+    /* animations */
+    -webkit-animation-name: hvr-buzz-out;
+    animation-name: hvr-buzz-out;
+    -webkit-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
 }
 
 .back-to-top {

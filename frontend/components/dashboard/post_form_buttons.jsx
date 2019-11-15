@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 class PostFormButtons extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.post;
+        // this.state = this.props.post;
     }
 
     render() {
+        const { users, session } = this.props;
 
         return (
             <div className="dashboard-top-item">
 
                 <div className="avatar">
-                    <img className="avatar-image" src="https://66.media.tumblr.com/2060fe62b7ed3b46e5789356942a305e/tumblr_o51oavbMDx1ugpbmuo2_540.png" alt="" />
+                    <Link to={`/users/${session.id}`} className="avatar-link">
+                        <img className="avatar-image" src={users[session.id].avatar} alt="user_avatar" />
+                    </Link>
                 </div>
 
                 <div className="dashboard-background-buttons">

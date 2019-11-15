@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import ReactAudioPlayer from 'react-audio-player';
 
 class Post extends React.Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class Post extends React.Component {
     // }
 
     render() {
-        let { post, users } = this.props;
+        let { post, users, session } = this.props;
 
         // images 
         let imageListString = post.image_url;
@@ -30,12 +32,29 @@ class Post extends React.Component {
         }
 
         // source
+        function clipLongText(charLength, str) {
+            if (str.length > charLength) {
+                return str.slice(0, charLength) + "..."
+            } else {
+                return str
+            }
+        }
+
         let sourceLink = <div />
         if (post.source) {
             if (post.source_alias) {
-                sourceLink = <a href={post.source} className="source-link">{post.source_alias}</a>
+                sourceLink = (
+                    <div className="source-link-container">
+                        Source: <a href={post.source} className="source-link">{clipLongText(13, post.source_alias)}</a>
+                    </div>
+                )
             } else {
-                sourceLink = <a href={post.source} className="source-link">{post.source}</a>
+                sourceLink = (
+                    <div className="source-link-container">
+                        Source: <a href={post.source} className="source-link">{clipLongText(70, post.source)}</a>
+                    </div>
+                )
+                
             }
         }
 
@@ -43,9 +62,24 @@ class Post extends React.Component {
         let linkLink = <div />
         if (post.link) {
             if (post.link_alias) {
-                linkLink = <a href={post.link} className="link-link">{post.link_alias}</a>
+                linkLink = (
+                    <div className="link-link-container">
+                        <a href={post.link} className="link-link">
+                            <div className="link-url">{post.link}</div>
+                            <div className="link-alias">{clipLongText(20, post.link_alias)}</div>   
+                        </a>
+                    </div>
+                )
+                
             } else {
-                linkLink = <a href={post.link} className="link-link">{post.link}</a>
+                linkLink = (
+                    <div className="link-link-container">
+                        <a href={post.link} className="link-link">
+                            <div className="link-alias">{clipLongText(37, post.link)}</div>
+                        </a>
+                    </div>
+
+                )
             }
         }
 
@@ -55,23 +89,47 @@ class Post extends React.Component {
             html = post.html
         }
 
+        const fileName = (url) => {
+            let urlArray = url.split("/");
+            return urlArray[urlArray.length-1]
+        }
         // attached photos
-        let attachedPhotos = <div className="attached-photos-box"></div>
-        if (post.attachedPhotos) {
-            attachedPhotos = post.attachedPhotos.map(photoUrl => {
-                
-            })
+
+        let attachedPhotos = <div />
+
+        if (post.photoUrls) {
+            attachedPhotos = Object.values(post.photoUrls).map((photoUrl, i) => (
+                <img key={i} className="post-content-item" src={photoUrl} alt={fileName(photoUrl)} />
+            ))
         }
 
         // attached video
+        let attachedVideo = <div />
+        if (post.videoUrl) {
+            attachedVideo = <ReactPlayer url={post.videoUrl} controls loop className="post-content-item" height="100%"/>
+        }
+
+        // attached audio
+        let attachedAudio = <div />
+        if (post.audioUrl) {
+            attachedAudio = <ReactAudioPlayer src={post.audioUrl} autoplay controls className="post-content-item" />
+        }
+
+        // edit or like button
+        let footerIconRight = <div className="post-interaction-icon heart"><i className="far fa-heart"></i></div>
+        if (post.user_id === session.id) {
+            footerIconRight = <div className="post-interaction-icon edit"><i className="fas fa-cog"></i></div>
+        }
+        
 
      
         
         return (
             <div className="dashboard-item">
-
                 <div className="avatar">
-                    <img className="avatar-image" src={post.avatar} alt="" />
+                    <Link to={`/users/${post.user_id}`} className="avatar-link">
+                        <img className="avatar-image" src={post.avatar} alt="" />
+                    </Link>
                 </div>
 
                 <div className="dashboard-background">
@@ -82,29 +140,16 @@ class Post extends React.Component {
                         
                         <h1 className="post-content-item">{post.title}</h1>
                         {linkLink}
-                        <p className="post-content-item">{post.body}</p>
-
                         {picList}
+                        {attachedPhotos}
                         {video}
+                        {attachedVideo}
+                        {attachedAudio}
                         {html}
+                        <p className="post-content-item">{post.body}</p>
                         {sourceLink}
-                    
                         
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     <div className="post-footer">
                         <div className="number-notes">
@@ -114,7 +159,7 @@ class Post extends React.Component {
                             <div className="post-interaction-icon share"><i className="fab fa-telegram-plane"></i></div>
                             <div className="post-interaction-icon comment"><i className="far fa-comment"></i></div>
                             <div className="post-interaction-icon reblog"><i className="fas fa-retweet"></i></div>
-                            <div className="post-interaction-icon heart"><i className="far fa-heart"></i></div>
+                            {footerIconRight}
                         </div>
                     </div>
 

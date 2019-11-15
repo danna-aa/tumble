@@ -73,3 +73,8 @@
     opacity: 1;
     transition: 200ms ease;
 }
+
+.sidebar-box a {
+    color: inherit;
+    text-decoration: inherit;
+}
