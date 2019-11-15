@@ -29,7 +29,7 @@ class Post extends React.Component {
         // video
         let video = <div />
         if (post.video_url) {
-            video = <ReactPlayer url="https://www.youtube.com/watch?v=FiARsQSlzDc" controls loop className="post-content-item" />
+            video = <ReactPlayer url={post.video_url} controls loop className="post-content-item" />
             // video = <div>video asdfkjasdlfhajskdf</div>
         }
 
@@ -187,3 +187,6 @@ class Post extends React.Component {
 }
 
 export default Post;
+
+
+// post2.video.attach(io: File.open(“/Users/dannaxu/Desktop/jacket.jpg”), filename: “danna”)
