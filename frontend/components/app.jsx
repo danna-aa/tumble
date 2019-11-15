@@ -9,11 +9,14 @@ import NavigationBarContainer from './navigation_bar/navigation_bar_container';
 import DashboardContainer from './dashboard/dashboard_container';
 import UserShowContainer from './dashboard/user_show_container';
 import ExploreContainer from './dashboard/explore_container';
+import Modal from './modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
 
 
 const App = () => (
     <div className='app'>
+        <Modal />
         <NavigationBarContainer />
 
         <Switch>

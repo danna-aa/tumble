@@ -1,0 +1,169 @@
+.translucent-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 101;
+    height: 100vh;
+    background-color: #001935f3;
+}
+.post-form {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: content-box;
+  align-items: center;
+  min-height: 100px;
+  min-width: 540px;
+  background: white;
+  position: absolute;
+  top: 9.8%;
+  left: 26.1%;
+  border-radius: 3px;
+  text-align: left;
+  padding: 15px 20px;
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 2em;
+}
+
+.post-form-container *{
+  -webkit-animation: modalFade .5s ease;
+
+}
+
+@-webkit-keyframes modalFade {
+  0%   {
+    transform: translateY(-100%);
+    opacity: 0.1;
+  }
+  55%   {
+    transform: translateY(5%);
+  }
+  90%   {
+    transform: translateY(-1%);
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+.current-user {
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.post-form-input.title {
+  border: none;
+  width: 540px;
+  font-size: 48px;
+}
+
+.post-form-input.body {
+  margin-top: 10px;
+  border: none;
+  width: 540px;
+  height: 80px;
+  /* vertical-align: top; */
+  font-size: 14px;
+}
+
+.post-form-input.tags {
+  border: none;
+  width: 540px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+}
+
+.modal-click {
+  display: flex;
+  justify-content: space-between;
+  width: 540px;
+  margin-top: 12px;
+}
+
+.close-button {
+  box-sizing: border-box;
+  height: 30px;
+  width: fit-content;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: lightgrey;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  transition: 200ms ease;
+}
+.close-button:hover {
+  background-color: rgb(182, 182, 182);
+  transition: 200ms ease;
+}
+
+.post-button {
+  box-sizing: border-box;
+  height: 30px;
+  width: fit-content;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: #00b8ff;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  transition: 200ms ease;
+}
+.post-button:hover {
+  background-color: rgb(0, 150, 209);
+  transition: 200ms ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

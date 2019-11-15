@@ -43,6 +43,34 @@ export const deletePost = postId => (
     })
 );
 
+export const createPhotoPost = (post) => {
+    return $.ajax({
+        method: 'POST',
+        url: '/api/posts',
+        data: post,
+        processData: false,
+        contentType: false
+    });
+};
+export const createAudioPost = (post) => {
+    return $.ajax({
+        method: 'POST',
+        url: '/api/posts',
+        data: post,
+        processData: false,
+        contentType: false
+    });
+};
+export const createVideoPost = (post) => {
+    return $.ajax({
+        method: 'POST',
+        url: '/api/posts',
+        data: post,
+        processData: false,
+        contentType: false
+    });
+};
+
 // export const fetchLikedPosts = userId => (
 //     $.ajax({
 //         method: 'get',

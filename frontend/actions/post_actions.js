@@ -4,8 +4,8 @@ export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 // export const RECEIVE_LIKED_POSTS = "RECEIVE_LIKED_POSTS";
-export const RECEIVE_OWN_POSTS = "RECEIVE_OWN_POSTS";
-export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
+// export const RECEIVE_OWN_POSTS = "RECEIVE_OWN_POSTS";
+// export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 
 // actions
 export const receivePosts = posts => ({
@@ -73,3 +73,19 @@ export const deletePost = postId => dispatch => (
 //     PostAPIUtil.fetchAllPosts()
 //         .then(posts => dispatch(receiveAllPosts(posts)))
 // );
+
+export const createPhotoPost = post => dispatch => (
+    PostUtil.createPhotoPost(post)
+        .then(post => dispatch(receivePost(post)))
+);
+
+export const createVideoPost = post => dispatch => (
+    PostUtil.createVideoPost(post)
+        .then(post => dispatch(receivePost(post)))
+);
+
+export const createAudioPost = post => dispatch => (
+    PostUtil.createAudioPost(post)
+        .then(post => dispatch(receivePost(post)))
+);
+

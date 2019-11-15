@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
+import { stringify } from 'querystring';
 
 class Post extends React.Component {
     constructor(props) {
@@ -27,8 +28,9 @@ class Post extends React.Component {
 
         // video
         let video = <div />
-        if (post.video) {
-            video = <video src={post.video} className="video"></video>
+        if (post.video_url) {
+            video = <ReactPlayer url="https://www.youtube.com/watch?v=FiARsQSlzDc" controls loop className="post-content-item" />
+            // video = <div>video asdfkjasdlfhajskdf</div>
         }
 
         // source
@@ -40,18 +42,32 @@ class Post extends React.Component {
             }
         }
 
+
+
+
+
+
+
+        function makeLink(str) {
+            if (!str.includes("http://")) {
+                return "http://" + str;
+            } else {
+                return str;
+            }
+        }
+
         let sourceLink = <div />
         if (post.source) {
             if (post.source_alias) {
                 sourceLink = (
                     <div className="source-link-container">
-                        Source: <a href={post.source} className="source-link">{clipLongText(13, post.source_alias)}</a>
+                        Source: <a href={makeLink(post.source)} className="source-link">{clipLongText(13, post.source_alias)}</a>
                     </div>
                 )
             } else {
                 sourceLink = (
                     <div className="source-link-container">
-                        Source: <a href={post.source} className="source-link">{clipLongText(70, post.source)}</a>
+                        Source: <a href={makeLink(post.source)} className="source-link">{clipLongText(70, post.source)}</a>
                     </div>
                 )
                 
@@ -64,7 +80,7 @@ class Post extends React.Component {
             if (post.link_alias) {
                 linkLink = (
                     <div className="link-link-container">
-                        <a href={post.link} className="link-link">
+                        <a href={makeLink(post.link)} className="link-link">
                             <div className="link-url">{post.link}</div>
                             <div className="link-alias">{clipLongText(20, post.link_alias)}</div>   
                         </a>
@@ -74,7 +90,7 @@ class Post extends React.Component {
             } else {
                 linkLink = (
                     <div className="link-link-container">
-                        <a href={post.link} className="link-link">
+                        <a href={makeLink(post.link)} className="link-link">
                             <div className="link-alias">{clipLongText(37, post.link)}</div>
                         </a>
                     </div>
@@ -84,10 +100,10 @@ class Post extends React.Component {
         }
 
         // html
-        let html = <div />
+        let htmlDiv = <div></div>
         if (post.html) {
-            html = post.html
-        }
+            htmlDiv = <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        }   
 
         const fileName = (url) => {
             let urlArray = url.split("/");
@@ -139,14 +155,14 @@ class Post extends React.Component {
                         <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
                         
                         <h1 className="post-content-item">{post.title}</h1>
+                        <p className="post-content-item">{post.body}</p>
                         {linkLink}
                         {picList}
                         {attachedPhotos}
                         {video}
                         {attachedVideo}
                         {attachedAudio}
-                        {html}
-                        <p className="post-content-item">{post.body}</p>
+                        {htmlDiv}
                         {sourceLink}
                         
                     </div>
