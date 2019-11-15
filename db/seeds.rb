@@ -32,7 +32,7 @@ user8 = User.create(username: 'harry potter', password: 'password', email: 'harr
 user8.avatar.attach(io: File.open("/Users/dannaxu/Desktop/hp.jpg"), filename: "avatar")
 
 user9 = User.create(username: 'artist', password: 'password', email: 'artist@aa.io', title: "broke", description: "person who arts")
-user9.avatar.attach(io: File.open("/Users/dannaxu/Desktop/bunny.jpg"), filename: "avatar")
+user9.avatar.attach(io: File.open("/Users/dannaxu/Desktop/art.jpg"), filename: "avatar")
 
 user10 = User.create(username: 'mimi', password: 'password', email: 'mimi@aa.io', title: "meme lord", description: "I stole these from reddit")
 user10.avatar.attach(io: File.open("/Users/dannaxu/Desktop/mimi.jpg"), filename: "avatar")
