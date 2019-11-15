@@ -155,7 +155,7 @@
 
 
 .avatar {
-    box-sizing: border-box;
+    box-sizing: border-box
     position: relative; 
     margin-right: 20px; 
     border-radius: 3px;
@@ -163,12 +163,14 @@
 
 .avatar-image {
     max-height: 66px;
+    height: 66px;
     width: 66px;
     border-radius: 3px;
     position: -webkit-sticky;
     position: sticky;
     top: 72px;
     transition: 600ms ease;
+    padding-top: %100;
 
     /* animations */
     display: inline-block;

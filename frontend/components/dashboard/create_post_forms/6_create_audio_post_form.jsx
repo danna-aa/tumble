@@ -59,7 +59,7 @@ class CreateTextPostForm extends React.Component {
 
                 <form className="post-form" onSubmit={this.handleSubmit}>
 
-                    <div className="current-user">{this.props.currentUser.username}</div>
+                    <div className="current-user">{this.props.currentUser.username} <i className="fas fa-chevron-down"></i></div>
 
                     <div>
                         <input type="user_id"
@@ -85,17 +85,25 @@ class CreateTextPostForm extends React.Component {
                         <input type="title"
                             value={this.state.title}
                             onChange={this.update('title')}
-                            className="post-form-input"
-                            placeholder="title"
+                            className="post-form-input title"
+                            placeholder="Title"
                         />
                     </div>
 
                     <div>
-                        <input type="body"
+                        <textarea
                             value={this.state.body}
                             onChange={this.update('body')}
-                            className="post-form-input"
-                            placeholder="body"
+                            className="post-form-input body"
+                            placeholder="Your text here"
+                        />
+                    </div>
+
+                    <div>
+                        <input type="tags"
+                            value={this.state.tags}
+                            className="post-form-input tags"
+                            placeholder="#tags"
                         />
                     </div>
 
