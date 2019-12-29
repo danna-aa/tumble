@@ -48,11 +48,6 @@ class Post extends React.Component {
             }
         }
 
-
-
-
-
-
         function makeLink(str) {
             if (!str.includes("http://")) {
                 return "http://" + str;
@@ -107,15 +102,19 @@ class Post extends React.Component {
         // html
         let htmlDiv = <div></div>
         if (post.html) {
-            htmlDiv = <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            htmlDiv = (
+                <p className="post-content-item">
+                    <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                </p>
+            )
         }   
 
         const fileName = (url) => {
             let urlArray = url.split("/");
-            return urlArray[urlArray.length-1]
+            return urlArray[urlArray.length - 1]
         }
-        // attached photos
 
+        // attached photos
         let attachedPhotos = <div />
 
         if (post.photoUrls) {
