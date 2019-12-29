@@ -103,7 +103,7 @@ class Post extends React.Component {
         let htmlDiv = <div></div>
         if (post.html) {
             htmlDiv = (
-                <div className="post-content-item">
+                <div className="post-content-item-html">
                     <div dangerouslySetInnerHTML={{ __html: post.html }} />
                 </div>
             )
