@@ -60,6 +60,17 @@
     letter-spacing: 0.1px;
 }
 
+.dashboard-item div.post-content-item-html {
+    box-sizing: border-box;
+    font-family: Gibson, Helvetica Neue, HelveticaNeue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 0px 20px;
+    margin: 0px 0px 10px 0px;
+    line-height: 1.5em;
+    color: #444444;
+    letter-spacing: 0.1px;
+}
+
 .dashboard-background a.user-link {
     display: inline-block;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
