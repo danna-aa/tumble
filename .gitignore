@@ -4,3 +4,4 @@ bundle.js.map
 /node_modules
 log/development.log
 /log/development.log
+log
