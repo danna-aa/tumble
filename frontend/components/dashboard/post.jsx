@@ -12,11 +12,13 @@ class Post extends React.Component {
             post: this.props.post,
             dropdown: 'hidden',
             notes: Math.floor(Math.random() * 2000),
-            display: true
+            display: true,
+            popupVisible: false
         };
         this.handleLike = this.handleLike.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.handleLike = this.handleDelete.bind(this);
+        this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
 
     // componentDidMount() {
@@ -39,6 +41,34 @@ class Post extends React.Component {
         } else {
             this.setState({ dropdown: 'hidden' });
         }
+
+        if (!this.state.popupVisible) {
+            // attach/remove event handler
+            document.addEventListener(
+            "click",
+            this.handleOutsideClick,
+            false
+            );
+        } else {
+            document.removeEventListener(
+            "click",
+            this.handleOutsideClick,
+            false
+            );
+        }
+
+        this.setState(prevState => ({
+            popupVisible: !prevState.popupVisible
+        }));
+    }
+
+    handleOutsideClick(e) {
+        // ignore clicks on the component itself
+        if (this.node.contains(e.target)) {
+            return;
+        }
+        
+        this.toggleDropdown();
     }
 
     render() {
@@ -163,65 +193,70 @@ class Post extends React.Component {
         }
         
         return (
-        //   <CSSTransition
-        //     in={this.state.display}
-        //     timeout={350}
-        //     classNames="display"
-        //     unmountOnExit
-        //   >
-            <div className="dashboard-item">
-              <div className="avatar">
-                <Link to={`/users/${post.user_id}`} className="avatar-link">
-                  <img className="avatar-image" src={post.avatar} alt="" />
+          //   <CSSTransition
+          //     in={this.state.display}
+          //     timeout={350}
+          //     classNames="display"
+          //     unmountOnExit
+          //   >
+          <div
+            className="dashboard-item"
+            ref={node => {
+              this.node = node;
+            }}
+          >
+            <div className="avatar">
+              <Link to={`/users/${post.user_id}`} className="avatar-link">
+                <img className="avatar-image" src={post.avatar} alt="" />
+              </Link>
+            </div>
+
+            <div className="dashboard-background">
+              <div className="post-content-box">
+                <Link
+                  to={`/users/${this.props.post.user_id}`}
+                  className="user-link"
+                >
+                  {post.username}
                 </Link>
+
+                <h1 className="post-content-item">{post.title}</h1>
+                {linkLink}
+                {picList}
+                {attachedPhotos}
+                {video}
+                {attachedVideo}
+                {attachedAudio}
+                {htmlDiv}
+                <p className="post-content-item">{post.body}</p>
+                {sourceLink}
               </div>
 
-              <div className="dashboard-background">
-                <div className="post-content-box">
-                  <Link
-                    to={`/users/${this.props.post.user_id}`}
-                    className="user-link"
-                  >
-                    {post.username}
-                  </Link>
-
-                  <h1 className="post-content-item">{post.title}</h1>
-                  {linkLink}
-                  {picList}
-                  {attachedPhotos}
-                  {video}
-                  {attachedVideo}
-                  {attachedAudio}
-                  {htmlDiv}
-                  <p className="post-content-item">{post.body}</p>
-                  {sourceLink}
+              <div className="post-footer">
+                <div className="number-notes">
+                  <h4>{`1000 notes`}</h4>
                 </div>
-
-                <div className="post-footer">
-                  <div className="number-notes">
-                    <h4>{`1000 notes`}</h4>
+                <div className="post-interaction-icons">
+                  <div className="post-interaction-icon share">
+                    <i className="fab fa-telegram-plane"></i>
                   </div>
-                  <div className="post-interaction-icons">
-                    <div className="post-interaction-icon share">
-                      <i className="fab fa-telegram-plane"></i>
-                    </div>
-                    <div className="post-interaction-icon comment">
-                      <i className="far fa-comment"></i>
-                    </div>
-                    <div className="post-interaction-icon reblog">
-                      <i className="fas fa-retweet"></i>
-                    </div>
-                    {footerIconRight}
+                  <div className="post-interaction-icon comment">
+                    <i className="far fa-comment"></i>
+                  </div>
+                  <div className="post-interaction-icon reblog">
+                    <i className="fas fa-retweet"></i>
+                  </div>
+                  {footerIconRight}
 
-                    <div className={`gear-dropdown ${this.state.dropdown}`}>
-                      <div onClick={() => this.clickEdit()}>Edit</div>
-                      <div onClick={e => this.handleDelete(e)}>Delete</div>
-                    </div>
+                  <div className={`gear-dropdown ${this.state.dropdown}`}>
+                    <div onClick={() => this.clickEdit()}>Edit</div>
+                    <div onClick={e => this.handleDelete(e)}>Delete</div>
                   </div>
                 </div>
               </div>
             </div>
-        //   </CSSTransition>
+          </div>
+          //   </CSSTransition>
         );
     }
 }
