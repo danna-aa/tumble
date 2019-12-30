@@ -85,7 +85,10 @@ class Api::PostsController < ApplicationController
             :post_type,
             :private,
             :created_at,
-            :updated_at
+            :updated_at,
+            :attached_photos,
+            :photo_file,
+            :photo_url
         )
     end
 

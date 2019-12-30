@@ -14,8 +14,8 @@ const postsReducer = (state = {}, action) => {
         case RECEIVE_POST:
             return Object.assign({}, state, { [action.post.id]: action.post });
         case REMOVE_POST:
-            let newState = merge({}, state);
-            delete newState[action.postId];
+            let newState = Object.assign({}, state);
+            delete (newState[action.postId]);
             return newState;
         // case RECEIVE_OWN_POSTS:
         //     return Object.assign({}, action.posts);

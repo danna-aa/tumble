@@ -12,13 +12,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchPosts: (filter) => dispatch(fetchPosts(filter)),
-    fetchUsers: () => dispatch(fetchUsers())
+    fetchUsers: () => dispatch(fetchUsers()),
+    deletePost: postId => dispatch(deletePost(postId)),
 
     // not used yet
     // fetchPost: postId => dispatch(fetchPost(postId)),
     // createPost: postId => dispatch(createPost(postId)),
     // updatePost: postId => dispatch(updatePost(postId)),
-    // deletePost: postId => dispatch(deletePost(postId)),
     // fetchOwnPosts: postId => dispatch(fetchOwnPosts(postId)),
 });
 

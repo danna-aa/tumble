@@ -3,21 +3,42 @@ import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
 import { stringify } from 'querystring';
+// import { CSSTransition } from "react-transition-group";
 
 class Post extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.post;
+        this.state = { 
+            post: this.props.post,
+            dropdown: 'hidden',
+            notes: Math.floor(Math.random() * 2000),
+            display: true
+        };
         this.handleLike = this.handleLike.bind(this);
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.handleLike = this.handleDelete.bind(this);
     }
 
     // componentDidMount() {
     //     this.props.fetchPost(this.props.match.params(id));
     // }
 
+    handleDelete(e) {
+        let postId = this.state.post.id;
+        this.props.deletePost(postId);
+    }
+
     handleLike(e) {
         console.log("heart");
         e.currentTarget.classList.toggle("liked");
+    }
+
+    toggleDropdown() {
+        if (this.state.dropdown === 'hidden') {
+            this.setState({ dropdown: '' });
+        } else {
+            this.setState({ dropdown: 'hidden' });
+        }
     }
 
     render() {
@@ -138,55 +159,70 @@ class Post extends React.Component {
         // edit or like button
         let footerIconRight = <div className="post-interaction-icon heart" onClick={this.handleLike}><i className="fas fa-heart"></i></div>
         if (post.user_id === session.id) {
-            footerIconRight = <div className="post-interaction-icon edit"><i className="fas fa-cog"></i></div>
+            footerIconRight = <div className="post-interaction-icon edit" onClick={this.toggleDropdown}><i className="fas fa-cog"></i></div>
         }
         
-
-     
-        
         return (
+        //   <CSSTransition
+        //     in={this.state.display}
+        //     timeout={350}
+        //     classNames="display"
+        //     unmountOnExit
+        //   >
             <div className="dashboard-item">
-                <div className="avatar">
-                    <Link to={`/users/${post.user_id}`} className="avatar-link">
-                        <img className="avatar-image" src={post.avatar} alt="" />
-                    </Link>
+              <div className="avatar">
+                <Link to={`/users/${post.user_id}`} className="avatar-link">
+                  <img className="avatar-image" src={post.avatar} alt="" />
+                </Link>
+              </div>
+
+              <div className="dashboard-background">
+                <div className="post-content-box">
+                  <Link
+                    to={`/users/${this.props.post.user_id}`}
+                    className="user-link"
+                  >
+                    {post.username}
+                  </Link>
+
+                  <h1 className="post-content-item">{post.title}</h1>
+                  {linkLink}
+                  {picList}
+                  {attachedPhotos}
+                  {video}
+                  {attachedVideo}
+                  {attachedAudio}
+                  {htmlDiv}
+                  <p className="post-content-item">{post.body}</p>
+                  {sourceLink}
                 </div>
 
-                <div className="dashboard-background">
-
-                    <div className="post-content-box">
-
-                        <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
-                        
-                        <h1 className="post-content-item">{post.title}</h1>
-                        {linkLink}
-                        {picList}
-                        {attachedPhotos}
-                        {video}
-                        {attachedVideo}
-                        {attachedAudio}
-                        {htmlDiv}
-                        <p className="post-content-item">{post.body}</p>
-                        {sourceLink}
-                        
+                <div className="post-footer">
+                  <div className="number-notes">
+                    <h4>{`1000 notes`}</h4>
+                  </div>
+                  <div className="post-interaction-icons">
+                    <div className="post-interaction-icon share">
+                      <i className="fab fa-telegram-plane"></i>
                     </div>
-
-                    <div className="post-footer">
-                        <div className="number-notes">
-                            <h4>{`${Math.floor(Math.random()*2000)} notes`}</h4>
-                        </div>
-                        <div className="post-interaction-icons">
-                            <div className="post-interaction-icon share"><i className="fab fa-telegram-plane"></i></div>
-                            <div className="post-interaction-icon comment"><i className="far fa-comment"></i></div>
-                            <div className="post-interaction-icon reblog"><i className="fas fa-retweet"></i></div>
-                            {footerIconRight}
-                        </div>
+                    <div className="post-interaction-icon comment">
+                      <i className="far fa-comment"></i>
                     </div>
+                    <div className="post-interaction-icon reblog">
+                      <i className="fas fa-retweet"></i>
+                    </div>
+                    {footerIconRight}
 
+                    <div className={`gear-dropdown ${this.state.dropdown}`}>
+                      <div onClick={() => this.clickEdit()}>Edit</div>
+                      <div onClick={e => this.handleDelete(e)}>Delete</div>
+                    </div>
+                  </div>
                 </div>
-
+              </div>
             </div>
-        )
+        //   </CSSTransition>
+        );
     }
 }
 

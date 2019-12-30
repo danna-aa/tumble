@@ -191,24 +191,23 @@
     /* animations */
     display: inline-block;
     vertical-align: middle;
-    -webkit-transform: perspective(0x) translateZ(0);
-    transform: perspective(0px) translateZ(0);
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
     /* box-shadow: 0 0 1px rgba(0, 0, 0, 0); */
 }
 
 .avatar-image:hover {
     opacity: 90%;
-    transition: 600ms ease;
+    transition: 300ms ease;
 
     /* animations */
-    -webkit-animation-name: hvr-buzz-out;
-    animation-name: hvr-buzz-out;
-    -webkit-animation-duration: 0.75s;
-    animation-duration: 0.75s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .back-to-top {
@@ -311,8 +310,58 @@
     color: red;
 }
 
+.gear-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: -30px;
+    bottom: -70px;
+    z-index: 100;
+    width: 130px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.gear-dropdown > div {
+    font-size: 14px;
+    color: #444444;
+    /* margin: 10px; */
+    padding: 12px;
+    transition: 600ms ease;
+}
+
+.gear-dropdown > div:hover {
+    background-color: rgba(176, 196, 222, 0.242);
+    transition: 600ms ease;
+}
+
+.hidden {
+    display: none;
+}
 
 
+
+
+
+
+
+.display-enter, .display-appear {
+  top: var(--menu-starting-top);
+  width: var(--toggler-width);
+  max-height: var(--toggler-height);
+  color: var(--fade-from-color);
+  background-color: var(--toggler-bg-color);
+}
+.display-enter-active, .display-appear-active {
+  top: var(--menu-ending-top);
+  width: var(--menu-width);
+  max-height: var(--menu-max-height);
+  color: var(--fade-to-color);
+  background-color: var(--menu-bg-color);
+  transition: all var(--timeout);
+}
 
 
 

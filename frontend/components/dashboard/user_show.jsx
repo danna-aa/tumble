@@ -55,7 +55,7 @@ class Profile extends React.Component {
                 {/* <PostForm /> */}
                 <div className="main">
 
-                    <PostFormButtons users={users} session={session} />
+                    {/* <PostFormButtons users={users} session={session} /> */}
                     {dashList}
 
                     <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>

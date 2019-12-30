@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { createPost, createPhotoPost, createVideoPost, createAudioPost } from '../../../actions/post_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
-
 class CreateTextPostForm extends React.Component {
     constructor(props) {
         super(props);
