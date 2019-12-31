@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-demo_user = User.create(username: 'Demo', password: 'password', email: 'whatsupeople@gmail.com', title: "this website sucks", description: "i am the demo user")
+demo_user = User.create(username: 'Demo', password: 'password', email: 'whatsupeople@gmail.com', title: "demo user", description: "i am the demo user")
 # demo_user.avatar.attach(io: File.open("/Users/dannaxu/Desktop/yj.jpg"), filename: "avatar")
 
-user2 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu', title: "plz hire me", description: "i don't want to be homeless")
+user2 = User.create(username: 'danna', password: 'password', email: 'danna@berkeley.edu', title: "software engineer", description: "full stack")
 # user2.avatar.attach(io: File.open("/Users/dannaxu/Desktop/jacket.jpg"), filename: "avatar")
 
 user3 = User.create(username: 'boba', password: 'password', email: 'boba@aa.io', title: "is a good boy", description: "boba does not sit")
@@ -31,10 +31,10 @@ user7 = User.create(username: 'bill wurtz', password: 'password', email: 'bill@a
 user8 = User.create(username: 'harry potter', password: 'password', email: 'harry@aa.io', title: "boy who lived", description: "not that great")
 # user8.avatar.attach(io: File.open("/Users/dannaxu/Desktop/hp.jpg"), filename: "avatar")
 
-user9 = User.create(username: 'artist', password: 'password', email: 'artist@aa.io', title: "broke", description: "person who arts")
+user9 = User.create(username: 'artist', password: 'password', email: 'artist@aa.io', title: "i like art", description: "art things")
 # user9.avatar.attach(io: File.open("/Users/dannaxu/Desktop/art.jpg"), filename: "avatar")
 
-user10 = User.create(username: 'mimi', password: 'password', email: 'mimi@aa.io', title: "meme lord", description: "I stole these from reddit")
+user10 = User.create(username: 'mimi', password: 'password', email: 'mimi@aa.io', title: "meme lord", description: "dank memes")
 # user10.avatar.attach(io: File.open("/Users/dannaxu/Desktop/mimi.jpg"), filename: "avatar")
  
 
