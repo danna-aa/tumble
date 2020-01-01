@@ -1,11 +1,11 @@
 class Api::LikesController < ApplicationController
-  def index
-    @likes = Like.all
-  end
+  # def index
+  #   @likes = Like.all
+  # end
 
-  def show
-    @like = Like.find_by(id: params[:id])
-  end
+  # def show
+  #   @like = Like.find_by(id: params[:id])
+  # end
 
   def create
     @like = Like.new
