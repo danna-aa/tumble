@@ -11,10 +11,8 @@ class Api::LikesController < ApplicationController
     @like = Like.new
     @like.user_id = current_user.id
     @like.post_id = params[:id]
-    unless @like.save
-      flash[:errors] = @like.errors.full_messages
-    end
-    render :show
+    
+    
   end
 
   def destroy
