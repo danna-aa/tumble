@@ -213,7 +213,7 @@ class Post extends React.Component {
             <div className="dashboard-background">
               <div className="post-content-box">
                 <Link
-                  to={`/users/${this.props.post.user_id}`}
+                  to={`/posts/${this.props.post.id}`}
                   className="user-link"
                 >
                   {post.username}
@@ -233,7 +233,8 @@ class Post extends React.Component {
 
               <div className="post-footer">
                 <div className="number-notes">
-                  <h4>{`1000 notes`}</h4>
+                 {/* currently only has likes, modify number to include other notes once features implemented */}
+                  <h4>{`${this.props.post.likes.length} notes`}</h4>
                 </div>
                 <div className="post-interaction-icons">
                   <div className="post-interaction-icon share">

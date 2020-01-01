@@ -18,6 +18,13 @@ end
 
 json.avatar url_for(post.user.avatar)
 
+json.set! :likes do
+    json.array! post.likes
+end
+
+# json.likers do
+#   json.array! post.likers.collect{ |liker| liker.id }
+# end
 
 # json.contents do
 #   json.array! post.contents do |content|
@@ -25,6 +32,3 @@ json.avatar url_for(post.user.avatar)
 #   end
 # end
 
-# json.likers do
-#   json.array! post.likers.collect{ |liker| liker.id }
-# end

@@ -2,10 +2,9 @@ import * as PostAPIUtil from '../util/post_api_util';
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_POST = "RECEIVE_POST";
+export const RECEIVE_SINGLE_POST = "RECEIVE_SINGLE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 // export const RECEIVE_LIKED_POSTS = "RECEIVE_LIKED_POSTS";
-// export const RECEIVE_OWN_POSTS = "RECEIVE_OWN_POSTS";
-// export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 
 // actions
 export const receivePosts = posts => ({
@@ -15,6 +14,11 @@ export const receivePosts = posts => ({
 
 export const receivePost = post => ({
     type: RECEIVE_POST,
+    post
+});
+
+export const receiveSinglePost = post => ({
+    type: RECEIVE_SINGLE_POST,
     post
 });
 
@@ -28,16 +32,6 @@ export const removePost = postId => ({
 //     payload
 // });
 
-// export const receiveOwnPosts = posts => ({
-//     type: RECEIVE_OWN_POSTS,
-//     posts
-// });
-
-// export const receiveAllPosts = posts => ({
-//     type: RECEIVE_ALL_POSTS,
-//     posts
-// });
-
 // thunk actions
 export const fetchPosts = ( filter ) => dispatch => (
     PostAPIUtil.fetchPosts( filter )
@@ -47,6 +41,11 @@ export const fetchPosts = ( filter ) => dispatch => (
 export const fetchPost = postId => dispatch => (
     PostAPIUtil.fetchPost(postId)
         .then(post => dispatch(receivePost(post)))
+);
+
+export const fetchSinglePost = postId => dispatch => (
+    PostAPIUtil.fetchPost(postId)
+        .then(post => dispatch(receiveSinglePost(post)))
 );
 
 export const createPost = post => dispatch => (
@@ -63,16 +62,6 @@ export const deletePost = postId => dispatch => (
     PostAPIUtil.deletePost(postId)
         .then(() => dispatch(removePost(postId)))
 );
-
-// export const fetchOwnPosts = userId => dispatch => (
-//     PostAPIUtil.fetchOwnPosts(userId)
-//         .then(posts => dispatch(receiveOwnPosts(posts)))
-// );
-
-// export const fetchAllPosts = () => dispatch => (
-//     PostAPIUtil.fetchAllPosts()
-//         .then(posts => dispatch(receiveAllPosts(posts)))
-// );
 
 export const createPhotoPost = post => dispatch => (
     PostUtil.createPhotoPost(post)

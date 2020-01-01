@@ -71,6 +71,7 @@ post_2_2 = Post.create(image_url: 'https://66.media.tumblr.com/9931693f2c7614d86
 like_1_4 = Like.create(user_id: 1, post_id: 4)
 
 like_2_1 = Like.create(user_id: 2, post_id: 1)
+like_2_2 = Like.create(user_id: 3, post_id: 1)
 
  
 

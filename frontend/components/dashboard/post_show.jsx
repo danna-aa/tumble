@@ -4,19 +4,15 @@ import Post from './post';
 import PostFormButtons from './post_form_buttons';
 import UserSidebar from '../user_sidebar/user_sidebar';
 
-class Profile extends React.Component {
+class PostShow extends React.Component {
     constructor(props) {
         super(props);
-        // this.props.fetchPosts(this.props.match.params.userId);
         this.state = { userId: null };
-
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props.fetchPosts(this.props.match.params.userId);
-        // this.setState({ userId: this.props.match.params.userId })
-        // this.props.fetchUser(this.props.session.id);
+        this.props.fetchSinglePost(this.props.match.params.postId)
     }
 
     handleBackToTop(e) {
@@ -25,14 +21,6 @@ class Profile extends React.Component {
             left: 0,
             behavior: 'smooth'
         });
-    }
-
-    componentDidUpdate(prevProps) {
-        // debugger;
-        if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
-            this.props.fetchPosts(this.props.match.params.userId);
-                // .then(() => this.setState({userId: this.props.match.params.userId}));
-        }
     }
 
     render() {
@@ -63,7 +51,6 @@ class Profile extends React.Component {
                         <div className="avatar">
                             <img className="avatar-image"></img>
                         </div>
-                        <div className="dashboard-background out-of-content"><div><h2 className="out-of-content-message">No more posts...</h2></div></div>
                     </div>
 
                 </div>
@@ -76,4 +63,4 @@ class Profile extends React.Component {
 
 }
 
-export default Profile;
+export default PostShow;

@@ -9,16 +9,26 @@ class Api::PostsController < ApplicationController
             true if Float(string) rescue false
         end
 
+        # filter_string = params[:filter]
+        # single_post = false
+        # if filter_string.start_with?("post")
+        #     single_post = true
+        #     post_number = filter_string[3..-1]
+        # end
+
         case 
-        when params[:filter] =='dashboard'
-            @posts = dashboard_posts
-        when is_string_number?(params[:filter])
-            user_id = params[:filter].to_i
-            profile_user = User.find(user_id)
-            user_posts = profile_user.posts
-            @posts = user_posts
-        else
-            @posts = all_posts
+            when params[:filter] =='dashboard'
+                @posts = dashboard_posts
+            when is_string_number?(params[:filter])
+                user_id = params[:filter].to_i
+                profile_user = User.find(user_id)
+                user_posts = profile_user.posts
+                @posts = user_posts
+            # when single_post
+            #     post_id = post_number.to_i
+            #     @posts = Post.find(post_id)
+            else
+                @posts = all_posts
         end
 
     end
