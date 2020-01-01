@@ -18,6 +18,7 @@ class Post extends React.Component {
         this.handleLike = this.handleLike.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
+        // this.handleShare = this.handleShare.bind(this);
     }
 
     // componentDidMount() {
@@ -28,6 +29,12 @@ class Post extends React.Component {
         let postId = this.state.post.id;
         this.props.deletePost(postId);
     }
+
+    // handleShare(e) {
+    //     let copied = `https://tumble.herokuapp.com/#/posts/${this.props.post.id}`;
+    //     copied.execCommand("Copy");
+    //     alert("Copied " + copied.value);
+    // }
 
     handleLike(e) {
         console.log("heart");
@@ -70,8 +77,47 @@ class Post extends React.Component {
         this.toggleDropdown();
     }
 
+
+
     render() {
         let { post, users, session } = this.props;
+
+
+
+
+        // clipboard setup for sharing
+        let clipboard = new ClipboardJS(`.share-button-${post.id}`);
+
+        clipboard.on("success", function(e) {
+            // console.info("Action:", e.action);
+            // console.info("Text:", e.text);
+            // console.info("Trigger:", e.trigger);
+            let alert = document.querySelector(`.copied-alert-${post.id}`);
+            console.log('====================================');
+            console.log(post.id);
+            console.log('====================================');
+            alert.classList.remove("hidden");
+            setTimeout(() => {
+                alert.classList.add("hidden");
+            }, 300);
+
+            e.clearSelection();
+        });
+
+        // clipboard.on("error", function(e) {
+        //     console.error("Action:", e.action);
+        //     console.error("Trigger:", e.trigger);
+        // });
+
+
+
+
+        
+
+
+
+
+
 
         // images 
         let imageListString = post.image_url;
@@ -212,10 +258,7 @@ class Post extends React.Component {
 
             <div className="dashboard-background">
               <div className="post-content-box">
-                <Link
-                  to={`/posts/${this.props.post.id}`}
-                  className="user-link"
-                >
+                <Link to={`/posts/${this.props.post.id}`} className="user-link">
                   {post.username}
                 </Link>
 
@@ -233,13 +276,24 @@ class Post extends React.Component {
 
               <div className="post-footer">
                 <div className="number-notes">
-                 {/* currently only has likes, modify number to include other notes once features implemented */}
+                  {/* currently only has likes, modify number to include other notes once features implemented */}
                   <h4>{`${this.props.post.likes.length} notes`}</h4>
                 </div>
                 <div className="post-interaction-icons">
-                  <div className="post-interaction-icon share">
+                  <div
+                    className={`post-interaction-icon share share-button share-button-${post.id}`}
+                    data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
+                  >
                     <i className="fab fa-telegram-plane"></i>
                   </div>
+                  <div className={`copied-alert copied-alert-${post.id} hidden`}>
+                      <div>
+                        Copied!
+                      </div>
+                  </div>
+
+
+
                   <div className="post-interaction-icon comment">
                     <i className="far fa-comment"></i>
                   </div>
