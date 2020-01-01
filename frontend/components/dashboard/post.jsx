@@ -93,9 +93,6 @@ class Post extends React.Component {
             // console.info("Text:", e.text);
             // console.info("Trigger:", e.trigger);
             let alert = document.querySelector(`.copied-alert-${post.id}`);
-            console.log('====================================');
-            console.log(post.id);
-            console.log('====================================');
             alert.classList.remove("hidden");
             setTimeout(() => {
                 alert.classList.add("hidden");
