@@ -17,7 +17,6 @@ class Post extends React.Component {
         };
         this.handleLike = this.handleLike.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
-        this.handleLike = this.handleDelete.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
 
