@@ -229,9 +229,25 @@ class Post extends React.Component {
         }
 
         // edit or like button
-        let footerIconRight = <div className="post-interaction-icon heart" onClick={this.handleLike}><i className="fas fa-heart"></i></div>
+        let footerIconRight = (
+          <div
+            className="post-interaction-icon heart"
+            onClick={this.handleLike}
+            title="Like"
+          >
+            <i className="fas fa-heart"></i>
+          </div>
+        );
         if (post.user_id === session.id) {
-            footerIconRight = <div className="post-interaction-icon edit" onClick={this.toggleDropdown}><i className="fas fa-cog"></i></div>
+            footerIconRight = (
+              <div
+                className="post-interaction-icon edit"
+                onClick={this.toggleDropdown}
+                title="Post Options"
+              >
+                <i className="fas fa-cog"></i>
+              </div>
+            );
         }
         
         return (
@@ -274,27 +290,31 @@ class Post extends React.Component {
               <div className="post-footer">
                 <div className="number-notes">
                   {/* currently only has likes, modify number to include other notes once features implemented */}
-                  <h4>{`${this.props.post.likes.length} notes`}</h4>
+                  <Link to={`/posts/${this.props.post.id}`}>
+                    <h4>{`${this.props.post.likes.length} notes`}</h4>
+                  </Link>
                 </div>
                 <div className="post-interaction-icons">
                   <div
                     className={`post-interaction-icon share share-button share-button-${post.id}`}
                     data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
+                    title="Share"
                   >
                     <i className="fab fa-telegram-plane"></i>
                   </div>
-                  <div className={`copied-alert copied-alert-${post.id} hidden`}>
-                      <div>
-                        Copied!
-                      </div>
+                  <div
+                    className={`copied-alert copied-alert-${post.id} hidden`}
+                  >
+                    <div>Copied!</div>
                   </div>
 
-
-
-                  <div className="post-interaction-icon comment">
+                  <div
+                    className="post-interaction-icon comment"
+                    title="Reply"
+                  >
                     <i className="far fa-comment"></i>
                   </div>
-                  <div className="post-interaction-icon reblog">
+                  <div className="post-interaction-icon reblog" title="Reblog">
                     <i className="fas fa-retweet"></i>
                   </div>
                   {footerIconRight}

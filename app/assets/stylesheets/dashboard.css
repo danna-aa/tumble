@@ -216,6 +216,12 @@
     bottom: 30px;
 }
 
+.back-to-top-corner {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
 /* out of content message */
 .out-of-content {
     color: white;
