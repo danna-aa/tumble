@@ -9,7 +9,7 @@ class PostFormButtons extends React.Component {
     }
 
     render() {
-        console.log(this.props)
+
         const { users, session, openModal } = this.props;
 
         return (
