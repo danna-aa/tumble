@@ -36,9 +36,10 @@ class CreateTextPostForm extends React.Component {
     }
 
     handleSubmit(e) {
+        e.preventDefault();
         const post = Object.assign({}, this.state);
-        this.props.createPost(post);
-        this.props.closeModal();
+        this.props.createPost(post)
+            .then(() => this.props.closeModal());
     }
 
     renderErrors() {

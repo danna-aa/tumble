@@ -24,16 +24,26 @@ class PostShow extends React.Component {
     }
 
     render() {
-        let { posts, users, session } = this.props;
+        let {posts, users, session, deletePost, likePost, unlikePost} = this.props;
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
         let numPosts = postsList.length;
 
         // map list of dashboard items 
-        let dashList = (postsList.map(post => {
-            return <Post key={post.id} post={post} users={users} session={session} />
-        }));
+        let dashList = postsList.map(post => (
+          <Post
+            key={post.id}
+            id={`post-${post.id}`}
+            post={post}
+            users={users}
+            session={session}
+            deletePost={deletePost}
+            likePost={likePost}
+            unlikePost={unlikePost}
+            userId={session.id}
+          />
+        ));
 
         let currentUser = users[session.id];
 

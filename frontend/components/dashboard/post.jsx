@@ -11,34 +11,55 @@ class Post extends React.Component {
         this.state = { 
             post: this.props.post,
             dropdown: 'hidden',
-            notes: Math.floor(Math.random() * 2000),
+            // notes: Math.floor(Math.random() * 2000),
             display: true,
-            popupVisible: false
+            popupVisible: false,
+            liked: (this.props.userId in this.props.post.likes),
+            userId: this.props.userId
         };
+
         this.handleLike = this.handleLike.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
-        // this.handleShare = this.handleShare.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchPost(this.props.match.params(id));
-    // }
+    componentDidMount() {
+        // this.props.fetchPost(this.props.match.params(id));
+
+
+        // console.log('====================================');
+        // console.log(this.state);
+        // console.log(this.props);
+        // console.log('====================================');
+    }
 
     handleDelete(e) {
         let postId = this.state.post.id;
         this.props.deletePost(postId);
     }
 
-    // handleShare(e) {
-    //     let copied = `https://tumble.herokuapp.com/#/posts/${this.props.post.id}`;
-    //     copied.execCommand("Copy");
-    //     alert("Copied " + copied.value);
-    // }
-
     handleLike(e) {
         console.log("heart");
         e.currentTarget.classList.toggle("liked");
+        if (!this.state.liked) {
+            // console.log("try to like");
+            this.props
+                .likePost(this.props.post, this.state.userId)
+                .then(() => this.setState({ liked: true }));
+
+        } else if ( this.state.liked ) {
+            // console.log("try to unlike");
+            // console.log(this.props.post.id);
+            // console.log(this.props.post.likes[this.state.userId].id);
+            this.props
+              .unlikePost(
+                this.props.post.id,
+                this.props.post.likes[this.state.userId]
+              )
+              .then(() => this.setState({ liked: false }));
+
+        }
+
     }
 
     toggleDropdown() {
@@ -70,9 +91,9 @@ class Post extends React.Component {
 
     handleOutsideClick(e) {
         // ignore clicks on the component itself
-        if (this.node.contains(e.target)) {
-            return;
-        }
+        // if (this.node && this.node.contains(e.target)) {
+        //     return;
+        // }
         
         this.toggleDropdown();
     }
@@ -229,9 +250,14 @@ class Post extends React.Component {
         }
 
         // edit or like button
+        let liked;
+        if (this.state.liked) {
+            liked = "liked"
+        }
+
         let footerIconRight = (
           <div
-            className="post-interaction-icon heart"
+            className={`post-interaction-icon heart ${liked}`}
             onClick={this.handleLike}
             title="Like"
           >
@@ -248,6 +274,11 @@ class Post extends React.Component {
                 <i className="fas fa-cog"></i>
               </div>
             );
+        }
+
+        let numNotes = 0;
+        if (this.props.post.likes) {
+            numNotes = Object.keys(this.props.post.likes).length;
         }
         
         return (
@@ -291,7 +322,7 @@ class Post extends React.Component {
                 <div className="number-notes">
                   {/* currently only has likes, modify number to include other notes once features implemented */}
                   <Link to={`/posts/${this.props.post.id}`}>
-                    <h4>{`${this.props.post.likes.length} notes`}</h4>
+                    <h4>{`${numNotes} notes`}</h4>
                   </Link>
                 </div>
                 <div className="post-interaction-icons">

@@ -370,7 +370,7 @@
     /* display: none; */
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1.2s, opacity 1.2s ease;
+    transition: visibility 0.8s, opacity 0.8s ease;
 }
 
 

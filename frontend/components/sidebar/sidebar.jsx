@@ -24,7 +24,7 @@ class Sidebar extends React.Component {
         const { users } = this.props;
         let recommendedList = shuffle(Object.values(users));
 
-        const sidebarList = recommendedList.map(user => (
+        let sidebarList = recommendedList.map(user => (
             <Link to={`/users/${user.id}`} key={user.id}> 
                 <SidebarItem user={user} /> 
             </Link>

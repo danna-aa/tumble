@@ -25,14 +25,24 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        let {posts, users, session, deletePost} = this.props;
+        let {posts, users, session, deletePost, likePost, unlikePost} = this.props;
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
 
         // map list of dashboard items 
         let dashList = postsList.map(post => (
-            <Post key={post.id} id={`post-${post.id}`} post={post} users={users} session={session} deletePost={deletePost}/>
+            <Post 
+                key={post.id} 
+                id={`post-${post.id}`} 
+                post={post} 
+                users={users} 
+                session={session} 
+                deletePost={deletePost}
+                likePost={likePost}
+                unlikePost={unlikePost}
+                userId = {session.id}
+            />
         ));
 
         return (

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts } from '../../actions/post_actions';
+import { likePost, unlikePost } from '../../actions/like_actions';
 import { fetchUsers } from '../../actions/session_actions';
 import Dashboard from './dashboard';
 
@@ -14,7 +15,9 @@ const mapDispatchToProps = dispatch => ({
     fetchPosts: (filter) => dispatch(fetchPosts(filter)),
     fetchUsers: () => dispatch(fetchUsers()),
     deletePost: postId => dispatch(deletePost(postId)),
-
+    likePost: (post, userId) => dispatch(likePost(post, userId)),
+    unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
+    
     // not used yet
     // fetchPost: postId => dispatch(fetchPost(postId)),
     // createPost: postId => dispatch(createPost(postId)),
