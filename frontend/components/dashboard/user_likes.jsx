@@ -4,7 +4,7 @@ import Post from './post';
 import PostFormButtons from './post_form_buttons';
 import UserSidebar from '../user_sidebar/user_sidebar';
 
-class Profile extends React.Component {
+class Likes extends React.Component {
     constructor(props) {
         super(props);
         // this.props.fetchPosts(this.props.match.params.userId);
@@ -20,7 +20,7 @@ class Profile extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.props
-          .fetchPosts(this.props.match.params.userId);
+          .fetchPosts('likes');
           
         // this.setState({ userId: this.props.match.params.userId })
         // this.props.fetchUser(this.props.session.id);
@@ -124,4 +124,4 @@ class Profile extends React.Component {
 
 }
 
-export default Profile;
+export default Likes;

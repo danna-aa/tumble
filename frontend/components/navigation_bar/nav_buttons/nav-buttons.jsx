@@ -42,6 +42,11 @@ const NavButtons = ({ currentUser, logout }) => {
             </Link>
           </li>
           <li>
+            <Link to="/likes" className="icon" title="Likes">
+              <i className="fas fa-heart"></i>
+            </Link>
+          </li>
+          {/* <li>
             <Link to="/" className="icon" title="Inbox">
               <i className="far fa-envelope"></i>
             </Link>
@@ -55,7 +60,7 @@ const NavButtons = ({ currentUser, logout }) => {
             <Link to="/" className="icon" title="Activity">
               <i className="fas fa-bolt"></i>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               to={`/users/${currentUser.id}`}

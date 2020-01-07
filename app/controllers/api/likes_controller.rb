@@ -1,7 +1,7 @@
 class Api::LikesController < ApplicationController
-  # def index
-  #   @likes = Like.all
-  # end
+  def index
+    @likes = current_user.likes
+  end
 
   # def show
   #   @like = Like.find_by(id: params[:id])

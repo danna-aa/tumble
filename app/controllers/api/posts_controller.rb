@@ -4,6 +4,11 @@ class Api::PostsController < ApplicationController
     def index
         dashboard_posts = current_user.dashboard
         all_posts = Post.all
+        liked_posts = []
+        current_user.likes.each do |like|
+            liked_posts << Post.find(like.post_id)
+        end
+        
         
         def is_string_number?(string)
             true if Float(string) rescue false
@@ -27,6 +32,8 @@ class Api::PostsController < ApplicationController
             # when single_post
             #     post_id = post_number.to_i
             #     @posts = Post.find(post_id)
+            when params[:filter] =='likes'
+                @posts = liked_posts
             else
                 @posts = all_posts
         end

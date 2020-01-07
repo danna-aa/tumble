@@ -34,7 +34,6 @@ const postsReducer = (state = {}, action) => {
             newState[postId].likes[userId] = like;
             return newState;
         case REMOVE_LIKE:
-            console.log(action);
             userId = action.like.user_id;
             postId = action.like.post_id;
             delete newState[postId].likes[userId];
