@@ -17,7 +17,7 @@ function Modal({ modal, closeModal }) {
     let component;
     switch (modal) {
         case 'text':
-            component = <CreateTextPostForm/>
+            component = <CreateTextPostForm />
             break;
         case 'photo':
             component = <CreatePhotoPostForm />

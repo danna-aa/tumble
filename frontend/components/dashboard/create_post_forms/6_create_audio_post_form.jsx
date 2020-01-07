@@ -153,7 +153,7 @@ class CreateTextPostForm extends React.Component {
 const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id],
     errors: state.errors.session,
-    formType: 'text'
+    formType: 'audio'
 })
 
 const mapDispatchToProps = dispatch => ({

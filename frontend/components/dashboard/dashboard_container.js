@@ -17,11 +17,11 @@ const mapDispatchToProps = dispatch => ({
     deletePost: postId => dispatch(deletePost(postId)),
     likePost: (post, userId) => dispatch(likePost(post, userId)),
     unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
+    updatePost: postId => dispatch(updatePost(postId)),
     
     // not used yet
     // fetchPost: postId => dispatch(fetchPost(postId)),
     // createPost: postId => dispatch(createPost(postId)),
-    // updatePost: postId => dispatch(updatePost(postId)),
     // fetchOwnPosts: postId => dispatch(fetchOwnPosts(postId)),
 });
 

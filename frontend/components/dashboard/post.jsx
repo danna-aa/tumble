@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
 import { stringify } from 'querystring';
+import { openModal } from "../../actions/modal_actions";
+
 // import { CSSTransition } from "react-transition-group";
 
 class Post extends React.Component {
@@ -29,7 +31,7 @@ class Post extends React.Component {
 
         // console.log('====================================');
         // console.log(this.state);
-        // console.log(this.props);
+        // console.log(this.props.post.post_type);
         // console.log('====================================');
     }
 
@@ -101,6 +103,8 @@ class Post extends React.Component {
 
 
     render() {
+
+     
         let { post, users, session } = this.props;
 
 
@@ -339,19 +343,22 @@ class Post extends React.Component {
                     <div>Copied!</div>
                   </div>
 
-                  <div
-                    className="post-interaction-icon comment"
-                    title="Reply"
-                  >
+                  {/* <div className="post-interaction-icon comment" title="Reply">
                     <i className="far fa-comment"></i>
-                  </div>
-                  <div className="post-interaction-icon reblog" title="Reblog">
+                  </div> */}
+                  <div
+                    className="post-interaction-icon reblog"
+                    title="Reblog"
+                    onClick={() => dispatch(openModal(post.post_type))}
+                  >
                     <i className="fas fa-retweet"></i>
                   </div>
                   {footerIconRight}
 
                   <div className={`gear-dropdown ${this.state.dropdown}`}>
-                    <div onClick={() => this.clickEdit()}>Edit</div>
+                    <div onClick={() => dispatch(openModal(post.post_type))}>
+                      Edit
+                    </div>
                     <div onClick={e => this.handleDelete(e)}>Delete</div>
                   </div>
                 </div>
