@@ -305,6 +305,12 @@ class Post extends React.Component {
             </div>
 
             <div className="dashboard-background">
+  
+            <Link
+                to={`/posts/${this.props.post.id}`}
+                className="fold-link"
+            ><div className="fold"></div></Link>
+  
               <div className="post-content-box">
                 <Link to={`/posts/${this.props.post.id}`} className="user-link">
                   {post.username}
@@ -343,9 +349,9 @@ class Post extends React.Component {
                     <div>Copied!</div>
                   </div>
 
-                  {/* <div className="post-interaction-icon comment" title="Reply">
+                  <div className="post-interaction-icon comment" title="Reply">
                     <i className="far fa-comment"></i>
-                  </div> */}
+                  </div>
                   <div
                     className="post-interaction-icon reblog"
                     title="Reblog"
