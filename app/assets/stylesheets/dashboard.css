@@ -38,6 +38,23 @@
     margin: 0px 0px 5px 0px;
 }
 
+.explore-content {
+    /* max-width: 100px; */
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .dashboard-item h1.post-content-item {
     box-sizing: border-box;
     font-family: Gibson, Helvetica Neue, HelveticaNeue, Helvetica, Arial, sans-serif;
@@ -102,7 +119,7 @@
 
 .dashboard-item .link-link-container {
     padding: 0px 20px;
-    margin-top: 10px;
+    margin: 10px 0px;
     background-color: rgba(0, 0, 0, 0.1);
 }
 

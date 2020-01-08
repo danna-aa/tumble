@@ -65,7 +65,7 @@ class PostShow extends React.Component {
 
                 </div>
 
-                <UserSidebar currentUser={currentUser} numPosts={numPosts}/>
+                {/* <UserSidebar currentUser={currentUser} numPosts={numPosts}/> */}
             </div>
         )
     }
