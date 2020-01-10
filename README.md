@@ -28,6 +28,7 @@ Comment on posts and like your favorite posts
 ### Search Functionality 
 
 Search tags for keywords to locate and discover specific posts faster
+
 ![search](https://media.giphy.com/media/LT0EnK4Ox6SVx3Pd7D/giphy.gif)
 
 Search parameters utilize active record queries and are filtered in the backend for optimal performance
