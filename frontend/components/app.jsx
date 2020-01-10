@@ -11,6 +11,7 @@ import UserShowContainer from './dashboard/user_show_container';
 import ExploreContainer from './dashboard/explore_container';
 import PostShowContainer from './dashboard/post_show_container';
 import UserLikesContainer from './dashboard/user_likes_container';
+import SearchContainer from './dashboard/search_container';
 import Modal from './modal';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -19,13 +20,14 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
     <div className='app'>
         <Modal />
-        <NavigationBarContainer />
+        <NavigationBarContainer/>
 
         <Switch>
             <ProtectedRoute exact path='/dashboard' component={DashboardContainer}/>
             <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
             <ProtectedRoute exact path='/posts/:postId' component={PostShowContainer}/>
             <ProtectedRoute exact path='/likes' component={UserLikesContainer}/>
+            <ProtectedRoute exact path='/search/:query' component={SearchContainer}/>
             <AuthRoute exact path='/login' component={LogInFormContainer}/>
             <AuthRoute exact path='/' component={SignUpFormContainer}/>
             <ProtectedRoute exact path='/explore' component={ExploreContainer}/>
@@ -34,5 +36,6 @@ const App = () => (
         </Switch>
     </div>
 );
+
 
 export default App;

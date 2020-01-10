@@ -25,6 +25,8 @@ class Dashboard extends React.Component {
     }
 
     render() {
+
+        // console.log(this.props.history)
         let { posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
 
         // dashboard sorted in order of newest at the top

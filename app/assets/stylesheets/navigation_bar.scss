@@ -92,6 +92,11 @@ body {
     flex: 1;
 }
 
+.search-box{
+    display: flex;
+    align-items: center;
+}
+
 .search-bar input[type='text'] {
     display: inline-block;
     background-image: url('search-icon.svg');
@@ -106,9 +111,9 @@ body {
     border-radius: 3px;
     padding-left: 40px;
     opacity: 0.7;
-
-
+    color: white;
     resize: horizontal;
+    // margin-top: 10px;
 }
 
 .search-bar input[type=text]:focus {
@@ -117,11 +122,12 @@ body {
     opacity: 1;
     background-image: url('search-solid.svg');
     background-size: 20px;
+    color: black;
 }
 
 .search-bar input[type=text]:focus::placeholder {
     transition: 500ms ease;
-    color: black
+    color: black;
 }
 
 .search-bar input[type='text']::placeholder {

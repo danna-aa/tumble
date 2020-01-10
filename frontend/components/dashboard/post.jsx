@@ -29,7 +29,6 @@ class Post extends React.Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
         this.handleCommentsOutsideClick = this.handleCommentsOutsideClick.bind(this);
         this.handleMakeComment = this.handleMakeComment.bind(this);
-        this.update = this.update.bind(this);
     }
 
     componentDidMount() {

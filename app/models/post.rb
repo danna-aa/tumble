@@ -41,6 +41,10 @@ class Post < ApplicationRecord
 
     has_many :tags
 
+    def search
+        
+    end
+
     # reblogs query
     def reblogs
         if self.root_post_id

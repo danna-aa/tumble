@@ -78,3 +78,11 @@ export const createVideoPost = (post) => {
 //         error: err => console.log(err)
 //     })
 // );
+
+// export const search = filter => {
+//     return $.ajax({
+//         url: `/api/posts?filter=${filter}`,
+//         method: `GET`,
+//         data: { filter }
+//     });
+// };
