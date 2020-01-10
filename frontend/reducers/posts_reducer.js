@@ -11,6 +11,11 @@ import {
     REMOVE_LIKE
 } from "../actions/like_actions";
 
+import {
+    RECEIVE_COMMENT,
+    REMOVE_COMMENT
+} from "../actions/comment_actions";
+
 const postsReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
@@ -29,14 +34,27 @@ const postsReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_LIKE:
             like = action.like;
-            userId = action.like.user_id;
-            postId = action.like.post_id;
+            userId = like.user_id;
+            postId = like.post_id;
             newState[postId].likes[userId] = like;
             return newState;
         case REMOVE_LIKE:
-            userId = action.like.user_id;
-            postId = action.like.post_id;
+            like = action.like;
+            userId = like.user_id;
+            postId = like.post_id;
             delete newState[postId].likes[userId];
+            return newState;
+        case RECEIVE_COMMENT:
+            comment = action.comment;
+            userId = comment.user_id;
+            postId = comment.post_id;
+            newState[postId].comments[userId] = comment;
+            return newState;
+        case REMOVE_COMMENT:
+            comment = action.comment;
+            userId = comment.user_id;
+            postId = comment.post_id;
+            delete newState[postId].comments[userId];
             return newState;
         default:
             return state;

@@ -382,7 +382,7 @@
     flex-direction: column;
     right: -30px;
     bottom: -70px;
-    z-index: 100;
+    z-index: 105;
     width: 130px;
     background-color: white;
     border: 1px solid lightgrey;

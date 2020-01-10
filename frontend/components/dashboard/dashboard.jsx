@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        let {posts, users, session, deletePost, likePost, unlikePost} = this.props;
+        let { posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
@@ -41,6 +41,8 @@ class Dashboard extends React.Component {
                 deletePost={deletePost}
                 likePost={likePost}
                 unlikePost={unlikePost}
+                createComment={createComment}
+                deleteComment={deleteComment}
                 userId = {session.id}
             />
         ));
