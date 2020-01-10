@@ -17,6 +17,7 @@ Tumble is implemented using Ruby on Rails on the backend, PostgreSQL database, a
 ### Create Posts
 
 Create text, photo, video, audio, quote, link, and chat posts with tagging
+
 ![post](https://media.giphy.com/media/h6Zz0nqNMXzHUpPvWa/giphy.gif)
 
 ### Comments and Likes 
