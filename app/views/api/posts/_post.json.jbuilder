@@ -35,7 +35,7 @@ end
 json.comments Hash.new
 json.comments do
     post.comments.each do |comment|
-        json.set! comment.user_id do
+        json.set! comment.id do
             json.partial! 'comment', comment: comment
         end
     end

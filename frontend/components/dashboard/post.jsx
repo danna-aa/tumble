@@ -284,6 +284,34 @@ class Post extends React.Component {
         if (this.props.post.likes) {
             numNotes = Object.keys(this.props.post.likes).length;
         }
+
+        // comment list 
+        let commentsList;
+        let commentsSorted = Object.values(this.props.post.comments).sort((a, b) =>
+          a.created_at > b.created_at ? 1 : -1
+        );
+        let comments = commentsSorted.map(comment => (
+          <div key={comment.id} id={`comment-${comment.id}`} className="post-comment">
+            {comment.body}
+          </div>
+        ));
+
+        let numComments = Object.keys(this.props.post.comments).length;
+ 
+        commentsList = (
+          <div className="post-comments">
+            <div className="post-comments-title">{numComments} Comments</div>
+            <div className="post-comments-list">
+                {comments}
+                <div className="post-comments-list-anchor"></div>
+            </div>
+            <form className="post-comments-form">
+                <input type="text" placeholder="Leave a comment" className="comment-text-input"/>
+                <button className="comment-form-button">Reply</button>
+            </form>
+          </div>
+        );
+        
         
         return (
           //   <CSSTransition
@@ -305,12 +333,10 @@ class Post extends React.Component {
             </div>
 
             <div className="dashboard-background">
-  
-            <Link
-                to={`/posts/${this.props.post.id}`}
-                className="fold-link"
-            ><div className="fold"></div></Link>
-  
+              <Link to={`/posts/${this.props.post.id}`} className="fold-link">
+                <div className="fold"></div>
+              </Link>
+
               <div className="post-content-box">
                 <Link to={`/posts/${this.props.post.id}`} className="user-link">
                   {post.username}
@@ -329,7 +355,6 @@ class Post extends React.Component {
               </div>
 
               <div className="post-footer">
-
                 {/* notes */}
                 <div className="number-notes">
                   {/* currently only has likes, modify number to include other notes once features implemented */}
@@ -339,7 +364,7 @@ class Post extends React.Component {
                 </div>
 
                 <div className="post-interaction-icons">
-                {/* share */}
+                  {/* share */}
                   <div
                     className={`post-interaction-icon share share-button share-button-${post.id}`}
                     data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
@@ -348,16 +373,19 @@ class Post extends React.Component {
                     <i className="fab fa-telegram-plane"></i>
                   </div>
 
-                  <div className={`copied-alert copied-alert-${post.id} hidden`}>
+                  <div
+                    className={`copied-alert copied-alert-${post.id} hidden`}
+                  >
                     <div>Copied!</div>
                   </div>
 
-                {/* comment */}
+                  {/* comment */}
                   <div className="post-interaction-icon comment" title="Reply">
                     <i className="far fa-comment"></i>
                   </div>
+                  {commentsList}
 
-                {/* reblog */}
+                  {/* reblog */}
                   <div
                     className="post-interaction-icon reblog"
                     title="Reblog"
@@ -367,14 +395,13 @@ class Post extends React.Component {
                   </div>
                   {footerIconRight}
 
-                {/* post options menu */}
+                  {/* post options menu */}
                   <div className={`gear-dropdown ${this.state.dropdown}`}>
                     <div onClick={() => dispatch(openModal(post.post_type))}>
                       Edit
                     </div>
                     <div onClick={e => this.handleDelete(e)}>Delete</div>
                   </div>
-
                 </div>
               </div>
             </div>

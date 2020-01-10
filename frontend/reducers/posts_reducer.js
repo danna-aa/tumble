@@ -22,6 +22,7 @@ const postsReducer = (state = {}, action) => {
     let userId;
     let postId;
     let like;
+    let commentId;
     switch (action.type) {
         case RECEIVE_POSTS:
             return Object.assign({}, action.posts);
@@ -46,15 +47,15 @@ const postsReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_COMMENT:
             comment = action.comment;
-            userId = comment.user_id;
+            commentId = comment.id;
             postId = comment.post_id;
-            newState[postId].comments[userId] = comment;
+            newState[postId].comments[commentId] = comment;
             return newState;
         case REMOVE_COMMENT:
             comment = action.comment;
-            userId = comment.user_id;
+            commentId = comment.id;
             postId = comment.post_id;
-            delete newState[postId].comments[userId];
+            delete newState[postId].comments[commentId];
             return newState;
         default:
             return state;
