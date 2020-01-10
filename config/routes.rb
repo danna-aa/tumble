@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :destroy] do 
       resources :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      resources :tags, only: [:create, :destroy]
     end
 
     resources :likes, only: [:index]
     resources :comments, only: [:index]
+    resources :tags, only: [:index]
 
   end
 

@@ -16,6 +16,8 @@ import {
     REMOVE_COMMENT
 } from "../actions/comment_actions";
 
+import { RECEIVE_TAG, REMOVE_TAG } from "../actions/tag_actions";
+
 const postsReducer = (state = {}, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
@@ -24,6 +26,8 @@ const postsReducer = (state = {}, action) => {
     let like;
     let commentId;
     let comment;
+    let tagId;
+    let tag;
     switch (action.type) {
         case RECEIVE_POSTS:
             return Object.assign({}, action.posts);
@@ -57,6 +61,18 @@ const postsReducer = (state = {}, action) => {
             commentId = comment.id;
             postId = comment.post_id;
             delete newState[postId].comments[commentId];
+            return newState;
+        case RECEIVE_TAG:
+            tag = action.tag;
+            tagId = tag.id;
+            postId = tag.post_id;
+            newState[postId].tags[tagId] = tag;
+            return newState;
+        case REMOVE_TAG:
+            tag = action.tag;
+            tagId = tag.id;
+            postId = tag.post_id;
+            delete newState[postId].tags[tagId];
             return newState;
         default:
             return state;

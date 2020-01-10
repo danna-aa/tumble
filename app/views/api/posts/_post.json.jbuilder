@@ -41,6 +41,15 @@ json.comments do
     end
 end
 
+json.tags Hash.new
+json.tags do
+    post.tags.each do |tag|
+        json.set! tag.id do
+            json.partial! 'tag', tag: tag
+        end
+    end
+end
+
 # json.contents do
 #   json.array! post.contents do |content|
 #     json.url url_for(content)

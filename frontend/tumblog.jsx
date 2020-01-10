@@ -8,6 +8,8 @@ import Root from './components/root';
 import { login, signup, logout, fetchUsers } from './actions/session_actions';
 import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPosts, fetchAllPosts } from './actions/post_actions';
 import { likePost, unlikePost } from './actions/like_actions';
+import { createComment, deleteComment } from './actions/comment_actions';
+import { createTag, deleteTag } from './actions/tag_actions';
 // test end
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -48,6 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.likePost = likePost;
     window.unlikePost = unlikePost;
+
+    window.createComment = createComment;
+    window.deleteComment = deleteComment;
+
+    window.createTag = createTag;
+    window.deleteTag = deleteTag;
 
     // test end
 });

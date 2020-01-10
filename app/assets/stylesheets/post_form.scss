@@ -25,9 +25,10 @@
   padding: 15px 20px;
   color: rgba(0, 0, 0, 0.7);
   line-height: 2em;
+  z-index: 200;
 }
 
-.post-form-container *{
+.post-form-container * {
   -webkit-animation: modalFade 0.6s ease;
 
 }

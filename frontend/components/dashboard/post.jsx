@@ -80,8 +80,8 @@ class Post extends React.Component {
     handleMakeComment(e) {
         let comment = {user_id: this.props.session.id, post_id: this.props.post.id, body: this.state.comment};
         this.props.createComment(this.props.post.id, comment);
-        let inputs = document.getElementsByClassName("comment-text-input");
 
+        let inputs = document.getElementsByClassName("comment-text-input");
         for (let i = 0; i < inputs.length; i++) {
           inputs[i].value = "";
         }
@@ -264,6 +264,17 @@ class Post extends React.Component {
             }
         }
 
+        // tags
+        let tags 
+        let tagsArray = Object.values(post.tags)
+        if ( tagsArray.length > 0 ) {
+            tags = (tagsArray.map((tagPacket, j) => (
+                tagPacket.tag_body.split(" ").map((tag, i) => (
+                    <div key={j + "-"+ i} className="tag">{`#` + tag}</div>
+                ))
+            )))
+        }
+
         // link
         let linkLink = <div />
         if (post.link) {
@@ -443,8 +454,11 @@ class Post extends React.Component {
                 {attachedVideo}
                 {attachedAudio}
                 {htmlDiv}
-                <p className="post-content-item">{post.body}</p>
+                <p className="post-content-item post-body">{post.body}</p>
                 {sourceLink}
+                <div className="tags-container">
+                    {tags}
+                </div>
               </div>
 
               <div className="post-footer">

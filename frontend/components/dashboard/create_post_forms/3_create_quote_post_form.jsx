@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createPost, createPhotoPost, createVideoPost, createAudioPost } from '../../../actions/post_actions';
+import { createTag, deleteTag } from "../../../actions/tag_actions";
 import { closeModal } from '../../../actions/modal_actions';
 
 
@@ -24,6 +25,7 @@ class CreateTextPostForm extends React.Component {
             parent_post_id: "",
             post_type: props.formType,
             private: false,
+            tags: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,6 +41,7 @@ class CreateTextPostForm extends React.Component {
         e.preventDefault();
         const post = Object.assign({}, this.state);
         this.props.createPost(post)
+            .then(action => this.props.createTag(action.post.id, {post_id: action.post.id, tag_body: this.state.tags}))
             .then(() => this.props.closeModal());
     }
 
@@ -103,6 +106,7 @@ class CreateTextPostForm extends React.Component {
                     <div>
                         <input type="tags"
                             value={this.state.tags}
+                            onChange={this.update('tags')}
                             className="post-form-input tags"
                             placeholder="#tags"
                         />
@@ -140,6 +144,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createPost: post => dispatch(createPost(post)),
     closeModal: () => dispatch(closeModal()),
+    createTag: (postId, tag) => dispatch(createTag(postId, tag)),
+    deleteTag: (postId, tag) => dispatch(deleteTag(postId, tag)),
     // createPhotoPost: post => dispatch(createPhotoPost(post)),
     // createVideoPost: post => dispatch(createVideoPost(post)),
     // createAudioPost: post => dispatch(createAudioPost(post))
