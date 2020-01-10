@@ -2,7 +2,7 @@
 
 [Live Site](https://tumble.herokuapp.com/)
 
-![splash](https://media.giphy.com/media/TinGEGD2DsZkZ5Ty5W/giphy.gif)
+![splash](https://media.giphy.com/media/WQwksQLUI1GXI1yMOZ/giphy.gif)
 
 ## Background and Overview 
 
