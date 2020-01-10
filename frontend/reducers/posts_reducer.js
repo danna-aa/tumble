@@ -23,6 +23,7 @@ const postsReducer = (state = {}, action) => {
     let postId;
     let like;
     let commentId;
+    let comment;
     switch (action.type) {
         case RECEIVE_POSTS:
             return Object.assign({}, action.posts);

@@ -52,7 +52,9 @@ class Profile extends React.Component {
                  session,
                  deletePost,
                  likePost,
-                 unlikePost
+                 unlikePost, 
+                 createComment,
+                 deleteComment
                } = this.props;
 
                // dashboard sorted in order of newest at the top
@@ -72,6 +74,8 @@ class Profile extends React.Component {
                    deletePost={deletePost}
                    likePost={likePost}
                    unlikePost={unlikePost}
+                   createComment={createComment}
+                   deleteComment={deleteComment}
                    userId={session.id}
                  />
                ));

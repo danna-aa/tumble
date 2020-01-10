@@ -470,10 +470,10 @@
     justify-content: space-between;
     z-index: 106;
     width: 300px;
-    max-height: 400px;
     min-height: 150px;
+    max-height: 400px;
     font-size: 13px;
-    bottom: -150px;
+    bottom: -132px;
     right: 160px;
     // bottom: -30px;
     background-color: white;
@@ -487,12 +487,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    // height: 50px;
     font-weight: 700;
     font-size: 14px;
     border-bottom: 1px solid lightgrey;
     color: #444444;
     text-align: center;
+    padding: 15px;
 }
 
 .post-comments-list {
@@ -511,22 +512,37 @@
 }
 
 .post-comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     border-radius: 6px;
     background-color: white;
     padding: 10px;
     margin: 5px 0px;
 }
 
+.post-comment-content {
+    width: 93%;
+}
+
 .post-comments-form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
     font-size: 14px;
     border-top: 1px solid lightgrey;
     color: #444444;
     text-align: center;
-    padding: 0px 10px;
+    // padding: 0px 10px;
+}
+
+.post-comments-form input {
+    margin: 15px;
+}
+
+.post-comments-form button {
+    margin: 15px 15px 15px 0px;
+    padding: 0px;
 }
 
 .comment-text-input {
@@ -538,7 +554,42 @@
     color: #00B8FF;
 }
 
+.trash {
+    color: #4444442f;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
 
+.trash:hover {
+    color: #44444454;
+    transition: 300ms ease;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
 
+.x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #4444442f;
+}
 
+.x:hover {
+    color: #ad3232b7;
+    transition: 300ms ease;
+    cursor: pointer;
+}
 
+#mydivheader {
+
+  cursor: move;
+
+}

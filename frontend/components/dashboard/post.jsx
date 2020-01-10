@@ -13,16 +13,23 @@ class Post extends React.Component {
         this.state = { 
             post: this.props.post,
             dropdown: 'hidden',
+            commentsDropdown: 'hidden',
             // notes: Math.floor(Math.random() * 2000),
             display: true,
             popupVisible: false,
+            commentsVisible: false,
             liked: (this.props.userId in this.props.post.likes),
-            userId: this.props.userId
+            userId: this.props.userId,
+            comment: ""
         };
 
         this.handleLike = this.handleLike.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.toggleCommentsDropdown = this.toggleCommentsDropdown.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
+        this.handleCommentsOutsideClick = this.handleCommentsOutsideClick.bind(this);
+        this.handleMakeComment = this.handleMakeComment.bind(this);
+        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
@@ -35,13 +42,19 @@ class Post extends React.Component {
         // console.log('====================================');
     }
 
+    update(field) {
+        return e => this.setState({
+            [field]: e.currentTarget.value
+        });
+    }
+
     handleDelete(e) {
         let postId = this.state.post.id;
         this.props.deletePost(postId);
     }
 
     handleLike(e) {
-        console.log("heart");
+        // console.log("heart");
         e.currentTarget.classList.toggle("liked");
         if (!this.state.liked) {
             // console.log("try to like");
@@ -62,6 +75,16 @@ class Post extends React.Component {
 
         }
 
+    }
+
+    handleMakeComment(e) {
+        let comment = {user_id: this.props.session.id, post_id: this.props.post.id, body: this.state.comment};
+        this.props.createComment(this.props.post.id, comment);
+        let inputs = document.getElementsByClassName("comment-text-input");
+
+        for (let i = 0; i < inputs.length; i++) {
+          inputs[i].value = "";
+        }
     }
 
     toggleDropdown() {
@@ -91,6 +114,33 @@ class Post extends React.Component {
         }));
     }
 
+    toggleCommentsDropdown() {
+        if (this.state.commentsDropdown === 'hidden') {
+            this.setState({ commentsDropdown: "" });
+        } else {
+            this.setState({ commentsDropdown: "hidden" });
+        }
+
+        if (!this.state.commentsVisible) {
+            // attach/remove event handler
+            document.addEventListener(
+            "click",
+            this.handleCommentsOutsideClick,
+            false
+            );
+        } else {
+            document.removeEventListener(
+            "click",
+            this.handleCommentsOutsideClick,
+            false
+            );
+        }
+
+        this.setState(prevState => ({
+            commentsVisible: !prevState.commentsVisible
+        }));
+    }
+
     handleOutsideClick(e) {
         // ignore clicks on the component itself
         // if (this.node && this.node.contains(e.target)) {
@@ -99,6 +149,28 @@ class Post extends React.Component {
         
         this.toggleDropdown();
     }
+
+    handleCommentsOutsideClick(e) {
+        if (this.node && this.node.contains(e.target)) {
+            return;
+        }
+        this.toggleCommentsDropdown();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -280,34 +352,55 @@ class Post extends React.Component {
             );
         }
 
-        let numNotes = 0;
-        if (this.props.post.likes) {
-            numNotes = Object.keys(this.props.post.likes).length;
-        }
-
+        
         // comment list 
         let commentsList;
         let commentsSorted = Object.values(this.props.post.comments).sort((a, b) =>
-          a.created_at > b.created_at ? 1 : -1
+        a.created_at > b.created_at ? 1 : -1
         );
         let comments = commentsSorted.map(comment => (
-          <div key={comment.id} id={`comment-${comment.id}`} className="post-comment">
-            {comment.body}
+            <div key={comment.id} id={`comment-${comment.id}`} className="post-comment">
+            <div className="post-comment-content">{comment.body}</div>
+
+            { comment.user_id === session.id &&
+                (<div className="trash" onClick={() => this.props.deleteComment(comment.post_id, comment)}>
+                    <i className="fas fa-trash-alt"></i>
+                </div>)
+            }
+
           </div>
         ));
-
+        
+        let numNotes = 0;
         let numComments = Object.keys(this.props.post.comments).length;
- 
+        let numLikes = Object.keys(this.props.post.likes).length;
+
+        numNotes = numComments + numLikes;
+        
+        
         commentsList = (
-          <div className="post-comments">
-            <div className="post-comments-title">{numComments} Comments</div>
-            <div className="post-comments-list">
-                {comments}
-                <div className="post-comments-list-anchor"></div>
+          <div className={`post-comments ${this.state.commentsDropdown}`}>
+            <div className="post-comments-title">
+              {numComments} Comments
+              <div className="x" onClick={this.toggleCommentsDropdown}>
+                <i className="fas fa-times"></i>
+              </div>
             </div>
-            <form className="post-comments-form">
-                <input type="text" placeholder="Leave a comment" className="comment-text-input"/>
-                <button className="comment-form-button">Reply</button>
+            <div className="post-comments-list">
+              {comments}
+              <div className="post-comments-list-anchor"></div>
+            </div>
+            <form
+              className="post-comments-form"
+              onSubmit={this.handleMakeComment}
+            >
+              <input
+                type="text"
+                placeholder="Leave a comment"
+                className="comment-text-input"
+                onChange={this.update("comment")}
+              />
+              <button className="comment-form-button">Reply</button>
             </form>
           </div>
         );
@@ -380,7 +473,11 @@ class Post extends React.Component {
                   </div>
 
                   {/* comment */}
-                  <div className="post-interaction-icon comment" title="Reply">
+                  <div
+                    className="post-interaction-icon comment"
+                    title="Reply"
+                    onClick={this.toggleCommentsDropdown}
+                  >
                     <i className="far fa-comment"></i>
                   </div>
                   {commentsList}
@@ -412,6 +509,8 @@ class Post extends React.Component {
 }
 
 export default Post;
+
+
 
 
 // post2.video.attach(io: File.open(“/Users/dannaxu/Desktop/jacket.jpg”), filename: “danna”)
