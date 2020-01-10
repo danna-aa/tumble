@@ -10,13 +10,13 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        const { currentUser, logout } = this.props;
+        const { currentUser, logout, fetchPosts } = this.props;
 
         return (
             <div className={ "navigation-bar" + ((currentUser) ? " logged-in" : "") }>
                 <div className="navigation-bar-flexbox">
                     <Link to='/' className='tumblr-icon'><i className="fab fa-tumblr"></i></Link>
-                    <SearchBar currentUser={ currentUser } />
+                    <SearchBar currentUser={ currentUser } fetchPosts={fetchPosts}/>
                     <Devlinks />
                     <NavButtons currentUser={ currentUser } logout={ logout }/>
                 </div>

@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
   unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
   createComment: (post, userId) => dispatch(createComment(post, userId)),
   deleteComment: (postId, commentId) =>
-    dispatch(deleteComment(postId, commentId))
+  dispatch(deleteComment(postId, commentId))
 
   // not used yet
   // fetchPost: postId => dispatch(fetchPost(postId)),

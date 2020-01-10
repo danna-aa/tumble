@@ -14,6 +14,11 @@ class Search extends React.Component {
     window.scrollTo(0, 0);
     this.props.fetchPosts(this.props.match.params.query);
     this.props.fetchUsers();
+
+    let search = document.getElementById("search");
+    if (search) {
+      search.value = "";
+    }
     
   }
 
