@@ -39,8 +39,14 @@ class CreateTextPostForm extends React.Component {
 
     handleSubmit(e) {
         const post = Object.assign({}, this.state);
-        this.props.createPost(post)
-            .then(action => this.props.createTag(action.post.id, {post_id: action.post.id, tag_body: this.state.tags}));
+
+        if (this.state.tags !== "") {
+            this.props.createPost(post)
+                .then(action => this.props.createTag(action.post.id, { post_id: action.post.id, tag_body: this.state.tags }));
+        } else {
+            this.props.createPost(post);
+        }
+
         this.props.closeModal();
     }
 

@@ -48,11 +48,13 @@ class Post extends React.Component {
     }
 
     handleDelete(e) {
+		// e.preventDefault();
         let postId = this.state.post.id;
         this.props.deletePost(postId);
     }
 
     handleLike(e) {
+		// e.preventDefault();
         // console.log("heart");
         e.currentTarget.classList.toggle("liked");
         if (!this.state.liked) {
@@ -77,16 +79,18 @@ class Post extends React.Component {
     }
 
     handleMakeComment(e) {
+		// e.preventDefault();
         let comment = {user_id: this.props.session.id, post_id: this.props.post.id, body: this.state.comment};
         this.props.createComment(this.props.post.id, comment);
 
         let inputs = document.getElementsByClassName("comment-text-input");
         for (let i = 0; i < inputs.length; i++) {
-          inputs[i].value = "";
+          	inputs[i].value = "";
         }
     }
 
     toggleDropdown() {
+		// e.preventDefault();
         if (this.state.dropdown === 'hidden') {
             this.setState({ dropdown: '' });
         } else {
@@ -141,6 +145,7 @@ class Post extends React.Component {
     }
 
     handleOutsideClick(e) {
+		// e.preventDefault();
         // ignore clicks on the component itself
         // if (this.node && this.node.contains(e.target)) {
         //     return;
@@ -150,6 +155,7 @@ class Post extends React.Component {
     }
 
     handleCommentsOutsideClick(e) {
+		// e.preventDefault();
         if (this.node && this.node.contains(e.target)) {
             return;
         }
