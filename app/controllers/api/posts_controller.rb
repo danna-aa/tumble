@@ -36,13 +36,17 @@ class Api::PostsController < ApplicationController
             when params[:filter] =='likes'
                 @posts = liked_posts
             when params[:filter].present?
-                search = params[:filter]
-                @posts = Post.joins(:tags).where('tag_body LIKE ?', "%#{search}%")
+                search = params[:filter].downcase
+                @posts = Post.joins(:tags).where('lower(tag_body) LIKE ?', "%#{search}%") + Post.where("lower(title) LIKE '%#{search}%'") + Post.where("lower(body) LIKE '%#{search}%'") 
             else
                 @posts = all_posts
         end
 
     end
+
+    # Post.where(id: 1).or(Post.where(title: 'Learn Rails'))
+    # where("title LIKE '%blog%'")
+    # Post.joins(:tags).where('tag_body LIKE ?', "%danna%")or(Post.where("title LIKE %danna%"))or(Post.where("body LIKE %danna%"))
 
 
     def show
