@@ -6,7 +6,8 @@ class SearchBar extends React.Component {
         super(props);
         this.state = { 
             search: "",
-            redirect: false
+            redirect: false,
+            render: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -22,22 +23,29 @@ class SearchBar extends React.Component {
     }
 
     handleSubmit(e) {
-        this.setState({redirect: true});
+
+        this.setState({ redirect: true });
         this.props.fetchPosts(this.state.search);
+
+        if (this.state.redirect) {
+            this.setState({ redirect: false });
+        }
+        
+        this.setState({ render: <Redirect to={`/search/${this.state.search}`} /> });
     }
 
     resetForm() {
         this.setState({search: "", redirect: "false"});
-        console.log("reset");
+        // console.log("reset");
     }
 
     render() {
-        let render;
-        if (this.state.redirect) {
-            this.setState({redirect: false});
-            render = <Redirect to={`/search/${this.state.search}`} />
-            console.log(this.state);
-        }
+        // let render;
+        // if (this.state.redirect) {
+        //     this.setState({redirect: false});
+        //     render = <Redirect to={`/search/${this.state.search}`} />
+        //     // console.log(this.state);
+        // }
         return (
             <div className="search-bar" key={this.state.redirect}>
                 <form className={'search-box'} onSubmit={e => this.handleSubmit(e)}>
@@ -50,7 +58,7 @@ class SearchBar extends React.Component {
                     />
                     <input type="submit" value="submit" className="hidden"/>
                 </form>
-                {render}
+                {this.state.render}
                 {/* { this.state.redirect && <Redirect to={`/search/${this.state.search}`} /> } */}
             </div>
         );
