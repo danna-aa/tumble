@@ -25,37 +25,37 @@ class PostFormButtons extends React.Component {
 
                     <div className="post-form-buttons">
 
-                        <div className="post-form-button text" onClick={() => dispatch(openModal('text'))}>
+                        <div className="post-form-button text" onClick={() => (openModal('text'))}>
                             <i className="fas fa-font"></i>
                             <div className="post-form-button-label">Text</div>
                         </div>
 
-                        <div className="post-form-button photo" onClick={() => dispatch(openModal('photo'))}>
+                        <div className="post-form-button photo" onClick={() => (openModal('photo'))}>
                             <i className="fas fa-camera"></i>
                             <div className="post-form-button-label">Photo</div>
                         </div>
 
-                        <div className="post-form-button quote" onClick={() => dispatch(openModal('quote'))}>
+                        <div className="post-form-button quote" onClick={() => (openModal('quote'))}>
                             <i className="fas fa-quote-left"></i>
                             <div className="post-form-button-label">Quote</div>
                         </div>
 
-                        <div className="post-form-button link" onClick={() => dispatch(openModal('link'))}>
+                        <div className="post-form-button link" onClick={() => (openModal('link'))}>
                             <i className="fas fa-link"></i>
                             <div className="post-form-button-label">Link</div>
                         </div>
 
-                        <div className="post-form-button chat" onClick={() => dispatch(openModal('chat'))}>
+                        <div className="post-form-button chat" onClick={() => (openModal('chat'))}>
                             <i className="fas fa-comments"></i>
                             <div className="post-form-button-label">Chat</div>
                         </div>
 
-                        <div className="post-form-button audio" onClick={() => dispatch(openModal('audio'))}>
+                        <div className="post-form-button audio" onClick={() => (openModal('audio'))}>
                             <i className="fas fa-headphones"></i>
                             <div className="post-form-button-label">Audio</div>
                         </div>
 
-                        <div className="post-form-button video" onClick={() => dispatch(openModal('video'))}>
+                        <div className="post-form-button video" onClick={() => (openModal('video'))}>
                             <i className="fas fa-video"></i>
                             <div className="post-form-button-label">Video</div>
                         </div>

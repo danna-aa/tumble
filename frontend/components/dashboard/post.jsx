@@ -54,7 +54,7 @@ class Post extends React.Component {
     }
 
     handleLike(e) {
-		// e.preventDefault();
+		e.preventDefault();
         // console.log("heart");
         e.currentTarget.classList.toggle("liked");
         if (!this.state.liked) {
