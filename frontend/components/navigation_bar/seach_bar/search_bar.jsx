@@ -30,7 +30,7 @@ class SearchBar extends React.Component {
         if (this.state.redirect) {
             this.setState({ redirect: false });
         }
-        
+
         this.setState({ render: <Redirect to={`/search/${this.state.search}`} /> });
     }
 
@@ -54,6 +54,7 @@ class SearchBar extends React.Component {
                         className="search-input"
                         type="text"
                         placeholder="Search Tumblr"
+                        title='Search posts and tags...try searching "hello world"'
                         onChange={this.update("search")}
                     />
                     <input type="submit" value="submit" className="hidden"/>

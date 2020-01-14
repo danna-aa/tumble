@@ -79,7 +79,7 @@ class Post extends React.Component {
     }
 
     handleMakeComment(e) {
-		// e.preventDefault();
+		e.preventDefault();
         let comment = {user_id: this.props.session.id, post_id: this.props.post.id, body: this.state.comment};
         this.props.createComment(this.props.post.id, comment);
 
