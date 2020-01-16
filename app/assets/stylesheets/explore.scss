@@ -62,3 +62,12 @@ h1.explore-content-item {
 p.explore-content-item {
     font-size: 14px;
 }
+
+.explore-loading-container {
+    width: 100%;
+    display: flex;
+    padding-top: 20vh;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+}

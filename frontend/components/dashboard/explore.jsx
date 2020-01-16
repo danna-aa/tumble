@@ -7,12 +7,19 @@ import ExplorePost from './explore_post';
 class Explore extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.posts;
+        this.state = {
+            posts: this.props.posts,
+            loaded: false,
+            // shuffled: false
+        };
     }
 
     componentDidMount() {
-        this.props.fetchPosts();
         window.scrollTo(0, 0);
+        this.props.fetchPosts()
+            .then(
+                () => this.setState({ loaded: true })
+            );
     }
 
     handleBackToTop(e) {
@@ -41,21 +48,41 @@ class Explore extends React.Component {
             return arr;
         }
         
-        let postsList = shuffle(Object.values(posts));
+        let postsList = shuffle(Object.values(posts))
+        // .then(() => this.setState({ shuffled: true }));
 
 
 
         // map list of dashboard items 
-        let dashList = (postsList.map(post => (
+        let dashList;
+        dashList = (postsList.map(post => (
             <ExplorePost key={post.id} post={post} users={users} />
         )));
 
-        return (
-            <div className="explore-wrapper">
+        let exploreBody;
+        if ( !this.state.loaded ) {
+            exploreBody = (
+                <div className="explore-loading-container">
+                    <div className="big">
+                        <i className="fas fa-spinner fa-pulse"></i>
+                    </div>
+                </div>
+
+            )
+        } else {
+            exploreBody = (
                 <div className="explore">
                     {dashList}
                     <div className="back-to-top-corner icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
                 </div>
+            )
+        }
+
+
+
+        return (
+            <div className="explore-wrapper">
+                {exploreBody}
             </div>
         )
     }
