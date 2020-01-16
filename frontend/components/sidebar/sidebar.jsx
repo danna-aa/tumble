@@ -7,6 +7,8 @@ class Sidebar extends React.Component {
         super(props);
     }
 
+    
+
     render() {
     
         function shuffle(arr) {
@@ -22,7 +24,8 @@ class Sidebar extends React.Component {
         }
         
         const { users } = this.props;
-        let recommendedList = shuffle(Object.values(users));
+        // let recommendedList = shuffle(Object.values(users));
+        let recommendedList = Object.values(users);
 
         let sidebarList = recommendedList.map(user => (
             <Link to={`/users/${user.id}`} key={user.id}> 
