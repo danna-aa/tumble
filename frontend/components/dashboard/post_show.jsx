@@ -16,17 +16,16 @@ class PostShow extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props
-          .fetchSinglePost(this.props.match.params.postId)
-            .then(action => {
-                this.setState({ 
-                    post: action.post,
-                    loaded: true
-                })
-                this.props.fetchUsers();
-            }
-            );
-
+        this.props.fetchUsers()
+            .then(() => (
+                this.props.fetchSinglePost(this.props.match.params.postId)
+                    .then(action => (
+                        this.setState({
+                            post: action.post,
+                            loaded: true
+                        })
+                    ))
+            ))
     }
 
     handleBackToTop(e) {
@@ -90,25 +89,41 @@ class PostShow extends React.Component {
         }
 
         let notesItems;
-        if (notesListSorted) {
-            notesItems = notesListSorted.map((item, i) => (
+        // let date = item.created_at
+        // let dateFormatted = date.format("mmm dd yyyy HH:MM")
 
-                <div className="dashboard-item" key={i}>
-                    <div className="avatar">
-                        <img className="avatar-image"></img>
-                    </div>
-                    <div className="dashboard-background">
-                        <div className="temp">
-                            user id: {item.user_id}
-                            <br/>
-                            time: {item.created_at}
-                            <br/>
-                            {item.body ? "comment " + item.body : "like"}
+        if ( notesListSorted ) {
+            notesItems = notesListSorted.map((item, i) => {
+                let content;
+                if ( item.body ) {
+                    content = (
+                        <div className="note-content">
+                            {users[item.user_id].username + " commented \n" + "| " + item.body}
+                            
+                            {(new Date(item.created_at)).format("mmm dd, yyyy - h:MM tt")}
                         </div>
-                    
+                    )
+                } else {
+                    content = (
+                        <div className="note-content">
+                            {users[item.user_id].username} liked this
+                            
+                            {(new Date(item.created_at)).format("mmm dd, yyyy - h:MM tt")}
+                        </div>
+
+                    )
+                }
+                return (
+                    <div className="note-item" key={i}>
+                        <div className="avatar">
+                            <img className="avatar-image"></img>
+                        </div>
+                        <div className="note-background">
+                            {content}
+                        </div>
                     </div>
-                </div>
-            ))
+                )
+            })
         }
 
         // console.log(this.state)

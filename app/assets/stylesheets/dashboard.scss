@@ -609,10 +609,37 @@
 //   cursor: move;
 // }
 
-.temp {
-    padding: 10px
+// notes on post show
+
+.note-item {
+    display: flex;
+    width: 626px;
+    position: relative;
+    margin-top: 10px;
+    color: white;
 }
 
+.note-background {
+    width: 540px;
+    background-color: rgba(0,0,0,0);
+    position: relative;
+    border-radius: 3px;
+    opacity: 0.8;
+}
+
+.note-content {
+    // padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+// search
 .dashboard-item.search-headline {
     // display: flex;
     // justify-content: center;
@@ -626,6 +653,7 @@
     padding: 0 0 0.5em 0;
 }
 
+// loader
 .big {
     font-size: 8vh;
     color: white;
