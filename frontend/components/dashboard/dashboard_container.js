@@ -21,11 +21,6 @@ const mapDispatchToProps = dispatch => ({
     unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
     createComment: (post, userId) => dispatch(createComment(post, userId)),
     deleteComment: (postId, commentId) => dispatch(deleteComment(postId, commentId)),
-    
-    // not used yet
-    // fetchPost: postId => dispatch(fetchPost(postId)),
-    // createPost: postId => dispatch(createPost(postId)),
-    // fetchOwnPosts: postId => dispatch(fetchOwnPosts(postId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

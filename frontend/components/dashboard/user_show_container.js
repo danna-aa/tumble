@@ -26,8 +26,6 @@ const mapDispatchToProps = dispatch => ({
     // fetchPost: postId => dispatch(fetchPost(postId)),
     // createPost: postId => dispatch(createPost(postId)),
     // updatePost: postId => dispatch(updatePost(postId)),
-    // deletePost: postId => dispatch(deletePost(postId)),
-    // fetchOwnPosts: postId => dispatch(fetchOwnPosts(postId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);

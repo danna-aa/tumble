@@ -11,7 +11,34 @@ class Sidebar extends React.Component {
         // const sidebarList = Object.values(users).map(user => (
         //     <UserSidebarItem key={user.id} user={user} />
         // ));
-        const { currentUser, numPosts } = this.props;
+        const { currentUser, numPosts, pageType } = this.props;
+
+        let followers;
+
+        if ( pageType !== "likes" && this.props.loaded ) {
+            followers = (
+                <div className="sidebar-items">
+                    <div className="user-sidebar-item">
+                        <div>Followers</div>
+                        <div className="">{Math.floor(Math.random() * 3000)}</div>
+                    </div>
+                </div>
+            )
+        }
+
+        let posts;
+        if ( this.props.loaded ) {
+            posts = (
+                <div className="sidebar-items">
+                    <div className="user-sidebar-item">
+                        <div>{ pageType === "likes" ? 'Liked Posts' : 'Posts' }</div>
+                        <div className="">{numPosts}</div>
+                    </div>
+                </div>
+            )
+        }
+
+        console.log(this.props.loaded)
 
         return (
             <div className="sidebar-box">
@@ -19,18 +46,8 @@ class Sidebar extends React.Component {
                 <h3 className="sidebar-tl">{currentUser.title}</h3>
                 <h3 className="sidebar-description">{currentUser.description}</h3>
 
-                <div className="sidebar-items">
-                    <div className="user-sidebar-item">
-                        <div>Posts</div>
-                        <div className="">{numPosts}</div>
-                    </div>
-                </div>
-                <div className="sidebar-items">
-                    <div className="user-sidebar-item">
-                        <div>Followers</div>
-                        <div className="">{Math.floor(Math.random() * 3000)}</div>
-                    </div>
-                </div>
+                {posts}
+                {followers}
             </div>
         )
     }
@@ -39,3 +56,5 @@ class Sidebar extends React.Component {
 }
 
 export default Sidebar;
+
+
