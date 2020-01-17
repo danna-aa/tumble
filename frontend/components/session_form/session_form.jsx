@@ -28,7 +28,7 @@ class SessionForm extends React.Component {
         while (initiallyHidden.length) {
             initiallyHidden[0].classList.remove("initially-hidden");
         }
-        e.currentTarget.classList.add("invisible");
+        e.currentTarget.classList.add("transparent");
     }
 
     update(field) {

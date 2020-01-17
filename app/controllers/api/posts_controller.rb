@@ -23,7 +23,7 @@ class Api::PostsController < ApplicationController
         # end
 
         case 
-            when params[:filter] =='dashboard'
+            when params[:filter] == 'dashboard'
                 @posts = dashboard_posts
             when is_string_number?(params[:filter])
                 user_id = params[:filter].to_i
@@ -33,7 +33,7 @@ class Api::PostsController < ApplicationController
             # when single_post
             #     post_id = post_number.to_i
             #     @posts = Post.find(post_id)
-            when params[:filter] =='likes'
+            when params[:filter] == 'likes'
                 @posts = liked_posts
             when params[:filter].present?
                 search = params[:filter].downcase
