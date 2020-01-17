@@ -1,4 +1,5 @@
 import * as PostAPIUtil from '../util/post_api_util';
+import logger from 'redux-logger';
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_POST = "RECEIVE_POST";
@@ -35,7 +36,10 @@ export const removePost = postId => ({
 // thunk actions
 export const fetchPosts = ( filter ) => dispatch => (
     PostAPIUtil.fetchPosts( filter )
-        .then(posts => dispatch(receivePosts(posts)))
+        .then(posts => {
+            // console.trace()
+            dispatch(receivePosts(posts))
+        })
 );
 
 export const fetchPost = postId => dispatch => (
