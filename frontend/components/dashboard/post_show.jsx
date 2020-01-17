@@ -18,12 +18,14 @@ class PostShow extends React.Component {
         window.scrollTo(0, 0);
         this.props
           .fetchSinglePost(this.props.match.params.postId)
-          .then(action =>
-            this.setState({ 
-                post: action.post,
-                loaded: true
-            })
-          );
+            .then(action => {
+                this.setState({ 
+                    post: action.post,
+                    loaded: true
+                })
+                this.props.fetchUsers();
+            }
+            );
 
     }
 
@@ -42,21 +44,38 @@ class PostShow extends React.Component {
         let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
 
         // map list of dashboard items 
-        let dashList = postsList.map(post => (
-          <Post
-            key={post.id}
-            id={`post-${post.id}`}
-            post={post}
-            users={users}
-            session={session}
-            deletePost={deletePost}
-            likePost={likePost}
-            unlikePost={unlikePost}
-            createComment={createComment}
-            deleteComment={deleteComment}
-            userId={session.id}
-          />
-        ));
+        let dashList;
+        if (!this.state.loaded) {
+            dashList = (
+                <div className="dashboard-item last" key="out-of-content">
+                    <div className="avatar">
+                        <img className="avatar-image"></img>
+                    </div>
+                    <div className="dashboard-background out-of-content">
+                        <h2 className="out-of-content-message big">
+                            <i className="fas fa-spinner fa-pulse"></i>
+                        </h2>
+                    </div>
+                </div>
+            )
+        } else {
+            dashList = postsList.map(post => (
+                <Post
+                    key={post.id}
+                    id={`post-${post.id}`}
+                    post={post}
+                    users={users}
+                    session={session}
+                    deletePost={deletePost}
+                    likePost={likePost}
+                    unlikePost={unlikePost}
+                    createComment={createComment}
+                    deleteComment={deleteComment}
+                    userId={session.id}
+                />
+                
+            ))
+        }
 
         let currentUser = users[session.id];
 

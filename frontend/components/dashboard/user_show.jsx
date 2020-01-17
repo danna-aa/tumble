@@ -106,6 +106,12 @@ class Profile extends React.Component {
         }
 
                let currentUser = users[session.id];
+               let showUser = users[this.props.match.params.userId]
+
+            //    console.log("currentUser")
+            //    console.log(currentUser)
+            //    console.log("showUser")
+            //    console.log(showUser)
 
                let postForm;
                let userSidebar;
@@ -139,7 +145,7 @@ class Profile extends React.Component {
                      </div>
                    </div>
 
-                   <UserSidebar currentUser={currentUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
+                   <UserSidebar currentUser={currentUser} showUser={showUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
                  </div>
                );
              }

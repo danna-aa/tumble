@@ -436,18 +436,18 @@ class Post extends React.Component {
             }}
           >
             <div className="avatar">
-              <Link to={`/users/${post.user_id}`} className="avatar-link">
-                <img className="avatar-image" src={post.avatar} alt="" />
-              </Link>
+                <Link to={`/users/${post.user_id}`} className="avatar-link">
+                    <img className="avatar-image" src={post.avatar} alt="" />
+                </Link>
             </div>
 
             <div className="dashboard-background">
-              <Link to={`/posts/${this.props.post.id}`} className="fold-link">
-                <div className="fold"></div>
-              </Link>
+                <Link to={`/posts/${post.id}`} className="fold-link">
+                    <div className="fold"></div>
+                </Link>
 
-              <div className="post-content-box">
-                <Link to={`/posts/${this.props.post.id}`} className="user-link">
+            <div className="post-content-box">
+                <Link to={`/posts/${post.id}`} className="user-link">
                   {post.username}
                 </Link>
 
@@ -462,17 +462,17 @@ class Post extends React.Component {
                 <p className="post-content-item post-body">{post.body}</p>
                 {sourceLink}
                 <div className="tags-container">
-                    {tags}
+                {tags}
                 </div>
-              </div>
+            </div>
 
-              <div className="post-footer">
+            <div className="post-footer">
                 {/* notes */}
                 <div className="number-notes">
-                  {/* currently only has likes, modify number to include other notes once features implemented */}
-                  <Link to={`/posts/${this.props.post.id}`}>
-                    <h4>{`${numNotes} notes`}</h4>
-                  </Link>
+                    {/* currently only has likes, modify number to include other notes once features implemented */}
+                    <Link to={`/posts/${post.id}`}>
+                        <h4>{`${numNotes} notes`}</h4>
+                    </Link>
                 </div>
 
                 <div className="post-interaction-icons">
@@ -481,6 +481,7 @@ class Post extends React.Component {
                     className={`post-interaction-icon share share-button share-button-${post.id}`}
                     data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
                     title="Share"
+                    // onClick={() => this.props.history.push(`/posts/${post.id}`)}
                   >
                     <i className="fab fa-telegram-plane"></i>
                   </div>

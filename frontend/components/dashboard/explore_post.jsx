@@ -175,7 +175,7 @@ class Post extends React.Component {
                 <div className="explore-background">
 
                     <div className="explore-link-div">
-                        <Link to={`/users/${this.props.post.user_id}`} className="user-link">{post.username}</Link>
+                        <Link to={`/posts/${post.id}`} className="user-link">{post.username}</Link>
                     </div>
                     
                     <div className="explore-content-box">
