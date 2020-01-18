@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import ReactAudioPlayer from 'react-audio-player';
 import { stringify } from 'querystring';
 import { openModal } from "../../actions/modal_actions";
+import PostNotes from './post_notes';
 
 // import { CSSTransition } from "react-transition-group";
 
@@ -20,7 +21,8 @@ class Post extends React.Component {
             commentsVisible: false,
             liked: (this.props.userId in this.props.post.likes),
             userId: this.props.userId,
-            comment: ""
+            comment: "",
+            loaded: false
         };
 
         this.handleLike = this.handleLike.bind(this);
@@ -39,6 +41,7 @@ class Post extends React.Component {
         // console.log(this.state);
         // console.log(this.props.post.post_type);
         // console.log('====================================');
+        this.setState({loaded: true});
     }
 
     update(field) {
@@ -430,123 +433,69 @@ class Post extends React.Component {
         );
 
         let postFooter;
-        if ( this.props.editOff ) {
-            postFooter = (
-                <div className="post-footer">
-                    {/* notes */}
-                    <div className="number-notes">
-                        {/* currently only has likes, modify number to include other notes once features implemented */}
-                        <Link to={`/posts/${post.id}`}>
-                            <h4>{`${numNotes} notes`}</h4>
-                        </Link>
+        postFooter = (
+            <div className="post-footer">
+                {/* notes */}
+                <div className="number-notes">
+                    {/* currently only has likes, modify number to include other notes once features implemented */}
+                    <Link to={`/posts/${post.id}`}>
+                        <h4>{`${numNotes} notes`}</h4>
+                    </Link>
+                </div>
+
+                <div className="post-interaction-icons">
+                    {/* share */}
+                    <div
+                        className={`post-interaction-icon share share-button share-button-${post.id}`}
+                        data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
+                        title="Share"
+                    // onClick={() => this.props.history.push(`/posts/${post.id}`)}
+                    >
+                        <i className="fab fa-telegram-plane"></i>
                     </div>
 
-                    <div className="post-interaction-icons">
-                        {/* share */}
-                        <div
-                            className={`post-interaction-icon share share-button share-button-${post.id}`}
-                            data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
-                            title="Share"
-                        // onClick={() => this.props.history.push(`/posts/${post.id}`)}
-                        >
-                            <i className="fab fa-telegram-plane"></i>
-                        </div>
+                    <div
+                        className={`copied-alert copied-alert-${post.id} hidden`}
+                    >
+                        <div>Copied!</div>
+                    </div>
 
-                        <div
-                            className={`copied-alert copied-alert-${post.id} hidden`}
-                        >
-                            <div>Copied!</div>
-                        </div>
+                    {/* comment */}
+                    <div
+                        className="post-interaction-icon comment"
+                        title="Reply"
+                        onClick={this.toggleCommentsDropdown}
+                    >
+                        <i className="far fa-comment"></i>
+                    </div>
+                    {commentsList}
 
-                        {/* comment */}
-                        <div
-                            className="post-interaction-icon comment"
-                            title="Reply"
-                            onClick={this.toggleCommentsDropdown}
-                        >
-                            <i className="far fa-comment"></i>
-                        </div>
-                        {commentsList}
+                    {/* reblog */}
+                    <div
+                        className="post-interaction-icon reblog"
+                        title="Reblog"
+                        onClick={() => dispatch(openModal(post.post_type))}
+                    >
+                        <i className="fas fa-retweet"></i>
+                    </div>
+                    {footerIconRight}
 
-                        {/* reblog */}
-                        <div
-                            className="post-interaction-icon reblog"
-                            title="Reblog"
-                            onClick={() => dispatch(openModal(post.post_type))}
-                        >
-                            <i className="fas fa-retweet"></i>
-                        </div>
-                        {/* {footerIconRight} */}
-
-                        {/* post options menu */}
-                        {/* <div className={`gear-dropdown ${this.state.dropdown}`}>
-                            <div onClick={() => dispatch(openModal(post.post_type))}>
-                                Edit
-                            </div>
-                            <div onClick={e => this.handleDelete(e)}>Delete</div>
-                        </div> */}
+                    {/* post options menu */}
+                    <div className={`gear-dropdown ${this.state.dropdown}`}>
+                        <div onClick={() => dispatch(openModal(post.post_type))}>
+                            Edit
+                </div>
+                        <div onClick={e => this.handleDelete(e)}>Delete</div>
                     </div>
                 </div>
-            )
-        } else {
-            postFooter = (
-                <div className="post-footer">
-                    {/* notes */}
-                    <div className="number-notes">
-                        {/* currently only has likes, modify number to include other notes once features implemented */}
-                        <Link to={`/posts/${post.id}`}>
-                            <h4>{`${numNotes} notes`}</h4>
-                        </Link>
-                    </div>
+            </div>
+        )
 
-                    <div className="post-interaction-icons">
-                        {/* share */}
-                        <div
-                            className={`post-interaction-icon share share-button share-button-${post.id}`}
-                            data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
-                            title="Share"
-                        // onClick={() => this.props.history.push(`/posts/${post.id}`)}
-                        >
-                            <i className="fab fa-telegram-plane"></i>
-                        </div>
-
-                        <div
-                            className={`copied-alert copied-alert-${post.id} hidden`}
-                        >
-                            <div>Copied!</div>
-                        </div>
-
-                        {/* comment */}
-                        <div
-                            className="post-interaction-icon comment"
-                            title="Reply"
-                            onClick={this.toggleCommentsDropdown}
-                        >
-                            <i className="far fa-comment"></i>
-                        </div>
-                        {commentsList}
-
-                        {/* reblog */}
-                        <div
-                            className="post-interaction-icon reblog"
-                            title="Reblog"
-                            onClick={() => dispatch(openModal(post.post_type))}
-                        >
-                            <i className="fas fa-retweet"></i>
-                        </div>
-                        {footerIconRight}
-
-                        {/* post options menu */}
-                        <div className={`gear-dropdown ${this.state.dropdown}`}>
-                            <div onClick={() => dispatch(openModal(post.post_type))}>
-                                Edit
-                    </div>
-                            <div onClick={e => this.handleDelete(e)}>Delete</div>
-                        </div>
-                    </div>
-                </div>
-            )
+        let postNotes;
+        if ( this.props.postShow ) {
+            postNotes = <PostNotes post={post} users={users} session={session} loaded={this.state.loaded} />
         }
+        
         
         
         return (
@@ -556,45 +505,50 @@ class Post extends React.Component {
           //     classNames="display"
           //     unmountOnExit
           //   >
-          <div
-            className="dashboard-item"
-            ref={node => {
-              this.node = node;
-            }}
-          >
-            <div className="avatar">
-                <Link to={`/users/${post.user_id}`} className="avatar-link">
-                    <img className="avatar-image" src={post.avatar} alt="" />
-                </Link>
-            </div>
+          <div>
+            <div
+                className="dashboard-item"
+                ref={node => {
+                this.node = node;
+                }}
+            >
+                <div className="avatar">
+                    <Link to={`/users/${post.user_id}`} className="avatar-link">
+                        <img className="avatar-image" src={post.avatar} alt="" />
+                    </Link>
+                </div>
 
-            <div className="dashboard-background">
-                <Link to={`/posts/${post.id}`} className="fold-link">
-                    <div className="fold"></div>
-                </Link>
+                <div className="dashboard-background">
+                    <Link to={`/posts/${post.id}`} className="fold-link">
+                        <div className="fold"></div>
+                    </Link>
 
-            <div className="post-content-box">
-                <Link to={`/posts/${post.id}`} className="user-link">
-                  {post.username}
-                </Link>
+                <div className="post-content-box">
+                    <Link to={`/posts/${post.id}`} className="user-link">
+                    {post.username}
+                    </Link>
 
-                <h1 className="post-content-item">{post.title}</h1>
-                {linkLink}
-                {picList}
-                {attachedPhotos}
-                {video}
-                {attachedVideo}
-                {attachedAudio}
-                {htmlDiv}
-                <p className="post-content-item post-body">{post.body}</p>
-                {sourceLink}
-                <div className="tags-container">
-                {tags}
+                    <h1 className="post-content-item">{post.title}</h1>
+                    {linkLink}
+                    {picList}
+                    {attachedPhotos}
+                    {video}
+                    {attachedVideo}
+                    {attachedAudio}
+                    {htmlDiv}
+                    <p className="post-content-item post-body">{post.body}</p>
+                    {sourceLink}
+                    <div className="tags-container">
+                    {tags}
+                    </div>
+                </div>
+
+                {postFooter}
                 </div>
             </div>
 
-            {postFooter}
-            </div>
+            {postNotes}
+
           </div>
           //   </CSSTransition>
         );

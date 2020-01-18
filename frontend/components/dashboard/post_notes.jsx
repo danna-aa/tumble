@@ -1,124 +1,71 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Post from './post';
-import PostFormButtons from './post_form_buttons';
-import UserSidebar from '../user_sidebar/user_sidebar';
 
-class PostShow extends React.Component {
+class PostNotes extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            userId: null,
-            post: "",
-            loaded: false,
+        this.state = {
+            post: ""
         };
     }
 
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        this.props.fetchUsers()
-            .then(() => (
-                this.props.fetchSinglePost(this.props.match.params.postId)
-                    .then(action => (
-                        this.setState({
-                            post: action.post,
-                            loaded: true
-                        })
-                    ))
-            ))
-    }
-
-    handleBackToTop(e) {
-        window.scroll({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
-
     render() {
-        let {posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment} = this.props;
-
-        // dashboard sorted in order of newest at the top
-        let postsList = Object.values(posts).sort((a, b) => (a.created_at > b.created_at) ? -1 : 1);
-
-        // map list of dashboard items 
-        let dashList;
-        if (!this.state.loaded) {
-            dashList = (
-                <div className="dashboard-item last" key="out-of-content">
-                    <div className="avatar">
-                        <img className="avatar-image"></img>
-                    </div>
-                    <div className="dashboard-background out-of-content">
-                        <h2 className="out-of-content-message big">
-                            <i className="fas fa-spinner fa-pulse"></i>
-                        </h2>
-                    </div>
-                </div>
-            )
-        } else {
-            dashList = postsList.map(post => (
-                <Post
-                    key={post.id}
-                    id={`post-${post.id}`}
-                    post={post}
-                    users={users}
-                    session={session}
-                    deletePost={deletePost}
-                    likePost={likePost}
-                    unlikePost={unlikePost}
-                    createComment={createComment}
-                    deleteComment={deleteComment}
-                    userId={session.id}
-                    postShow={true}
-                />
-                
-            ))
-        }
+        let { post, users, session, loaded } = this.props;
 
         let currentUser = users[session.id];
+        // console.log(this.props);
+        // console.log(currentUser);
 
-        let notesListSorted = null
-        if (this.state.loaded) {
-            let likes = this.state.post.likes;
-            let comments = this.state.post.comments;
-            let notesList = {...likes, ...comments}
+        let notesListSorted;
+        if ( this.props.loaded ) {
+            let likes = post.likes;
+            let comments = post.comments;
+            let notesList = { ...likes, ...comments };
+
             notesListSorted = Object.values(notesList).sort((a, b) =>
-              a.created_at < b.created_at ? -1 : 1
+                a.created_at > b.created_at ? -1 : 1
             );
+            // console.log('====================================');
+            // console.log(notesListSorted);
+            // console.log('====================================');
         }
 
         let notesItems;
-        // let date = item.created_at
-        // let dateFormatted = date.format("mmm dd yyyy HH:MM")
-
         if ( notesListSorted ) {
             notesItems = notesListSorted.map((item, i) => {
+
+                // console.log(item);
+
                 let content;
-                if ( item.body ) {
+                if (item.body) {
                     content = (
                         <div className="note-content">
+
                             <div>
                                 <span className="note-user-link">
-                                    <Link to={`/users/${item.user_id}`}> 
+                                    <Link to={`/users/${item.user_id}`}>
                                         {users[item.user_id].username} {" "}
                                     </Link>
                                 </span>
                                 <span className="note-description">commented</span>
                             </div>
+
                             <div className="note-comment-body">
                                 {/* <i className="fas fa-comment"></i> {" "} */}
                                 {/* <i className="fas fa-plus"></i> {" "} */}
                                 <i className="fas fa-comment-medical"></i> {" "}
                                 {item.body}
                             </div>
+
                             <div className="note-datetime">
                                 {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
                             </div>
+
                         </div>
                     )
-                } else {
+                } 
+
+                else {
                     content = (
                         <div className="note-content">
                             <div>
@@ -135,8 +82,9 @@ class PostShow extends React.Component {
                         </div>
                     )
                 }
+
                 return (
-                    <div className="note-item" key={i}>
+                    <div className="note-item" key={Math.floor(Math.random()*1000000)}>
                         <div className="avatar">
                             <img className="avatar-image"></img>
                         </div>
@@ -146,9 +94,9 @@ class PostShow extends React.Component {
                     </div>
                 )
             })
-            let post = this.state.post;
+
             let user = users[post.user_id]
-            notesItems.unshift(
+            notesItems.push(
 
 
                 <div className="note-item" key="note-user-posted">
@@ -179,31 +127,14 @@ class PostShow extends React.Component {
 
 
         return (
-            <div className="dash">
-                {/* <PostForm /> */}
-                <div className="main">
-
-                    {/* <PostFormButtons users={users} session={session} /> */}
-                    {dashList}
-                    {/* {notesItems} */}
-
-
-                    <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
-
-                    <div className="dashboard-item last">
-                        <div className="avatar">
-                            <img className="avatar-image"></img>
-                        </div>
-                    </div>
-
-                </div>
-
-                {/* <UserSidebar currentUser={currentUser} numPosts={numPosts}/> */}
+            <div>
+                {notesItems}
             </div>
+
         )
     }
 
 
 }
 
-export default PostShow;
+export default PostNotes;
