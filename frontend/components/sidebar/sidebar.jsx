@@ -32,8 +32,7 @@ class Sidebar extends React.Component {
                 <SidebarItem user={user} /> 
             </Link>
 
-        ));
-
+        ))2
         return (
             <div className="sidebar-box">
                 <h3 className="sidebar-title">Recommended Blogs</h3>
