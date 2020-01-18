@@ -486,6 +486,12 @@
 
 
 // comments 
+.scroll-to-bottom {
+    width: 300px;
+    min-height: 150px;
+    max-height: 400px;
+}
+
 .post-comments {
     position: absolute;
     display: flex;
@@ -529,10 +535,26 @@
     color: #444444;
     background-color: #F2F2F2;
     height: 100%;
-    padding: 10px 15px;
-    min-height: 50px;
+    // padding: 10px 15px;
+    // margin: 10px 15px;
+    // min-height: 50px;
     overflow: scroll;
 }
+
+// auto ScrollToBottom button
+.css-1qyrjaz {
+    position: absolute;
+    bottom: 0;
+    left: 238px;
+    border: none;
+    opacity: 0.3;
+    transition: 300ms ease;
+}
+.css-1qyrjaz:hover {
+    opacity: 0.3;
+    transition: 300ms ease;
+}
+// auto ScrollToBottom button end
 
 .post-comment {
     display: flex;
@@ -541,7 +563,8 @@
     border-radius: 6px;
     background-color: white;
     padding: 10px;
-    margin: 5px 0px;
+    // margin: 5px 0px;
+    margin: 15px;
 }
 
 .post-comment-content {

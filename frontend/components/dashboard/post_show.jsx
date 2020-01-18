@@ -77,104 +77,104 @@ class PostShow extends React.Component {
             ))
         }
 
-        let currentUser = users[session.id];
+        // let currentUser = users[session.id];
 
-        let notesListSorted = null
-        if (this.state.loaded) {
-            let likes = this.state.post.likes;
-            let comments = this.state.post.comments;
-            let notesList = {...likes, ...comments}
-            notesListSorted = Object.values(notesList).sort((a, b) =>
-              a.created_at < b.created_at ? -1 : 1
-            );
-        }
+        // let notesListSorted = null
+        // if (this.state.loaded) {
+        //     let likes = this.state.post.likes;
+        //     let comments = this.state.post.comments;
+        //     let notesList = {...likes, ...comments}
+        //     notesListSorted = Object.values(notesList).sort((a, b) =>
+        //       a.created_at < b.created_at ? -1 : 1
+        //     );
+        // }
 
-        let notesItems;
-        // let date = item.created_at
-        // let dateFormatted = date.format("mmm dd yyyy HH:MM")
+        // let notesItems;
+        // // let date = item.created_at
+        // // let dateFormatted = date.format("mmm dd yyyy HH:MM")
 
-        if ( notesListSorted ) {
-            notesItems = notesListSorted.map((item, i) => {
-                let content;
-                if ( item.body ) {
-                    content = (
-                        <div className="note-content">
-                            <div>
-                                <span className="note-user-link">
-                                    <Link to={`/users/${item.user_id}`}> 
-                                        {users[item.user_id].username} {" "}
-                                    </Link>
-                                </span>
-                                <span className="note-description">commented</span>
-                            </div>
-                            <div className="note-comment-body">
-                                {/* <i className="fas fa-comment"></i> {" "} */}
-                                {/* <i className="fas fa-plus"></i> {" "} */}
-                                <i className="fas fa-comment-medical"></i> {" "}
-                                {item.body}
-                            </div>
-                            <div className="note-datetime">
-                                {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
-                            </div>
-                        </div>
-                    )
-                } else {
-                    content = (
-                        <div className="note-content">
-                            <div>
-                                <span className="note-user-link">
-                                    <Link to={`/users/${item.user_id}`}>
-                                        {users[item.user_id].username} {" "}
-                                    </Link>
-                                </span>
-                                <span className="note-description">liked this</span>
-                            </div>
-                            <div className="note-datetime">
-                                {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
-                            </div>
-                        </div>
-                    )
-                }
-                return (
-                    <div className="note-item" key={i}>
-                        <div className="avatar">
-                            <img className="avatar-image"></img>
-                        </div>
-                        <div className="note-background">
-                            {content}
-                        </div>
-                    </div>
-                )
-            })
-            let post = this.state.post;
-            let user = users[post.user_id]
-            notesItems.unshift(
-
-
-                <div className="note-item" key="note-user-posted">
-                    <div className="avatar">
-                        <img className="avatar-image"></img>
-                    </div>
-                    <div className="note-background">
-                        <div className="note-content">
-                            <div>
-                                <span className="note-user-link">
-                                    <Link to={`/users/${user.id}`}>
-                                        {user.username} {" "}
-                                    </Link>
-                                </span>
-                                <span className="note-description"> posted this</span>
-                            </div>
-                            <div className="note-datetime">
-                                {new Date(post.created_at).format("mmm dd, yyyy · h:MM tt")}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        // if ( notesListSorted ) {
+        //     notesItems = notesListSorted.map((item, i) => {
+        //         let content;
+        //         if ( item.body ) {
+        //             content = (
+        //                 <div className="note-content">
+        //                     <div>
+        //                         <span className="note-user-link">
+        //                             <Link to={`/users/${item.user_id}`}> 
+        //                                 {users[item.user_id].username} {" "}
+        //                             </Link>
+        //                         </span>
+        //                         <span className="note-description">commented</span>
+        //                     </div>
+        //                     <div className="note-comment-body">
+        //                         {/* <i className="fas fa-comment"></i> {" "} */}
+        //                         {/* <i className="fas fa-plus"></i> {" "} */}
+        //                         <i className="fas fa-comment-medical"></i> {" "}
+        //                         {item.body}
+        //                     </div>
+        //                     <div className="note-datetime">
+        //                         {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
+        //                     </div>
+        //                 </div>
+        //             )
+        //         } else {
+        //             content = (
+        //                 <div className="note-content">
+        //                     <div>
+        //                         <span className="note-user-link">
+        //                             <Link to={`/users/${item.user_id}`}>
+        //                                 {users[item.user_id].username} {" "}
+        //                             </Link>
+        //                         </span>
+        //                         <span className="note-description">liked this</span>
+        //                     </div>
+        //                     <div className="note-datetime">
+        //                         {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
+        //                     </div>
+        //                 </div>
+        //             )
+        //         }
+        //         return (
+        //             <div className="note-item" key={i}>
+        //                 <div className="avatar">
+        //                     <img className="avatar-image"></img>
+        //                 </div>
+        //                 <div className="note-background">
+        //                     {content}
+        //                 </div>
+        //             </div>
+        //         )
+        //     })
+        //     let post = this.state.post;
+        //     let user = users[post.user_id]
+        //     notesItems.unshift(
 
 
-            )
-        }
+        //         <div className="note-item" key="note-user-posted">
+        //             <div className="avatar">
+        //                 <img className="avatar-image"></img>
+        //             </div>
+        //             <div className="note-background">
+        //                 <div className="note-content">
+        //                     <div>
+        //                         <span className="note-user-link">
+        //                             <Link to={`/users/${user.id}`}>
+        //                                 {user.username} {" "}
+        //                             </Link>
+        //                         </span>
+        //                         <span className="note-description"> posted this</span>
+        //                     </div>
+        //                     <div className="note-datetime">
+        //                         {new Date(post.created_at).format("mmm dd, yyyy · h:MM tt")}
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+
+
+        //     )
+        // }
 
 
 

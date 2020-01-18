@@ -5,6 +5,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { stringify } from 'querystring';
 import { openModal } from "../../actions/modal_actions";
 import PostNotes from './post_notes';
+import ScrollToBottom from "react-scroll-to-bottom";
 
 // import { CSSTransition } from "react-transition-group";
 
@@ -416,10 +417,10 @@ class Post extends React.Component {
                 <i className="fas fa-times"></i>
               </div>
             </div>
-            <div className="post-comments-list">
+            <ScrollToBottom className="post-comments-list">
               {comments}
               <div className="post-comments-list-anchor"></div>
-            </div>
+            </ScrollToBottom>
             <form
               className="post-comments-form"
               onSubmit={this.handleMakeComment}
