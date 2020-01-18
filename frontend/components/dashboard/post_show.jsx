@@ -71,6 +71,7 @@ class PostShow extends React.Component {
                     createComment={createComment}
                     deleteComment={deleteComment}
                     userId={session.id}
+                    postShow={true}
                 />
                 
             ))
@@ -147,7 +148,7 @@ class PostShow extends React.Component {
             })
             let post = this.state.post;
             let user = users[post.user_id]
-            notesItems.push(
+            notesItems.unshift(
 
 
                 <div className="note-item" key="note-user-posted">

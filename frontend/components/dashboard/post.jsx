@@ -428,6 +428,125 @@ class Post extends React.Component {
             </form>
           </div>
         );
+
+        let postFooter;
+        if ( this.props.editOff ) {
+            postFooter = (
+                <div className="post-footer">
+                    {/* notes */}
+                    <div className="number-notes">
+                        {/* currently only has likes, modify number to include other notes once features implemented */}
+                        <Link to={`/posts/${post.id}`}>
+                            <h4>{`${numNotes} notes`}</h4>
+                        </Link>
+                    </div>
+
+                    <div className="post-interaction-icons">
+                        {/* share */}
+                        <div
+                            className={`post-interaction-icon share share-button share-button-${post.id}`}
+                            data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
+                            title="Share"
+                        // onClick={() => this.props.history.push(`/posts/${post.id}`)}
+                        >
+                            <i className="fab fa-telegram-plane"></i>
+                        </div>
+
+                        <div
+                            className={`copied-alert copied-alert-${post.id} hidden`}
+                        >
+                            <div>Copied!</div>
+                        </div>
+
+                        {/* comment */}
+                        <div
+                            className="post-interaction-icon comment"
+                            title="Reply"
+                            onClick={this.toggleCommentsDropdown}
+                        >
+                            <i className="far fa-comment"></i>
+                        </div>
+                        {commentsList}
+
+                        {/* reblog */}
+                        <div
+                            className="post-interaction-icon reblog"
+                            title="Reblog"
+                            onClick={() => dispatch(openModal(post.post_type))}
+                        >
+                            <i className="fas fa-retweet"></i>
+                        </div>
+                        {/* {footerIconRight} */}
+
+                        {/* post options menu */}
+                        {/* <div className={`gear-dropdown ${this.state.dropdown}`}>
+                            <div onClick={() => dispatch(openModal(post.post_type))}>
+                                Edit
+                            </div>
+                            <div onClick={e => this.handleDelete(e)}>Delete</div>
+                        </div> */}
+                    </div>
+                </div>
+            )
+        } else {
+            postFooter = (
+                <div className="post-footer">
+                    {/* notes */}
+                    <div className="number-notes">
+                        {/* currently only has likes, modify number to include other notes once features implemented */}
+                        <Link to={`/posts/${post.id}`}>
+                            <h4>{`${numNotes} notes`}</h4>
+                        </Link>
+                    </div>
+
+                    <div className="post-interaction-icons">
+                        {/* share */}
+                        <div
+                            className={`post-interaction-icon share share-button share-button-${post.id}`}
+                            data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
+                            title="Share"
+                        // onClick={() => this.props.history.push(`/posts/${post.id}`)}
+                        >
+                            <i className="fab fa-telegram-plane"></i>
+                        </div>
+
+                        <div
+                            className={`copied-alert copied-alert-${post.id} hidden`}
+                        >
+                            <div>Copied!</div>
+                        </div>
+
+                        {/* comment */}
+                        <div
+                            className="post-interaction-icon comment"
+                            title="Reply"
+                            onClick={this.toggleCommentsDropdown}
+                        >
+                            <i className="far fa-comment"></i>
+                        </div>
+                        {commentsList}
+
+                        {/* reblog */}
+                        <div
+                            className="post-interaction-icon reblog"
+                            title="Reblog"
+                            onClick={() => dispatch(openModal(post.post_type))}
+                        >
+                            <i className="fas fa-retweet"></i>
+                        </div>
+                        {footerIconRight}
+
+                        {/* post options menu */}
+                        <div className={`gear-dropdown ${this.state.dropdown}`}>
+                            <div onClick={() => dispatch(openModal(post.post_type))}>
+                                Edit
+                    </div>
+                            <div onClick={e => this.handleDelete(e)}>Delete</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
         
         
         return (
@@ -474,61 +593,7 @@ class Post extends React.Component {
                 </div>
             </div>
 
-            <div className="post-footer">
-                {/* notes */}
-                <div className="number-notes">
-                    {/* currently only has likes, modify number to include other notes once features implemented */}
-                    <Link to={`/posts/${post.id}`}>
-                        <h4>{`${numNotes} notes`}</h4>
-                    </Link>
-                </div>
-
-                <div className="post-interaction-icons">
-                  {/* share */}
-                  <div
-                    className={`post-interaction-icon share share-button share-button-${post.id}`}
-                    data-clipboard-text={`https://tumble.herokuapp.com/#/posts/${post.id}`}
-                    title="Share"
-                    // onClick={() => this.props.history.push(`/posts/${post.id}`)}
-                  >
-                    <i className="fab fa-telegram-plane"></i>
-                  </div>
-
-                  <div
-                    className={`copied-alert copied-alert-${post.id} hidden`}
-                  >
-                    <div>Copied!</div>
-                  </div>
-
-                  {/* comment */}
-                  <div
-                    className="post-interaction-icon comment"
-                    title="Reply"
-                    onClick={this.toggleCommentsDropdown}
-                  >
-                    <i className="far fa-comment"></i>
-                  </div>
-                  {commentsList}
-
-                  {/* reblog */}
-                  <div
-                    className="post-interaction-icon reblog"
-                    title="Reblog"
-                    onClick={() => dispatch(openModal(post.post_type))}
-                  >
-                    <i className="fas fa-retweet"></i>
-                  </div>
-                  {footerIconRight}
-
-                  {/* post options menu */}
-                  <div className={`gear-dropdown ${this.state.dropdown}`}>
-                    <div onClick={() => dispatch(openModal(post.post_type))}>
-                      Edit
-                    </div>
-                    <div onClick={e => this.handleDelete(e)}>Delete</div>
-                  </div>
-                </div>
-              </div>
+            {postFooter}
             </div>
           </div>
           //   </CSSTransition>
