@@ -98,19 +98,40 @@ class PostShow extends React.Component {
                 if ( item.body ) {
                     content = (
                         <div className="note-content">
-                            {users[item.user_id].username + " commented \n" + "| " + item.body}
-                            
-                            {(new Date(item.created_at)).format("mmm dd, yyyy - h:MM tt")}
+                            <div>
+                                <span className="note-user-link">
+                                    <Link to={`/users/${item.user_id}`}> 
+                                        {users[item.user_id].username} {" "}
+                                    </Link>
+                                </span>
+                                <span className="note-description">commented</span>
+                            </div>
+                            <div className="note-comment-body">
+                                {/* <i className="fas fa-comment"></i> {" "} */}
+                                {/* <i className="fas fa-plus"></i> {" "} */}
+                                <i className="fas fa-comment-medical"></i> {" "}
+                                {item.body}
+                            </div>
+                            <div className="note-datetime">
+                                {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
+                            </div>
                         </div>
                     )
                 } else {
                     content = (
                         <div className="note-content">
-                            {users[item.user_id].username} liked this
-                            
-                            {(new Date(item.created_at)).format("mmm dd, yyyy - h:MM tt")}
+                            <div>
+                                <span className="note-user-link">
+                                    <Link to={`/users/${item.user_id}`}>
+                                        {users[item.user_id].username} {" "}
+                                    </Link>
+                                </span>
+                                <span className="note-description">liked this</span>
+                            </div>
+                            <div className="note-datetime">
+                                {new Date(item.created_at).format("mmm dd, yyyy · h:MM tt")}
+                            </div>
                         </div>
-
                     )
                 }
                 return (
@@ -124,7 +145,36 @@ class PostShow extends React.Component {
                     </div>
                 )
             })
+            let post = this.state.post;
+            let user = users[post.user_id]
+            notesItems.push(
+
+
+                <div className="note-item" key="note-user-posted">
+                    <div className="avatar">
+                        <img className="avatar-image"></img>
+                    </div>
+                    <div className="note-background">
+                        <div className="note-content">
+                            <div>
+                                <span className="note-user-link">
+                                    <Link to={`/users/${user.id}`}>
+                                        {user.username} {" "}
+                                    </Link>
+                                </span>
+                                <span className="note-description"> posted this</span>
+                            </div>
+                            <div className="note-datetime">
+                                {new Date(post.created_at).format("mmm dd, yyyy · h:MM tt")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            )
         }
+
 
         // console.log(this.state)
         

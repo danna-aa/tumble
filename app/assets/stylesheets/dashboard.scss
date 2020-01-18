@@ -610,13 +610,15 @@
 // }
 
 // notes on post show
-
 .note-item {
     display: flex;
     width: 626px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 1.2em;
     color: white;
+    line-height: 1.1em;
+    font-size: 14px;
+    cursor: default;
 }
 
 .note-background {
@@ -624,11 +626,43 @@
     background-color: rgba(0,0,0,0);
     position: relative;
     border-radius: 3px;
-    opacity: 0.8;
 }
 
 .note-content {
     // padding: 10px;
+}
+
+.note-user-link {
+    font-weight: 600;
+    opacity: 0.8;
+    transition: 300ms ease;
+}
+
+.note-user-link:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+.note-user-link a {
+    color: white;
+    text-decoration: none;
+}
+
+.note-description {
+    opacity: 0.8;
+}
+
+.note-comment-body {
+    padding: 0.2em;
+    padding-left: 1em;
+    font-size: 0.9em;
+    opacity: 0.6;
+}
+
+.note-datetime {
+    opacity: 0.4;
+    font-size: 0.6em;
+    font-style: italic;
 }
 
 
