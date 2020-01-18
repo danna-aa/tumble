@@ -48,10 +48,27 @@ class Likes extends React.Component {
         let { posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
 
         // dashboard sorted in order of newest at the top
-        let postsList = Object.values(posts).sort((a, b) =>
-            a.created_at > b.created_at ? -1 : 1
-        );
-        let numPosts = postsList.length;
+        // let postsList = Object.values(posts).sort((a, b) =>
+        //     a.created_at > b.created_at ? -1 : 1
+        // );
+        let postsList;
+        let numPosts;
+        if (this.state.loaded) {
+            // postsList = Object.values(posts).sort((a, b) =>
+            //     a.likes[session.id] && b.likes[session.id] && (a.likes[session.id].created_at > b.likes[session.id].created_at) ? -1 : 1
+            // );
+
+            postsList = Object.values(posts).sort((a, b) => (
+                !a.likes[session.id] ?
+                    1 : !b.likes[session.id] ? 
+                        -1 : a.likes[session.id].created_at > b.likes[session.id].created_at ? 
+                            -1 : 1
+            ));
+
+            numPosts = postsList.length;
+        }
+
+        
 
         // map list of dashboard items
         let dashList;
