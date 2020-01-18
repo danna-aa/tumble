@@ -19,7 +19,10 @@ class Dashboard extends React.Component {
             .then(
                 () => this.props.fetchUsers()
                     .then(
-                        () => this.setState({ loaded: true })
+                        () => this.props.fetchFollows()
+                            .then(
+                                () => this.setState({ loaded: true })
+                            )
                     ) 
             );
         

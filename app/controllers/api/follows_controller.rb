@@ -3,14 +3,12 @@ class Api::FollowsController < ApplicationController
     @follows = current_user.follows
   end
 
-  # def show
-  #   @follow = Follow.find_by(id: params[:id])
-  # end
+  def show
+    @follow = Follow.find_by(id: params[:id])
+  end
 
   def create
-    @follow = Follow.new
-    @follow.follower_id = current_user.id
-    @follow.creator_id = params[:creator_id]
+    @follow = Follow.new(follower_id: current_user.id, creator_id: params[:creator_id])
     if @follow.save
       render json: @follow
     else
@@ -19,7 +17,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = current_user.follows.find_by(creator_id: params[:post_id])
+    @follow = current_user.follows.find_by(id: params[:id])
     if @follow
       @follow.destroy
       render json: @follow

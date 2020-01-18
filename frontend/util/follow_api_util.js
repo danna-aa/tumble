@@ -12,11 +12,11 @@ export const fetchFollow = followId =>
     error: err => console.log(err)
   });
 
-export const follow = follow => {
+export const follow = creator_id => {
   return $.ajax({
     method: "post",
     url: `/api/follows`,
-    data: { follow },
+    data: { creator_id },
     error: err => console.log(err)
   });
 };

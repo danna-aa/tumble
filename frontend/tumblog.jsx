@@ -10,6 +10,7 @@ import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPost
 import { likePost, unlikePost } from './actions/like_actions';
 import { createComment, deleteComment } from './actions/comment_actions';
 import { createTag, deleteTag } from './actions/tag_actions';
+import { fetchFollows, fetchFollow, follow, unfollow } from './actions/follow_actions';
 // test end
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -56,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.createTag = createTag;
     window.deleteTag = deleteTag;
+
+    window.follow = follow;
+    window.unfollow = unfollow;
+    window.fetchFollows = fetchFollows;
+    window.fetchFollow = fetchFollow;
 
     // test end
 });

@@ -26,10 +26,10 @@ export const fetchFollows = () => dispatch =>
   FollowAPIUtil.fetchFollows().then(follows => dispatch(receiveFollows(follows)));
 
 export const fetchFollow = followId => dispatch =>
-  followAPIUtil.fetchFollow(followId).then(follow => dispatch(receiveFollow(follow)));
+  FollowAPIUtil.fetchFollow(followId).then(follow => dispatch(receiveFollow(follow)));
 
-export const follow = follow => dispatch =>
-  followAPIUtil.follow(follow).then(follow => dispatch(receiveFollow(follow)));
+export const follow = creator_id => dispatch =>
+  FollowAPIUtil.follow(creator_id).then(follow => dispatch(receiveFollow(follow)));
 
 export const unfollow = followId => dispatch =>
-  followAPIUtil.unfollow(followId).then(() => dispatch(removeFollow(followId)));
+  FollowAPIUtil.unfollow(followId).then(() => dispatch(removeFollow(followId)));

@@ -3,6 +3,7 @@ import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPost
 import { likePost, unlikePost } from '../../actions/like_actions';
 import { createComment, deleteComment } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/session_actions';
+import { fetchFollows } from '../../actions/follow_actions';
 import Dashboard from './dashboard';
 
 const mapStateToProps = state => ({
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
     unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
     createComment: (post, userId) => dispatch(createComment(post, userId)),
     deleteComment: (postId, commentId) => dispatch(deleteComment(postId, commentId)),
+    fetchFollows: () => dispatch(fetchFollows()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
