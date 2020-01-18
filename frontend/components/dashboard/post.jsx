@@ -376,7 +376,15 @@ class Post extends React.Component {
         );
         let comments = commentsSorted.map(comment => (
             <div key={comment.id} id={`comment-${comment.id}`} className="post-comment">
-            <div className="post-comment-content">{comment.body}</div>
+                <div className="post-comment-content">
+                    <div className="post-comment-username">
+                        <Link to={`/users/${comment.user_id}`}>
+                            {users[comment.user_id].username}
+                        </Link>
+                    </div>
+                    <div className="post-comment-body">{comment.body}</div>
+                    <div className="post-comment-date">{ new Date(comment.created_at).format("mmm dd, yyyy · h:MM tt") }</div>
+                </div>
 
             { comment.user_id === session.id &&
                 (<div className="trash" onClick={() => this.props.deleteComment(comment.post_id, comment)}>

@@ -331,7 +331,13 @@
     font-size: 13px;
     font-weight: bold;
     margin-left: 20px;
-    color: rgba(0, 0, 0, 0.5)
+    color: rgba(0, 0, 0, 0.5);
+    transition: 300ms ease;
+}
+
+.number-notes:hover {
+    color: rgba(0, 0, 0, 0.7);
+    transition: 300ms ease;
 }
 
 .post-interaction-icons {
@@ -542,6 +548,39 @@
     width: 93%;
 }
 
+.post-comment-username {
+    width: fit-content;
+    opacity: 0.9;
+    font-size: 1.1em;
+    font-weight: 700;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    transition: 300ms ease;
+}
+
+.post-comment-username:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: 300ms ease;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.post-comment-body {
+    opacity: 0.8;
+    padding-top: 6px;
+}
+
+.post-comment-date {
+    font-size: 0.7em;
+    padding-top: 6px;
+    opacity: 0.6;
+}
+
 .post-comments-form {
     display: flex;
     justify-content: space-between;
@@ -575,9 +614,9 @@
     color: #4444442f;
     display: inline-block;
     vertical-align: middle;
+    height: 12px;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
