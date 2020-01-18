@@ -84,7 +84,7 @@ class PostNotes extends React.Component {
                 }
 
                 return (
-                    <div className="note-item" key={Math.floor(Math.random()*1000000)}>
+                    <div className="note-item" key={Math.random()*1000000000000}>
                         <div className="avatar">
                             <img className="avatar-image"></img>
                         </div>

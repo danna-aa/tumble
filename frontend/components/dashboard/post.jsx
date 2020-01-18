@@ -381,6 +381,9 @@ class Post extends React.Component {
             <div key={comment.id} id={`comment-${comment.id}`} className="post-comment">
                 <div className="post-comment-content">
                     <div className="post-comment-username">
+                        <Link to={`/users/${comment.user_id}`} className="comment-avatar-link">
+                            <img className="comment-avatar-image" src={users[comment.user_id].avatar} alt="" />
+                        </Link> {" "}
                         <Link to={`/users/${comment.user_id}`}>
                             {users[comment.user_id].username}
                         </Link>

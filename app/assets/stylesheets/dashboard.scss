@@ -548,26 +548,24 @@
     width: 93%;
 }
 
-.post-comment-username {
+.post-comment-username a {
     width: fit-content;
     opacity: 0.9;
     font-size: 1.1em;
     font-weight: 700;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
     transition: 300ms ease;
 }
 
-.post-comment-username:hover {
+.post-comment-username a:hover {
     opacity: 1;
     cursor: pointer;
     transition: 300ms ease;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+}
+
+.comment-avatar-image {
+    width: 33px;
+    height: 33px;
+    object-fit: cover;
 }
 
 .post-comment-body {
@@ -696,7 +694,7 @@
     padding-left: 1em;
     font-size: 0.9em;
     opacity: 0.6;
-    width: 100%;
+    width: 95%;
     overflow-wrap: break-word;
 }
 
