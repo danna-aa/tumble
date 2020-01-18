@@ -536,7 +536,8 @@ class Post extends React.Component {
                     {linkLink}
                     {picList}
                     {attachedPhotos}
-                    {video}
+                    {/* i turned off the google youtube block errors VVV */}
+                    {/* {video} */}
                     {attachedVideo}
                     {attachedAudio}
                     {htmlDiv}

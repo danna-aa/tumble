@@ -9,8 +9,9 @@ import Dashboard from './dashboard';
 const mapStateToProps = state => ({
     posts: state.entities.posts,
     users: state.entities.users,
-    errors: state.errors,
+    follows: state.entities.follows,
     session: state.session,
+    errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch => ({

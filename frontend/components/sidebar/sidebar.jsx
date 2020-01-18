@@ -27,12 +27,24 @@ class Sidebar extends React.Component {
         // let recommendedList = shuffle(Object.values(users));
         let recommendedList = Object.values(users);
 
-        let sidebarList = recommendedList.map(user => (
-            <Link to={`/users/${user.id}`} key={user.id}> 
-                <SidebarItem user={user} /> 
-            </Link>
+        let sidebarList = recommendedList.map(user => {
 
-        ))2
+            // this will work once follows is pulled through search
+            // if (!this.props.follows[user.id] && user.id !== this.props.session.id && this.props.loaded) {
+            //     return (
+            //         <Link to={`/users/${user.id}`} key={user.id}> 
+            //             <SidebarItem user={user} /> 
+            //         </Link>
+            //     )
+            // }
+            return (
+                <Link to={`/users/${user.id}`} key={user.id}> 
+                    <SidebarItem user={user} /> 
+                </Link>
+            )
+
+        });
+
         return (
             <div className="sidebar-box">
                 <h3 className="sidebar-title">Recommended Blogs</h3>
