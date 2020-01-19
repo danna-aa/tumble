@@ -12,11 +12,13 @@ class Profile extends React.Component {
             showUserId: parseInt(this.props.match.params.userId, 10),
             currentUserId: this.props.session.id,
             loaded: false,
-            pageType: "userShow"
+            pageType: "userShow",
+            followed: false,
         };
-        // console.log(this.props);
-        // console.log(this.state);
 
+        this.handleBackToTop = this.handleBackToTop.bind(this);
+        this.handleFollow = this.handleFollow.bind(this);
+        this.handleUnfollow = this.handleUnfollow.bind(this);
     }
 
     componentDidMount() {
@@ -26,17 +28,28 @@ class Profile extends React.Component {
             .then(
                 () => this.props.fetchUsers()
                     .then(
-                        () => this.setState({ loaded: true })
-                    ) 
+                        () => this.props.fetchFollows()
+                            .then(
+                                () => this.setState({ 
+                                    loaded: true,
+                                    followed: this.props.follows[this.props.match.params.userId] ? true : false
+                                })
+                            )
+                    )
             );
-          
-        // this.setState({ userId: this.props.match.params.userId })
-        // this.props.fetchUser(this.props.session.id);
-        // console.log('====================================');
-        // console.log(this.props);
-        // console.log('====================================');
     }
 
+    
+    componentDidUpdate(prevProps) {
+        // debugger;
+        if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
+            this.props.fetchPosts(this.props.match.params.userId)
+                .then(() => this.setState({
+                    showUserId: this.props.match.params.userId
+                }));
+        }
+    }
+    
     handleBackToTop(e) {
         window.scroll({
             top: 0,
@@ -45,17 +58,20 @@ class Profile extends React.Component {
         });
     }
 
-    componentDidUpdate(prevProps) {
-        // debugger;
-        if ( prevProps.match.params.userId !== this.props.match.params.userId ) {
-            this.props.fetchPosts(this.props.match.params.userId);
-                // .then(() => this.setState({userId: this.props.match.params.userId}));
-        }
+    handleFollow(e) {
+        e.preventDefault();
+        this.props.follow(this.state.showUserId);
+        this.setState({ followed: true });
+    }
+
+    handleUnfollow(e) {
+        e.preventDefault();
+        this.props.unfollow(this.props.follows[this.state.showUserId].id);
+        this.setState({ followed: false });
     }
 
     render() {
-        let { posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
-
+        let { posts, users, session, deletePost, likePost, unlikePost, createComment, deleteComment, follows } = this.props;
 
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) =>
@@ -105,50 +121,67 @@ class Profile extends React.Component {
             )
         }
 
-               let currentUser = users[session.id];
-               let showUser = users[this.props.match.params.userId]
+        let currentUser = users[session.id];
+        let showUser = users[this.props.match.params.userId]
 
-            //    console.log("currentUser")
-            //    console.log(currentUser)
-            //    console.log("showUser")
-            //    console.log(showUser)
+        let postForm;
+        let userSidebar;
 
-               let postForm;
-               let userSidebar;
+        if (this.state.showUserId === this.state.currentUserId) {
+            postForm = <PostFormButtons users={users} session={session} showUserId={this.state.showUserId} />
+            userSidebar = (
+                <UserSidebar currentUser={currentUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
+            );
+        }
 
-               if (this.state.showUserId === this.state.currentUserId) {
-                   postForm = <PostFormButtons users={users} session={session} />
-                   userSidebar = (
-                     <UserSidebar currentUser={currentUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
-                   );
+        // follow button
+        let followButton;
+        if (this.state.loaded) {
+            if (this.state.followed && showUser.id !== currentUser.id) {
+                followButton = (
+                    <div className="page-follow-button-box">
+                        <div className="page-follow-button" onClick={(e) => this.handleUnfollow(e)}>
+                            Unfollow
+                        </div>
+                    </div>
+                )
+            } else if (!this.state.followed && showUser.id !== currentUser.id) {
+                followButton = (
+                    <div className="page-follow-button-box">
+                        <div className="page-follow-button" onClick={(e) => this.handleFollow(e)}>
+                            Follow
+                        </div>
+                    </div>
+                )
+            }
+        }
+        return (
+            <div className="dash">
+                {followButton}
+                <div className="main">
+                    
+                    {postForm}
+                    {/* <PostFormButtons users={users} session={session} /> */}
+                    {dashList}
 
-               }
-               return (
-                 <div className="dash">
-                   <div className="main">
-                     {postForm}
-                     {/* <PostFormButtons users={users} session={session} /> */}
-                     {dashList}
+                    <div
+                    className="back-to-top icon"
+                    onClick={this.handleBackToTop}
+                    >
+                    <i className="fas fa-angle-double-up"></i>
+                    </div>
 
-                     <div
-                       className="back-to-top icon"
-                       onClick={this.handleBackToTop}
-                     >
-                       <i className="fas fa-angle-double-up"></i>
-                     </div>
+                    <div className="dashboard-item last">
+                    <div className="avatar">
+                        <img className="avatar-image"></img>
+                    </div>
 
-                     <div className="dashboard-item last">
-                       <div className="avatar">
-                         <img className="avatar-image"></img>
-                       </div>
-
-                     </div>
-                   </div>
-
-                   <UserSidebar currentUser={currentUser} showUser={showUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
-                 </div>
-               );
-             }
+                    </div>
+                </div>
+                <UserSidebar currentUser={currentUser} showUser={showUser} numPosts={numPosts} pageType={this.state.pageType} loaded={this.state.loaded} />
+            </div>
+        );
+    }
 
 
 }

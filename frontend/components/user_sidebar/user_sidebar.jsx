@@ -17,11 +17,11 @@ class Sidebar extends React.Component {
         let user;
         let greeting;
         if ( (currentUser && showUser && currentUser.id === showUser.id) || pageType === "likes" ) {
-            user = currentUser
+            user = currentUser;
             greeting = `Welcome, ${user.username}!`
         } else if ( currentUser && showUser && currentUser.id !== showUser.id ) {
-            user = showUser
-            greeting = user.username
+            user = showUser;
+            greeting = user.username;
         }
 
         
@@ -54,7 +54,7 @@ class Sidebar extends React.Component {
         }
         
         let followers;
-        if ( pageType !== "likes" && this.props.loaded ) {
+        if ( pageType !== "likes" && this.props.loaded && currentUser.id === user.id ) {
             followers = (
                 <div className="sidebar-items">
                     <div className="user-sidebar-item">

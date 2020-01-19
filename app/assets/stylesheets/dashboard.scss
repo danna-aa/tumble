@@ -760,4 +760,29 @@
 }
 
 
+// page follow button
+.page-follow-button-box {
+    margin-top: 70px;
+    position: fixed;
+    top: 0px;
+    right: 20px;
+}
+
+.page-follow-button {
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 3px;
+    color: #001935;
+    background-color: white;
+    padding: 6px 8px;
+    opacity: 0.8;
+    transition: 300ms ease;
+}
+
+.page-follow-button:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: 300ms ease;
+}
+
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Post from './post';
 import PostFormButtons from './post_form_buttons';
 import UserSidebar from '../user_sidebar/user_sidebar';
+import { follow } from '../../util/follow_api_util';
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -11,21 +12,33 @@ class PostShow extends React.Component {
             userId: null,
             post: "",
             loaded: false,
+            showUserId: null,
+            currentUserId: this.props.session.id,
+            pageType: "postShow",
+            followed: false,
         };
+        this.handleBackToTop = this.handleBackToTop.bind(this);
+        this.handleFollow = this.handleFollow.bind(this);
+        this.handleUnfollow = this.handleUnfollow.bind(this);
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props.fetchUsers()
-            .then(() => (
-                this.props.fetchSinglePost(this.props.match.params.postId)
-                    .then(action => (
-                        this.setState({
-                            post: action.post,
-                            loaded: true
-                        })
+        this.props.fetchFollows()
+            .then(
+                () => this.props.fetchUsers()
+                    .then(() => (
+                        this.props.fetchSinglePost(this.props.match.params.postId)
+                            .then(action => (
+                                this.setState({
+                                    post: action.post,
+                                    loaded: true,
+                                    showUserId: action.post.user_id,
+                                    followed: (this.props.follows[action.post.user_id] ? true : false)
+                                })
+                            ))
                     ))
-            ))
+            );
     }
 
     handleBackToTop(e) {
@@ -34,6 +47,18 @@ class PostShow extends React.Component {
             left: 0,
             behavior: 'smooth'
         });
+    }
+
+    handleFollow(e) {
+        e.preventDefault();
+        this.props.follow(this.state.showUserId);
+        this.setState({ followed: true });
+    }
+
+    handleUnfollow(e) {
+        e.preventDefault();
+        this.props.unfollow(this.props.follows[this.state.showUserId].id);
+        this.setState({ followed: false });
     }
 
     render() {
@@ -177,9 +202,35 @@ class PostShow extends React.Component {
         // }
 
 
+        // follow button 
+        let followButton;
+        if (this.state.loaded) {
+            // console.log("show")
+            // console.log(this.state.showUserId)
+            // console.log("current")
+            // console.log(this.state.currentUserId)
+            if (this.state.followed && this.state.showUserId !== this.state.currentUserId) {
+                followButton = (
+                    <div className="page-follow-button-box">
+                        <div className="page-follow-button" onClick={(e) => this.handleUnfollow(e)}>
+                            Unfollow
+                        </div>
+                    </div>
+                )
+            } else if (!this.state.followed && this.state.showUserId !== this.state.currentUserId) {
+                followButton = (
+                    <div className="page-follow-button-box">
+                        <div className="page-follow-button" onClick={(e) => this.handleFollow(e)}>
+                            Follow
+                        </div>
+                    </div>
+                )
+            }
+        }
 
         return (
             <div className="dash">
+                {followButton}
                 {/* <PostForm /> */}
                 <div className="main">
 

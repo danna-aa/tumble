@@ -3,13 +3,15 @@ import { fetchPosts, fetchPost, createPost, updatePost, deletePost, fetchOwnPost
 import { fetchUsers, fetchUser } from '../../actions/session_actions';
 import { likePost, unlikePost } from "../../actions/like_actions";
 import { createComment, deleteComment } from "../../actions/comment_actions";
+import { fetchFollows, follow, unfollow } from '../../actions/follow_actions';
 import UserShow from './user_show';
 
 const mapStateToProps = (state, ownProps) => ({
     posts: state.entities.posts,
     users: state.entities.users,
-    errors: state.errors,
+    follows: state.entities.follows,
     session: state.session,
+    errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,6 +23,10 @@ const mapDispatchToProps = dispatch => ({
     unlikePost: (postId, likeId) => dispatch(unlikePost(postId, likeId)),
     createComment: (post, userId) => dispatch(createComment(post, userId)),
     deleteComment: (postId, commentId) => dispatch(deleteComment(postId, commentId)),
+    fetchFollows: () => dispatch(fetchFollows()),
+    follow: (creator_id) => dispatch(follow(creator_id)),
+    unfollow: (followId) => dispatch(unfollow(followId)),
+
 
     // not used yet
     // fetchPost: postId => dispatch(fetchPost(postId)),

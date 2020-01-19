@@ -6,10 +6,18 @@ const followsReducer = (state = {}, action) => {
     case RECEIVE_FOLLOWS:
       return Object.assign({}, action.follows);
     case RECEIVE_FOLLOW:
-      return Object.assign({}, state, { [action.follow.id]: action.follow });
+      return Object.assign({}, state, { [action.follow.creator_id]: action.follow });
     case REMOVE_FOLLOW:
       let newState = Object.assign({}, state);
-      delete (newState[action.followId]);
+      let creatorId;
+      Object.values(newState).map(follow => {
+        if (follow.id === action.followId) {
+          creatorId = follow.creator_id;
+        }
+      });
+      if (creatorId) (
+        delete (newState[creatorId])
+      );
       return newState;
     default:
       return state;
