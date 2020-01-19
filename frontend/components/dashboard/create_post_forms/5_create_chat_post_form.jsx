@@ -105,7 +105,7 @@ class CreateTextPostForm extends React.Component {
                             value={this.state.body}
                             onChange={this.update('body')}
                             className="post-form-input body"
-                            placeholder="Rick: Our problems don't amount to to a hill of beans in this crazy world.                                    Ilsa: Great, now I'm hungry for beans."
+                            placeholder="Bob: Our problems don't amount to to a hill of beans in this crazy world.                  Rick: Great, now I'm hungry for beans."
                         />
                     </div>
 
