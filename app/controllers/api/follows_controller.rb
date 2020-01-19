@@ -7,8 +7,19 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.find_by(id: params[:id])
   end
 
+  # def create
+  #   @follow = Follow.new(follower_id: current_user.id, creator_id: params[:creator_id])
+  #   if @follow.save
+  #     render json: @follow
+  #   else
+  #     render json: @follow.errors.full_messages, status: 422
+  #   end
+  # end
+
   def create
-    @follow = Follow.new(follower_id: current_user.id, creator_id: params[:creator_id])
+    @follow = Follow.new()
+    @follow.follower_id = current_user.id
+    @follow.creator_id = params[:creator_id]
     if @follow.save
       render json: @follow
     else

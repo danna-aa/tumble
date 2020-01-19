@@ -5,12 +5,22 @@ class SidebarItem extends React.Component {
     constructor(props) {
         super(props);
         // this.state = this.props;
+        this.handleFollow = this.handleFollow.bind(this);
+    }
+
+    handleFollow(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        let userId = this.props.user.id;
+        this.props.follow(userId);
+        let userSidebarItem = document.getElementById(`sidebar-follow-${userId}`);
+        userSidebarItem.classList.add("invisible");
     }
 
     render() {
         const { user } = this.props;
         return (
-            <div className="sidebar-items">
+            <div className="sidebar-items" id={`sidebar-follow-${user.id}`}>
                 <div className="sidebar-item">
                     <div className="sidebar-link-box">
                         <div className="sidebar-link-inner-box">
@@ -20,7 +30,9 @@ class SidebarItem extends React.Component {
                                 <div className="sidebar-tagline">{user.title}</div>
                             </div>
                         </div>
-                        <div className="sidebar-follow-button"><i className="fas fa-plus-square"></i></div>
+                        <div className="sidebar-follow-button" onClick={(e)=> this.handleFollow(e)}>
+                            <i className="fas fa-plus-square"></i>
+                        </div>
                     </div>
                 </div>
             </div>

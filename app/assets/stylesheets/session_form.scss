@@ -147,9 +147,8 @@
 }
 
 .invisible {
-    /* opacity: 0.5;
-    transition: 500ms ease; */
     display: none;
+    transition: visibility 0.8s, opacity 0.8s ease;
 }
 
 .fade-out {

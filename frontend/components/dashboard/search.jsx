@@ -7,19 +7,29 @@ import Sidebar from "../sidebar/sidebar";
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.posts;
+    this.state = {
+      posts: this.props.posts,
+      loaded: false,
+    };
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.fetchPosts(this.props.match.params.query);
-    this.props.fetchUsers();
+    this.props.fetchPosts(this.props.match.params.query)
+      .then(
+        () => this.props.fetchUsers()
+          .then(
+            () => this.props.fetchFollows()
+              .then(
+                () => this.setState({ loaded: true })
+              )
+          )
+      );
 
     let search = document.getElementById("search");
     if (search) {
       search.value = "";
     }
-    
   }
 
   handleBackToTop(e) {
@@ -31,16 +41,7 @@ class Search extends React.Component {
   }
 
   render() {
-    let {
-      posts,
-      users,
-      session,
-      deletePost,
-      likePost,
-      unlikePost,
-      createComment,
-      deleteComment
-    } = this.props;
+    let { posts, users, follows, follow, unfollow, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
 
     // dashboard sorted in order of newest at the top
     let postsList = Object.values(posts).sort((a, b) =>
@@ -48,21 +49,57 @@ class Search extends React.Component {
     );
 
     // map list of dashboard items
-    let dashList = postsList.map(post => (
-      <Post
-        key={post.id}
-        id={`post-${post.id}`}
-        post={post}
-        users={users}
-        session={session}
-        deletePost={deletePost}
-        likePost={likePost}
-        unlikePost={unlikePost}
-        createComment={createComment}
-        deleteComment={deleteComment}
-        userId={session.id}
-      />
-    ));
+    let dashList;
+    if (!this.state.loaded) {
+      dashList = (
+        <div className="dashboard-item last" key="out-of-content">
+          <div className="avatar">
+            <img className="avatar-image"></img>
+          </div>
+          <div className="dashboard-background out-of-content">
+            <h2 className="out-of-content-message big">
+              <i className="fas fa-spinner fa-pulse"></i>
+            </h2>
+          </div>
+        </div>
+      )
+    } else {
+      dashList = postsList.map(post => (
+        <Post
+          key={post.id}
+          id={`post-${post.id}`}
+          post={post}
+          users={users}
+          session={session}
+          deletePost={deletePost}
+          likePost={likePost}
+          unlikePost={unlikePost}
+          createComment={createComment}
+          deleteComment={deleteComment}
+          userId={session.id}
+        />
+
+      ))
+      dashList.push(
+        <div className="dashboard-item last" key="out-of-content">
+          <div className="avatar">
+            <img className="avatar-image"></img>
+          </div>
+          <div className="dashboard-background out-of-content"><h2 className="out-of-content-message">No more search results...</h2></div>
+        </div>
+      )
+    }
+
+    let sideBar;
+    if (!this.state.loaded) {
+      sideBar = (
+        <Sidebar users={{}} follows={follows} session={session} loaded={this.state.loaded} follow={follow} unfollow={unfollow}/>
+      )
+    } else {
+      sideBar = (
+        <Sidebar users={users} follows={follows} session={session} loaded={this.state.loaded} follow={follow} unfollow={unfollow}/>
+      )
+    }
 
     return (
       <div className="dash">
@@ -76,20 +113,9 @@ class Search extends React.Component {
           <div className="back-to-top icon" onClick={this.handleBackToTop}>
             <i className="fas fa-angle-double-up"></i>
           </div>
-
-          <div className="dashboard-item last">
-            <div className="avatar">
-              <img className="avatar-image"></img>
-            </div>
-            <div className="dashboard-background out-of-content">
-              <div>
-                <h2 className="out-of-content-message">No more content...</h2>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <Sidebar users={users} />
+        {sideBar}
       </div>
     );
   }

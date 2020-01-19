@@ -9,8 +9,8 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             posts: this.props.posts,
-            loaded: false
-        }
+            loaded: false,
+        };
     }
     
     componentDidMount() {
@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
     render() {
 
         // console.log(this.props.history)
-        let { posts, users, follows, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
+        let { posts, users, follows, follow, unfollow, session, deletePost, likePost, unlikePost, createComment, deleteComment } = this.props;
         // if (this.state.loaded) console.log(follows);
         // dashboard sorted in order of newest at the top
         let postsList = Object.values(posts).sort((a, b) => ( a.created_at > b.created_at ) ? -1 : 1 );
@@ -89,30 +89,23 @@ class Dashboard extends React.Component {
         let sideBar;
         if (!this.state.loaded) {
             sideBar = (
-                <Sidebar users={{}} follows={follows} session={session} loaded={this.state.loaded}/>
+                <Sidebar users={{}} follows={follows} session={session} loaded={this.state.loaded} follow={follow} unfollow={unfollow}/>
             )
         } else {
             sideBar = (
-                <Sidebar users={users} follows={follows} session={session} loaded={this.state.loaded}/>
+                <Sidebar users={users} follows={follows} session={session} loaded={this.state.loaded} follow={follow} unfollow={unfollow}/>
             )
         }
 
         return (
 
-            <div className="dash">
-                
+            <div className="dash"> 
                 <div className="main">
                     <PostFormButtons users={users} session={session}/>
-
                     {dashList}
-
                     <div className="back-to-top icon" onClick={this.handleBackToTop}><i className="fas fa-angle-double-up"></i></div>
-
-
                 </div>
-
                 {sideBar}
-
             </div>
         )
 

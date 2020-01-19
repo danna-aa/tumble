@@ -27,6 +27,12 @@
     border: none;
 }
 
+.sidebar-items {
+  transition: opacity 2s linear;  
+  transform:translate(0);
+  opacity: 1;
+}
+
 .sidebar-item {
     border-top: 1px solid #2232449f;
     padding: 10px;
