@@ -23,6 +23,7 @@ export const removeComment = comment => ({
 export const createComment = (postId, comment) => dispatch =>
   CommentAPIUtil.createComment(postId, comment).then(comment => dispatch(receiveComment(comment)));
 
+  
 export const deleteComment = (postId, comment) => dispatch =>
   CommentAPIUtil.deleteComment(postId, comment.id).then(() =>
     dispatch(removeComment(comment))
