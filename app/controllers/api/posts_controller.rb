@@ -8,8 +8,6 @@ class Api::PostsController < ApplicationController
         current_user.likes.each do |like|
             liked_posts << Post.find(like.post_id)
         end
-
-        
         
         def is_string_number?(string)
             true if Float(string) rescue false
