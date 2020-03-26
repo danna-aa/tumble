@@ -79,6 +79,7 @@ export const createVideoPost = (post) => {
 //     })
 // );
 
+
 // export const search = filter => {
 //     return $.ajax({
 //         url: `/api/posts?filter=${filter}`,
@@ -86,3 +87,4 @@ export const createVideoPost = (post) => {
 //         data: { filter }
 //     });
 // };
+
